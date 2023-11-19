@@ -6,14 +6,15 @@ using UnityEngine;
 public class TurretTargetingSystem : MonoBehaviour
 {
 
-    public static event Action<GameObject> enemyEnteredTargetingRadius;
-    public static event Action<GameObject> enemyLeftTargetingRadius;
-    public static event Action<GameObject> setEnemyTarget;
-    public static event Action<GameObject> clearEnemyTarget;
+    public static event Action<Turret, GameObject> enemyEnteredTargetingRadius;
+    public static event Action<Turret, GameObject> enemyLeftTargetingRadius;
+    public static event Action<Turret, GameObject> setEnemyTarget;
+    public static event Action<Turret, GameObject> clearEnemyTarget;
     
     public string enemyTag = "Enemy";
     public GameObject enemyTarget;
     public HashSet<GameObject> enemiesWithinTargetingRadius;
+    public Turret turret;
 
     private void OnEnable()
     {
@@ -28,6 +29,7 @@ public class TurretTargetingSystem : MonoBehaviour
     void Start()
     {
         enemiesWithinTargetingRadius = new HashSet<GameObject>();
+        turret = GetComponentInParent<Turret>();
     }
 
     void OnTriggerEnter(Collider collider)
@@ -39,7 +41,7 @@ public class TurretTargetingSystem : MonoBehaviour
             // add gameobject to hashset
             enemiesWithinTargetingRadius.Add(enemy);
             // notify about enemy entered the collider radius
-            enemyEnteredTargetingRadius?.Invoke(enemy);
+            enemyEnteredTargetingRadius?.Invoke(turret, enemy);
             // try locking on enemy, if not already locked on one
             TrySetTargetEnemy();
         }
@@ -53,7 +55,7 @@ public class TurretTargetingSystem : MonoBehaviour
             // remove gameobject from hashset
             enemiesWithinTargetingRadius.Remove(collider.gameObject);
             // notify about enemy leaving the collider radius
-            enemyLeftTargetingRadius?.Invoke(collider.gameObject);
+            enemyLeftTargetingRadius?.Invoke(turret, collider.gameObject);
             // Try locking off enemy
             TryClearTargetEnemy(collider.gameObject);
         }
@@ -98,7 +100,7 @@ public class TurretTargetingSystem : MonoBehaviour
         // lock on enemy
         enemyTarget = enemy;
         // notify about enemy locked in
-        setEnemyTarget?.Invoke(enemy);
+        setEnemyTarget?.Invoke(turret, enemy);
     }
 
     void ClearTarget()
@@ -106,7 +108,7 @@ public class TurretTargetingSystem : MonoBehaviour
         // return if no enemy is locked in
         if(enemyTarget == null) return;
         // notify about enemy locked off
-        clearEnemyTarget?.Invoke(enemyTarget);
+        clearEnemyTarget?.Invoke(turret, enemyTarget);
         // lock off enemy
         enemyTarget = null;
         

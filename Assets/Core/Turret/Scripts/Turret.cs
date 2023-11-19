@@ -17,7 +17,7 @@ public class Turret : MonoBehaviour
     private SphereCollider sphereCollider;
 
     // Actions
-    public static event Action<GameObject> turretFired;
+    public static event Action<Turret, GameObject> turretFired;
 
     void Start()
     {
@@ -47,27 +47,42 @@ public class Turret : MonoBehaviour
         TurretTargetingSystem.clearEnemyTarget -= OnClearEnemyTarget;
     }
 
-    private void OnEnemyEnteredTargetingRadius(GameObject enemy)
+    private void OnEnemyEnteredTargetingRadius(Turret turret, GameObject enemy)
     {
-        Debug.Log("Enemy Entered");
+        if(turret.Equals(this))
+        {
+            Debug.Log("Enemy Entered");
+        }
+        
     }
 
-    private void OnEnemyLeftTargetingRadius(GameObject enemy)
+    private void OnEnemyLeftTargetingRadius(Turret turret, GameObject enemy)
     {
-        Debug.Log("Enemy Left");
+        if(turret.Equals(this))
+        {
+            Debug.Log("Enemy Left");
+        }
     }
 
-    private void OnSetEnemyTarget(GameObject enemy)
+    private void OnSetEnemyTarget(Turret turret, GameObject enemy)
     {
-        Debug.Log("Lock on enemy");
-        target = enemy;
+        if(turret.Equals(this))
+        {
+            Debug.Log("Lock on enemy");
+            target = enemy;
+        }
+        
     }
 
-    private void OnClearEnemyTarget(GameObject enemy)
+    private void OnClearEnemyTarget(Turret turret, GameObject enemy)
     {
-        Debug.Log("Locked off enemy");
-        target = null;
-        ResetLook();
+        if(turret.Equals(this))
+        {
+            Debug.Log("Locked off enemy");
+            target = null;
+            ResetLook();
+        }
+        
     }
 
     private void ResetLook()
@@ -98,7 +113,7 @@ public class Turret : MonoBehaviour
 
     private void Shoot()
     {
-        turretFired?.Invoke(target);
+        turretFired?.Invoke(this, target);
         if(target != null) target.GetComponent<Enemy>().DestroyEnemy();
         Debug.Log("Shoot");
     }
