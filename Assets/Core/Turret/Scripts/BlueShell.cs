@@ -10,7 +10,7 @@ public class BlueShell : Projectile2D
     protected override void Start()
     {
         base.Start();
-        SetTarget(GetFirstKart());
+        SetTarget(GetFirstUntargetableKart());
     }
 
     // Update is called once per frame
@@ -19,9 +19,24 @@ public class BlueShell : Projectile2D
         MoveProjectile();
     }
 
-    private Transform GetFirstKart()
+    private Transform GetFirstUntargetableKart()
     {
-        return GameObject.FindWithTag("Kart")?.transform;
+        GameObject[] kartObjects = GameObject.FindGameObjectsWithTag("Kart");
+
+        foreach (GameObject kartObject in kartObjects)
+        {
+            // Assuming each Kart object has a Kart component
+            Kart kartComponent = kartObject.GetComponent<Kart>();
+
+            if (kartComponent != null && !kartComponent.IsUntargetable())
+            {
+                // Return the transform of the first untargetable kart
+                return kartObject.transform;
+            }
+        }
+
+        // Return null if no untargetable kart is found
+        return null;
     }
 
     protected override void MoveProjectile()
@@ -72,7 +87,7 @@ public class BlueShell : Projectile2D
                 if (kart != null)
                 {
                     // Call the TakeDamage method on the entity.
-                    kart.TakeDamage(1);
+                    kart.ApplyHeavyStunEffect(1, 2);
                 }
             }
         }

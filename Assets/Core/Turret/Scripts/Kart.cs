@@ -4,78 +4,165 @@ using UnityEngine;
 public class Kart : MonoBehaviour
 {
     [Header("Kart Settings")]
-    public int maxHealth = 1; // Maximum health of the kart.
-    protected int currentHealth; // Current health of the kart.
-    public float regularSpeed = 5f;
+    
+    public int maxHealth = 1;
+    protected int currentHealth;
+    public float regularSpeed = 2f;
     protected float currentSpeed;
+    private bool invincibilityActive;
+    private bool untargetableActive;
+    private bool lightStunActive;
+    private bool heavyStunActive;
 
-    private Coroutine activeLightStunCoroutine;
-
-    // Start is called before the first frame update.
-    protected virtual void Start()
+    private void Start()
     {
-        currentHealth = maxHealth; // Initialize health to the maximum when the kart is spawned.
+        currentHealth = maxHealth;
         currentSpeed = regularSpeed;
     }
 
-    // Method to apply a gradual light stun effect
-    public void ApplyLightStunEffect(float durationInSeconds)
+    private void Update()
     {
-        // If a light stun effect is already active, stop it before applying a new one
-        if (activeLightStunCoroutine != null)
-        {
-            StopCoroutine(activeLightStunCoroutine);
-        }
-
-        // Start a new gradual light stun effect coroutine
-        activeLightStunCoroutine = StartCoroutine(LightStunEffectCoroutine(durationInSeconds));
+        MoveRight();
     }
 
-    // Coroutine to handle the gradual light stun effect
-    private IEnumerator LightStunEffectCoroutine(float durationInSeconds)
+    private void MoveRight ()
     {
+        float movement = currentSpeed * Time.deltaTime;
+        transform.Translate(Vector3.right * movement);
+    }
+
+    public void ApplyLightStunEffect(float durationInSeconds)
+    {
+        if (lightStunActive == false && invincibilityActive == false)
+        {
+            StartCoroutine(LightStunEffectCoroutine(durationInSeconds));
+            StartCoroutine(InvincibilityCoroutine(durationInSeconds));
+            StartCoroutine(UntargetableCoroutine(durationInSeconds));
+        }
+    }
+
+    public void ApplyHeavyStunEffect(float stunTime, float recoveryTimeInSeconds)
+    {
+        if (!lightStunActive && !invincibilityActive)
+        {
+            StartCoroutine(HeavyStunEffectCoroutine(stunTime, recoveryTimeInSeconds));
+            StartCoroutine(InvincibilityCoroutine(stunTime + recoveryTimeInSeconds));
+            StartCoroutine(UntargetableCoroutine(stunTime + recoveryTimeInSeconds));
+        }
+    }
+
+    private IEnumerator HeavyStunEffectCoroutine(float stunTime, float recoveryTimeInSeconds)
+    {
+        heavyStunActive = true;
+        
+        yield return StartCoroutine(SetSpeedOverTimeCoroutine(0f, 0f));
+
+        // Wait for the specified recovery time with speed at zero
+        yield return new WaitForSeconds(stunTime);
+
+        yield return StartCoroutine(SetSpeedOverTimeCoroutine(regularSpeed, recoveryTimeInSeconds));
+
+        // Reset the active heavy stun effect flag
+        heavyStunActive = false;
+    }
+
+    public void ApplyInvincibility(float durationInSeconds)
+    {
+        if (invincibilityActive == false)
+        {
+            StartCoroutine(InvincibilityCoroutine(durationInSeconds));
+        }
+    }
+
+    private IEnumerator InvincibilityCoroutine(float durationInSeconds)
+    {
+        invincibilityActive = true;
+        yield return new WaitForSeconds(durationInSeconds);
+        invincibilityActive = false;
+    }
+
+    public void ApplyUntargetable(float durationInSeconds)
+    {
+        if (!untargetableActive)
+        {
+            StartCoroutine(UntargetableCoroutine(durationInSeconds));
+        }
+    }
+
+    private IEnumerator UntargetableCoroutine(float durationInSeconds)
+    {
+        untargetableActive = true;
+        yield return new WaitForSeconds(durationInSeconds);
+        untargetableActive = false;
+    }
+
+    public void SetSpeedOverTime(float targetSpeed, float duration)
+    {
+        StartCoroutine(SetSpeedOverTimeCoroutine(targetSpeed, duration));
+    }
+
+    private IEnumerator SetSpeedOverTimeCoroutine(float targetSpeed, float duration)
+    {
+        float initialSpeed = currentSpeed;
         float elapsedTime = 0f;
 
-        // Gradually decrease the speed to zero over the specified duration
-        while (elapsedTime < durationInSeconds)
+        while (elapsedTime < duration)
         {
-            float t = elapsedTime / durationInSeconds;
-            currentSpeed = Mathf.Lerp(regularSpeed, 0f, t);
+            float t = elapsedTime / duration;
+            currentSpeed = Mathf.Lerp(initialSpeed, targetSpeed, t);
             elapsedTime += Time.deltaTime;
             yield return null;
         }
 
-        // Ensure the speed is set to zero at the end of the duration
-        currentSpeed = 0f;
-
-        // Reset the active gradual light stun effect coroutine
-        activeLightStunCoroutine = null;
-
-        // Wait for a frame to ensure that the speed is updated before the next actions
-        yield return null;
-
-        // Restore the regular speed
-        currentSpeed = regularSpeed;
+        // Ensure the speed is set to regular speed at the end of the reset
+        currentSpeed = targetSpeed;
     }
 
-    // Method to deal damage to the kart.
+    private IEnumerator LightStunEffectCoroutine(float durationInSeconds)
+    {
+        lightStunActive = true;
+
+        yield return StartCoroutine(SetSpeedOverTimeCoroutine(0f, durationInSeconds));
+
+        yield return null;
+
+        yield return StartCoroutine(SetSpeedOverTimeCoroutine(regularSpeed, durationInSeconds));
+
+        lightStunActive = false;
+    }
+
     public void TakeDamage(int damage)
     {
-        // Implement logic to decrease the kart's health based on the damage received.
         currentHealth -= damage;
 
-        // Check if the kart's health has reached zero or below.
         if (currentHealth <= 0)
         {
-            DestroyKart(); // Call the method to destroy the kart.
+            DestroyKart();
         }
     }
 
-    // Method to handle the destruction of the kart.
     private void DestroyKart()
     {
-        // Implement logic to handle the destruction of the kart.
-        // For example, play destruction effects, remove the kart from the scene, etc.
         Destroy(gameObject);
+    }
+
+    public bool IsLightStunActive()
+    {
+        return lightStunActive;
+    }
+
+    private bool IsHeavyStunActive()
+    {
+        return heavyStunActive;
+    }
+
+    public bool IsInvincible()
+    {
+        return invincibilityActive;
+    }
+
+    public bool IsUntargetable()
+    {
+        return untargetableActive;
     }
 }

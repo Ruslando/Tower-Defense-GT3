@@ -28,8 +28,20 @@ public class RedShell : Projectile2D
     {
         base.HandleTriggerEnterKart(collider);
 
-        isHoming = true;
-        target = collider.transform;
+        // Get the Kart component from the collider
+        Kart kartComponent = collider.GetComponent<Kart>();
+
+        // Check if the Kart component is not null
+        if (kartComponent != null)
+        {
+            // Check if Kart is untargetable
+            if (!kartComponent.IsUntargetable())
+            {
+                // Invincibility is not active, continue with normal logic
+                isHoming = true;
+                target = collider.transform;
+            }
+        }
     }
 
     protected override void HandleCollisionWall(Collision2D collision)
@@ -48,11 +60,11 @@ public class RedShell : Projectile2D
         {
             // Call the TakeDamage method on the entity.
             kart.ApplyLightStunEffect(1);
-
-            // Destroy the green shell upon hitting an enemy.
-            Destroy(gameObject);
-            return; // Exit the method to prevent additional logic after destroying the shell.
         }
+
+        // Destroy the green shell upon hitting an enemy.
+        Destroy(gameObject);
+        return; // Exit the method to prevent additional logic after destroying the shell.
     }
 
     protected override void HandleCollisionProjectile(Collision2D collision)
