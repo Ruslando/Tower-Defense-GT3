@@ -59,11 +59,11 @@ public class Turret2D : MonoBehaviour
     // Automatically called in the editor when a serialized field is modified.
     private void OnValidate()
     {
-        UpgradeTurret();
+        ChangeTurretUpgradeLevel();
     }
 
     // Method to upgrade the turret based on the selected turret type.
-    public void UpgradeTurret()
+    public void ChangeTurretUpgradeLevel()
     {
         switch (turretType)
         {
@@ -85,6 +85,25 @@ public class Turret2D : MonoBehaviour
             default:
                 Debug.LogWarning("Invalid turret type selected.");
                 break;
+        }
+    }
+
+    // Method to upgrade the turret to the next type
+    public void UpgradeTurret()
+    {
+        int maxTurretTypeIndex = System.Enum.GetValues(typeof(TurretType)).Length - 1;
+        int currentIndex = (int)turretType;
+
+        // Increment the current turret type index
+        currentIndex++;
+
+        // Check if the current index exceeds the maximum index value
+        if (currentIndex <= maxTurretTypeIndex)
+        {
+            // Update the turret type
+            turretType = (TurretType)currentIndex;
+
+            ChangeTurretUpgradeLevel();
         }
     }
 
