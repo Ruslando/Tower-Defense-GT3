@@ -43,12 +43,12 @@ public class LevelManager : Singleton<LevelManager>
     private void OnEnable()
     {
         Enemy.OnEndReached += ReduceLives;
-        Spawner.OnWaveCompleted += WaveCompleted;
+        // KartManager.OnWaveCompleted += WaveCompleted;
     }
 
     private void OnDisable()
     {
         Enemy.OnEndReached -= ReduceLives;
-        Spawner.OnWaveCompleted -= WaveCompleted;
+        // KartManager.OnWaveCompleted -= WaveCompleted;
     }
 }
