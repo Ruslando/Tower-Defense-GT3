@@ -43,6 +43,12 @@ public class Waypoint : MonoBehaviour
                 Gizmos.DrawLine(points[i] + _currentPosition, points[i + 1] + _currentPosition);
             }
         }
+
+        if (points.Length > 1)
+        {
+            Gizmos.color = Color.gray;
+            Gizmos.DrawLine(points[points.Length - 1] + _currentPosition, points[0] + _currentPosition);
+        }
     }
 }
 

@@ -4,12 +4,13 @@ using UnityEngine;
 public class Kart : MonoBehaviour
 {
     [Header("Kart Settings")]
-    
-    public float regularSpeed = 2f;
+    public float topSpeed = 2f;
+    public float accelerationRate = 1f;
+    public float decelerationRate = 1f;
     protected float currentSpeed;
+    private bool isAccelerating;
 
     // state
-
     private bool invincibilityActive;
     private bool untargetableActive;
     private bool lightStunActive;
@@ -17,10 +18,12 @@ public class Kart : MonoBehaviour
 
     // movement
     public Waypoint Waypoint { get; set; }
-    public Vector3 CurrentPointPosition => Waypoint.GetWaypointPosition(_currentWaypointIndex);
+    public Vector3 CurrentPointPosition => Waypoint.GetWaypointPosition(CurrentWaypointIndex);
     
-    private int _currentWaypointIndex;
+    public int CurrentWaypointIndex { get; private set; }
     private Vector3 _lastPointPosition;
+    public uint Lap { get; private set; }
+    public uint LapPosition { get; private set; }
 
     // visuals
     private SpriteRenderer _spriteRenderer;
@@ -28,15 +31,14 @@ public class Kart : MonoBehaviour
     private void Start()
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
-        
-        currentSpeed = regularSpeed;
-
-        _currentWaypointIndex = 0;
+        isAccelerating = true;
+        CurrentWaypointIndex = 0;
         _lastPointPosition = transform.position;
     }
 
     private void Update()
     {
+        Drive();
         Move();
         Rotate();
         
@@ -64,6 +66,43 @@ public class Kart : MonoBehaviour
         }
     }
 
+    private void Drive()
+    {
+        if(!IsLightStunActive() && !IsHeavyStunActive())
+        {
+            if(isAccelerating)
+            {
+                Accelerate();
+            } else {
+                Decelerate();
+            }
+        }
+    }
+
+    private void Accelerate()
+    {
+        if (currentSpeed < topSpeed)
+        {
+            currentSpeed += accelerationRate * Time.deltaTime;
+        }
+        else if (currentSpeed > topSpeed)
+        {
+            // If current speed is higher than top speed, gradually decrease to top speed
+            currentSpeed -= decelerationRate * Time.deltaTime;
+        }
+
+        // Ensure speed is not negative
+        currentSpeed = Mathf.Max(currentSpeed, 0f);
+    }
+
+    private void Decelerate()
+    {
+        // Gradually decrease speed until it reaches 0
+        currentSpeed -= decelerationRate * Time.deltaTime;
+        // Ensure speed does not go below 0
+        currentSpeed = Mathf.Max(currentSpeed, 0);
+    }
+
     private bool CurrentPointPositionReached()
     {
         float distanceToNextPointPosition = (transform.position - CurrentPointPosition).magnitude;
@@ -79,9 +118,9 @@ public class Kart : MonoBehaviour
     private void UpdateCurrentPointIndex()
     {
         int lastWaypointIndex = Waypoint.Points.Length - 1;
-        if (_currentWaypointIndex < lastWaypointIndex)
+        if (CurrentWaypointIndex < lastWaypointIndex)
         {
-            _currentWaypointIndex++;
+            CurrentWaypointIndex++;
         }
         else
         {
@@ -91,9 +130,16 @@ public class Kart : MonoBehaviour
 
     private void EndPointReached()
     {
+        Lap++;
+        CurrentWaypointIndex = 0;
         // OnEndReached?.Invoke(this);
         // _enemyHealth.ResetHealth();
         // ObjectPooler.ReturnToPool(gameObject);
+    }
+
+    public void SetLapPosition(uint lapPosition)
+    {
+        LapPosition = lapPosition;
     }
 
     public void ApplyLightStunEffect(float durationInSeconds)
@@ -125,7 +171,7 @@ public class Kart : MonoBehaviour
         // Wait for the specified recovery time with speed at zero
         yield return new WaitForSeconds(stunTime);
 
-        yield return StartCoroutine(SetSpeedOverTimeCoroutine(regularSpeed, recoveryTimeInSeconds));
+        // yield return StartCoroutine(SetSpeedOverTimeCoroutine(topSpeed, recoveryTimeInSeconds));
 
         // Reset the active heavy stun effect flag
         heavyStunActive = false;
@@ -189,9 +235,7 @@ public class Kart : MonoBehaviour
 
         yield return StartCoroutine(SetSpeedOverTimeCoroutine(0f, durationInSeconds));
 
-        yield return null;
-
-        yield return StartCoroutine(SetSpeedOverTimeCoroutine(regularSpeed, durationInSeconds));
+        // yield return StartCoroutine(SetSpeedOverTimeCoroutine(topSpeed, durationInSeconds));
 
         lightStunActive = false;
     }
