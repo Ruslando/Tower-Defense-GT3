@@ -16,15 +16,15 @@ public class LevelManager : Singleton<LevelManager>
         CurrentWave = 1;
     }
 
-    private void ReduceLives(Enemy enemy)
-    {
-        TotalLives--;
-        if (TotalLives <= 0)
-        {
-            TotalLives = 0;
-            GameOver();
-        }
-    }
+    // private void ReduceLives(Enemy enemy)
+    // {
+    //     TotalLives--;
+    //     if (TotalLives <= 0)
+    //     {
+    //         TotalLives = 0;
+    //         GameOver();
+    //     }
+    // }
 
     private void GameOver()
     {
@@ -40,15 +40,15 @@ public class LevelManager : Singleton<LevelManager>
         AchievementManager.Instance.AddProgress("Waves100", 1);
     }
     
-    private void OnEnable()
-    {
-        Enemy.OnEndReached += ReduceLives;
-        // KartManager.OnWaveCompleted += WaveCompleted;
-    }
-
-    private void OnDisable()
-    {
-        Enemy.OnEndReached -= ReduceLives;
-        // KartManager.OnWaveCompleted -= WaveCompleted;
-    }
+    // private void OnEnable()
+    // {
+    //     Enemy.OnEndReached += ReduceLives;
+    //     // KartManager.OnWaveCompleted += WaveCompleted;
+    // }
+    //
+    // private void OnDisable()
+    // {
+    //     Enemy.OnEndReached -= ReduceLives;
+    //     // KartManager.OnWaveCompleted -= WaveCompleted;
+    // }
 }

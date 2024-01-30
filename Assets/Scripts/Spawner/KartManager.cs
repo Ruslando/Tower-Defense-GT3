@@ -23,20 +23,20 @@ public class KartManager : Singleton<KartManager>
 
     [Header("Poolers")] 
     [SerializeField] private ObjectPooler kartPooler;
-    List<Kart> karts = new List<Kart>();
+    public List<Kart> karts = new List<Kart>();
     
     private Waypoint _waypoint;
 
     private void Start()
     {
         _waypoint = GetComponent<Waypoint>();
-        SpawnKart(startingPosition);
-        // PlaceAndSpawnKarts();
+        //SpawnKart(startingPosition);
+        PlaceAndSpawnKarts();
     }
 
     private void Update()
     {
-        // UpdateKartPositions();
+        UpdateKartPositions();
     }
 
     // Method to spawn karts diagonally
@@ -47,7 +47,7 @@ public class KartManager : Singleton<KartManager>
             for (int col = 0; col < cols; col++)
             {
                 // Calculate staggered position
-                Vector3 staggerOffset = new Vector3(col * gridSize.x, 0f, row * gridSize.z);
+                Vector3 staggerOffset = new Vector3(col * gridSize.x, row * gridSize.y, 0f);
                 Vector3 finalPosition = startingPosition + staggerOffset;
 
                 SpawnKart(finalPosition);
@@ -63,6 +63,7 @@ public class KartManager : Singleton<KartManager>
 
         enemy.transform.localPosition = position;
         newInstance.SetActive(true);
+        karts.Add(enemy);
     }
 
     private void UpdateKartPositions()

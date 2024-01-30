@@ -94,7 +94,7 @@ public class Kart : MonoBehaviour
 
     private void Drive()
     {
-        if(debuffs.Count > 0)
+        if(debuffs.Count == 0)
         {
             if(isAccelerating)
             {
@@ -299,15 +299,15 @@ public class Kart : MonoBehaviour
         OnBuffRemoved?.Invoke(this, buff);
     }
 
-    private void ApplyDebuff(KartDebuffType buff)
+    private void ApplyDebuff(KartDebuffType debuff)
     {
-        debuffs.Add(buff);
-        OnDebuffApplied?.Invoke(this, buff);
+        debuffs.Add(debuff);
+        OnDebuffApplied?.Invoke(this, debuff);
     }
 
-    private void RemoveDebuff(KartDebuffType buff)
+    private void RemoveDebuff(KartDebuffType debuff)
     {
-        debuffs.Add(buff);
-        OnDebuffRemoved?.Invoke(this, buff);
+        debuffs.Remove(debuff);
+        OnDebuffRemoved?.Invoke(this, debuff);
     }
 }

@@ -38,18 +38,18 @@ public class CurrencySystem : Singleton<CurrencySystem>
         }
     }
 
-    private void AddCoins(Enemy enemy)
-    {
-        AddCoins(1);
-    }
-    
-    private void OnEnable()
-    {
-        EnemyHealth.OnEnemyKilled += AddCoins;
-    }
-
-    private void OnDisable()
-    {
-        EnemyHealth.OnEnemyKilled -= AddCoins;
-    }
+    // private void AddCoins(Enemy enemy)
+    // {
+    //     AddCoins(1);
+    // }
+    //
+    // private void OnEnable()
+    // {
+    //     EnemyHealth.OnEnemyKilled += AddCoins;
+    // }
+    //
+    // private void OnDisable()
+    // {
+    //     EnemyHealth.OnEnemyKilled -= AddCoins;
+    // }
 }
