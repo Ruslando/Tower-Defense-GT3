@@ -35,7 +35,7 @@ public class RedShell : Projectile2D
         if (kartComponent != null)
         {
             // Check if Kart is untargetable
-            if (!kartComponent.IsUntargetable())
+            if (!kartComponent.buffs.Contains(KartBuffType.Untargetable))
             {
                 // Invincibility is not active, continue with normal logic
                 isHoming = true;
