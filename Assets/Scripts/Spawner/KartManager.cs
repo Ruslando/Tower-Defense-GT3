@@ -106,18 +106,18 @@ public class KartManager : Singleton<KartManager>
         Vector3 waypoint2 = _waypoint.GetWaypointPosition((kart1.CurrentWaypointIndex + 1) % _waypoint.Points.Length);
 
         // Calculate direction vector between waypoints
-        Vector3 direction = (waypoint2 - waypoint1).normalized;
-
-        // Calculate vectors from waypoints to karts' positions
-        Vector3 vectorToKart1 = kart1.transform.position - waypoint1;
-        Vector3 vectorToKart2 = kart2.transform.position - waypoint1;
+        Vector3 direction = waypoint2 - waypoint1;
 
         // Project vectors onto direction vector
-        float projection1 = Vector3.Dot(vectorToKart1, direction);
-        float projection2 = Vector3.Dot(vectorToKart2, direction);
+        Vector3 projection1 = Vector3.Project(kart1.transform.position, direction);
+        Vector3 projection2 = Vector3.Project(kart2.transform.position, direction);
+
+        // Calculate vector from the first position to the third position
+        Vector3 projectionVector1 = projection1 - waypoint1;
+        Vector3 projectionVector2 = projection2 - waypoint1;
 
         // Compare distances of projections to determine if kart2 is in front of kart1
-        return projection2 > projection1;
+        return projectionVector2.magnitude > projectionVector1.magnitude;
     }
 
     public Kart GetKartInFirstPosition()
