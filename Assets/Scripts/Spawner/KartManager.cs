@@ -30,7 +30,6 @@ public class KartManager : Singleton<KartManager>
     private void Start()
     {
         _waypoint = GetComponent<Waypoint>();
-        //SpawnKart(startingPosition);
         PlaceAndSpawnKarts();
     }
 
@@ -42,6 +41,7 @@ public class KartManager : Singleton<KartManager>
     // Method to spawn karts diagonally
     public void PlaceAndSpawnKarts()
     {
+        int index = 0;
         for (int row = 0; row < rows; row++)
         {
             for (int col = 0; col < cols; col++)
@@ -50,20 +50,22 @@ public class KartManager : Singleton<KartManager>
                 Vector3 staggerOffset = new Vector3(col * gridSize.x, row * gridSize.y, 0f);
                 Vector3 finalPosition = startingPosition + staggerOffset;
 
-                SpawnKart(finalPosition);
+                SpawnKart(index++, finalPosition);
             }
         }
     }
 
-    private void SpawnKart(Vector3 position)
+    private void SpawnKart(int index, Vector3 position)
     {
-        GameObject newInstance = kartPooler.GetInstanceFromPool();
-        Kart enemy = newInstance.GetComponent<Kart>();
-        enemy.Waypoint = _waypoint;
+        GameObject gameObject = kartPooler.GetInstanceFromPool();
+        Kart kart = gameObject.GetComponent<Kart>();
+        
 
-        enemy.transform.localPosition = position;
-        newInstance.SetActive(true);
-        karts.Add(enemy);
+        kart.transform.localPosition = position;
+        kart.Waypoint = _waypoint;
+        gameObject.SetActive(true);
+        gameObject.name = $"Kart: { index }";
+        karts.Add(kart);
     }
 
     private void UpdateKartPositions()
