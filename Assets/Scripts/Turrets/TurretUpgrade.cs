@@ -18,11 +18,11 @@ public class TurretUpgrade : MonoBehaviour
     public int UpgradeCost { get; set; }
     public int Level { get; set; }
     
-    private TurretProjectile _turretProjectile;
+    //private TurretProjectile _turretProjectile;
     
     private void Start()
     {
-        _turretProjectile = GetComponent<TurretProjectile>();
+        //_turretProjectile = GetComponent<TurretProjectile>();
         UpgradeCost = upgradeInitialCost;
 
         SellPerc = sellPert;
@@ -33,8 +33,8 @@ public class TurretUpgrade : MonoBehaviour
     {
         if (CurrencySystem.Instance.TotalCoins >= UpgradeCost)
         {
-            _turretProjectile.Damage += damageIncremental;
-            _turretProjectile.DelayPerShot -= delayReduce;
+            // _turretProjectile.Damage += damageIncremental;
+            // _turretProjectile.DelayPerShot -= delayReduce;
             UpdateUpgrade();
         }
     }
