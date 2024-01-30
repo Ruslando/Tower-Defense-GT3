@@ -1,0 +1,2283 @@
+fileFormatVersion: 2
+guid: 2b1307b72e6798049bb876bf33aa19a8
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 64
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: SNES - Super Mario Kart - Toad - Transparent_0
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 291
+        width: 28
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e9631c120b65e845831941dca5315a3
+      internalID: -1068570935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SNES - Super Mario Kart - Toad - Transparent_1
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 291
+        width: 28
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b588fb4de611294686a29bf453f2b7c
+      internalID: -484758205
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SNES - Super Mario Kart - Toad - Transparent_2
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 291
+        width: 28
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b801487d128ca84db15490069f54d07
+      internalID: -1491024504
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SNES - Super Mario Kart - Toad - Transparent_3
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 291
+        width: 28
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 868d6aa55f865cd4ba15676c3f5ce20e
+      internalID: -1350537479
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SNES - Super Mario Kart - Toad - Transparent_4
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 291
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a09ef89ad68d9004997a500d9b6516be
+      internalID: 376113227
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SNES - Super Mario Kart - Toad - Transparent_5
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 259
+        width: 28
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 691578037902e64408c3dc5c1569b6aa
+      internalID: -297088736
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SNES - Super Mario Kart - Toad - Transparent_6
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 259
+        width: 27
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c00388feb4c00784599f6c6d8385f099
+      internalID: 208987102
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SNES - Super Mario Kart - Toad - Transparent_7
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 258
+        width: 27
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c03719989183e1498c76cbd3fbeb1a5
+      internalID: -851213736
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SNES - Super Mario Kart - Toad - Transparent_8
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 258
+        width: 28
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 77cab75be8575a943a29d626a58db2fa
+      internalID: 1729445280
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SNES - Super Mario Kart - Toad - Transparent_9
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 258
+        width: 28
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6610c184e28af834babf122860922923
+      internalID: -485942231
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SNES - Super Mario Kart - Toad - Transparent_10
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 258
+        width: 29
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b2c849fa7da541a4c959f0ded93f86f4
+      internalID: 218855465
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SNES - Super Mario Kart - Toad - Transparent_11
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 258
+        width: 28
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6eec1551ab504f14c89583a49645e41c
+      internalID: 1504073089
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SNES - Super Mario Kart - Toad - Transparent_12
+      rect:
+        serializedVersion: 2
+        x: 226
+        y: 259
+        width: 28
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dcd3f2be968d44d4c85fe8cfbeb7fd5b
+      internalID: 208272503
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SNES - Super Mario Kart - Toad - Transparent_13
+      rect:
+        serializedVersion: 2
+        x: 257
+        y: 258
+        width: 30
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 54e7f578483b96749b68fb0ce96ba675
+      internalID: -1384857594
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SNES - Super Mario Kart - Toad - Transparent_14
+      rect:
+        serializedVersion: 2
+        x: 289
+        y: 258
+        width: 30
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8566423012bfa0b4c83f76e35bbb4b96
+      internalID: 243036096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SNES - Super Mario Kart - Toad - Transparent_15
+      rect:
+        serializedVersion: 2
+        x: 322
+        y: 258
+        width: 28
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 969e7d7d7b35fa34480d917b372160f6
+      internalID: 1672892437
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SNES - Super Mario Kart - Toad - Transparent_16
+      rect:
+        serializedVersion: 2
+        x: 354
+        y: 259
+        width: 28
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f96532c8e9bd72c4f83a1c895db5fd5d
+      internalID: 1288027835
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SNES - Super Mario Kart - Toad - Transparent_17
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 228
+        width: 24
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ec1d5133ef9bca49ba9c17a78c70b34
+      internalID: 1552418433
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SNES - Super Mario Kart - Toad - Transparent_18
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 228
+        width: 22
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3647095a479309c44ac4f56c90672e3b
+      internalID: 144155742
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SNES - Super Mario Kart - Toad - Transparent_19
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 227
+        width: 23
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89c2eeea569e1bc4ab8f27a38f8509a8
+      internalID: -1007620001
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SNES - Super Mario Kart - Toad - Transparent_20
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 227
+        width: 24
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 90905710d21590646934b761adde86e3
+      internalID: -523971252
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SNES - Super Mario Kart - Toad - Transparent_21
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 227
+        width: 24
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d90e6c66e5f92745bc6c766092ddebd
+      internalID: -1147046843
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SNES - Super Mario Kart - Toad - Transparent_22
+      rect:
+        serializedVersion: 2
+        x: 165
+        y: 227
+        width: 24
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af98f5ecaf566e848b8d6f6280d14706
+      internalID: -492202536
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SNES - Super Mario Kart - Toad - Transparent_23
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 227
+        width: 24
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4db8522f09eb29d4c8adb12d9ad8bb3d
+      internalID: 1730892417
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SNES - Super Mario Kart - Toad - Transparent_24
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 228
+        width: 24
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e216215c658c3d43888ca4e044d33eb
+      internalID: -757218910
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SNES - Super Mario Kart - Toad - Transparent_25
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 227
+        width: 24
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 325e46dc2dd028f419e37044049432ee
+      internalID: -2122078016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SNES - Super Mario Kart - Toad - Transparent_26
+      rect:
+        serializedVersion: 2
+        x: 292
+        y: 227
+        width: 23
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d54a896bece71c541a59c286d118ba6c
+      internalID: 1789950655
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SNES - Super Mario Kart - Toad - Transparent_27
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 227
+        width: 22
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 13c38dc7dba96094bb16eaa44e1ca45f
+      internalID: 254578651
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SNES - Super Mario Kart - Toad - Transparent_28
+      rect:
+        serializedVersion: 2
+        x: 356
+        y: 228
+        width: 24
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc96168e705aebf4fb10663bc8966f21
+      internalID: -242515540
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SNES - Super Mario Kart - Toad - Transparent_29
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 198
+        width: 22
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 82534b0aa7cfcb44ea13b4e5fa0f2070
+      internalID: -1410283077
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SNES - Super Mario Kart - Toad - Transparent_30
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 198
+        width: 21
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1943559f0ec14c7479e66f979fe9ebe9
+      internalID: 1552462671
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SNES - Super Mario Kart - Toad - Transparent_31
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 197
+        width: 22
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3238523970694ec44af5a0d2e622e507
+      internalID: 1277249786
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SNES - Super Mario Kart - Toad - Transparent_32
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 197
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 10e63975b9464a84ab289b12ae6bc2aa
+      internalID: 1645415358
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SNES - Super Mario Kart - Toad - Transparent_33
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 197
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49131cae24a91a2468006ce5e824fcd2
+      internalID: 361325414
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SNES - Super Mario Kart - Toad - Transparent_34
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 197
+        width: 25
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b56b2ee2c1d046d458f8be6ec77c25ae
+      internalID: -1467389242
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SNES - Super Mario Kart - Toad - Transparent_35
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 197
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb75a91f6356aad45a2c5057a2ec4b7c
+      internalID: -1897381638
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SNES - Super Mario Kart - Toad - Transparent_36
+      rect:
+        serializedVersion: 2
+        x: 229
+        y: 198
+        width: 22
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57abaa6c75930f74bb1c842a01e27f7e
+      internalID: -304333119
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SNES - Super Mario Kart - Toad - Transparent_37
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 197
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d39af2c9a2a33a46bfb20dba1bcb027
+      internalID: 2024481392
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SNES - Super Mario Kart - Toad - Transparent_38
+      rect:
+        serializedVersion: 2
+        x: 292
+        y: 197
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: caaba30bf0426cb478d832e257beb083
+      internalID: -1372654683
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SNES - Super Mario Kart - Toad - Transparent_39
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 197
+        width: 22
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f33918055b7c84b488c6ab636337145d
+      internalID: -492629960
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SNES - Super Mario Kart - Toad - Transparent_40
+      rect:
+        serializedVersion: 2
+        x: 357
+        y: 198
+        width: 22
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6801e5318b90fd347b9598d8cbb47c40
+      internalID: 1781780873
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SNES - Super Mario Kart - Toad - Transparent_41
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 171
+        width: 19
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 425fd353f86788f438d4a8e55dff1291
+      internalID: -987920327
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SNES - Super Mario Kart - Toad - Transparent_42
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 171
+        width: 18
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67833fd7323bb214c8d87f491ad17b43
+      internalID: -1984671344
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SNES - Super Mario Kart - Toad - Transparent_43
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 171
+        width: 19
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ccce57a2f755f344853acea94369bdf
+      internalID: 966298879
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SNES - Super Mario Kart - Toad - Transparent_44
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 171
+        width: 18
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e6c8e22a9eadcb498cff02c24601af4
+      internalID: -1084308597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SNES - Super Mario Kart - Toad - Transparent_45
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 171
+        width: 19
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95b37ad58cea3024b92ea0a1582f6736
+      internalID: 1574580303
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SNES - Super Mario Kart - Toad - Transparent_46
+      rect:
+        serializedVersion: 2
+        x: 123
+        y: 170
+        width: 20
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5460a248f40880943b634e6b19985d58
+      internalID: 570315664
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SNES - Super Mario Kart - Toad - Transparent_47
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 170
+        width: 19
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9988e7e701ec8ff45bf93bdc42c0a7cd
+      internalID: 1644623920
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SNES - Super Mario Kart - Toad - Transparent_48
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 171
+        width: 19
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49d3544e8ef177a498ac8dc466243645
+      internalID: 1632142231
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SNES - Super Mario Kart - Toad - Transparent_49
+      rect:
+        serializedVersion: 2
+        x: 203
+        y: 166
+        width: 28
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 906b03792f14f9546b9a656031dc8546
+      internalID: 518047514
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SNES - Super Mario Kart - Toad - Transparent_50
+      rect:
+        serializedVersion: 2
+        x: 235
+        y: 166
+        width: 28
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc3d705751be0b54584253c0ccf4a122
+      internalID: 1131398803
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SNES - Super Mario Kart - Toad - Transparent_51
+      rect:
+        serializedVersion: 2
+        x: 267
+        y: 166
+        width: 28
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba208130b0f26794aa99b63d8eeae957
+      internalID: 2100833166
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SNES - Super Mario Kart - Toad - Transparent_52
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 148
+        width: 17
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2217af9a12b973946926b0bc97d7b159
+      internalID: 1945590476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SNES - Super Mario Kart - Toad - Transparent_53
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 148
+        width: 16
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51075b3258787c3438c7ac9b51f50921
+      internalID: -1584033714
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SNES - Super Mario Kart - Toad - Transparent_54
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 148
+        width: 17
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66a8c9409732464418dab3877e803e28
+      internalID: 905555077
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SNES - Super Mario Kart - Toad - Transparent_55
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 148
+        width: 16
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc7d22f9db1e1a244990e529c937dacd
+      internalID: -5609450
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SNES - Super Mario Kart - Toad - Transparent_56
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 148
+        width: 17
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fba7bb11c0c7247499e243e37f544558
+      internalID: -1388516395
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SNES - Super Mario Kart - Toad - Transparent_57
+      rect:
+        serializedVersion: 2
+        x: 123
+        y: 148
+        width: 18
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf9caf3d6849f76428ee21bdfb72e14c
+      internalID: -1632184828
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SNES - Super Mario Kart - Toad - Transparent_58
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 148
+        width: 16
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c88633f466043944a919ae05f3360b6
+      internalID: 961639070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SNES - Super Mario Kart - Toad - Transparent_59
+      rect:
+        serializedVersion: 2
+        x: 171
+        y: 148
+        width: 17
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 79cb2a23367078b40a5d95d8e853dd30
+      internalID: 1998161126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SNES - Super Mario Kart - Toad - Transparent_60
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 151
+        width: 18
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2204c71c79cf7b42aaf048c0f851616
+      internalID: -1889177372
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SNES - Super Mario Kart - Toad - Transparent_61
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 151
+        width: 18
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89f8ca01831f628488a50d05b582c299
+      internalID: 1522260787
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SNES - Super Mario Kart - Toad - Transparent_62
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 151
+        width: 18
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24ea2ac6abef1714ab6366a379928083
+      internalID: 402575493
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SNES - Super Mario Kart - Toad - Transparent_63
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 130
+        width: 14
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f8372ac14da11f4f85445fb2d1328bd
+      internalID: 47415183
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SNES - Super Mario Kart - Toad - Transparent_64
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 130
+        width: 14
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e905c9970ef0e04e9c36ebabb7b9dbb
+      internalID: -1243039294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SNES - Super Mario Kart - Toad - Transparent_65
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 130
+        width: 14
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 48f1c5ffe547ab440a7d5e5bb4623fed
+      internalID: 918649361
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SNES - Super Mario Kart - Toad - Transparent_66
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 130
+        width: 14
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c815ec71fd78624a98aab7f7cf74145
+      internalID: 244568017
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SNES - Super Mario Kart - Toad - Transparent_67
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 132
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c51fe9de68be2b4ea0a41d4d64d7152
+      internalID: -1595923650
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SNES - Super Mario Kart - Toad - Transparent_68
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 131
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 47f68b5bccb0404419028d11c49b2795
+      internalID: -1275666167
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SNES - Super Mario Kart - Toad - Transparent_69
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 132
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92cb3d52aa059c2449cd7c91a89cc130
+      internalID: -254320143
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SNES - Super Mario Kart - Toad - Transparent_70
+      rect:
+        serializedVersion: 2
+        x: 114
+        y: 132
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11d96b003794d554897d1e633218028f
+      internalID: 971043925
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SNES - Super Mario Kart - Toad - Transparent_71
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 116
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 689f0d693238c4e4d8240d755ee1e991
+      internalID: -870432559
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SNES - Super Mario Kart - Toad - Transparent_72
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 115
+        width: 10
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc3c4f0adaa18d742a09c572794c4476
+      internalID: 2031400580
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SNES - Super Mario Kart - Toad - Transparent_73
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 115
+        width: 10
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76cdfb7900f92ce4bbd4ca95113c4f8a
+      internalID: -43535771
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SNES - Super Mario Kart - Toad - Transparent_74
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 116
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7581d7105831c0145b82c0ba89e2a35d
+      internalID: -1981809697
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SNES - Super Mario Kart - Toad - Transparent_75
+      rect:
+        serializedVersion: 2
+        x: 157
+        y: 7
+        width: 23
+        height: 114
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 26942664697600342a680ae0864bcd3b
+      internalID: 237624366
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SNES - Super Mario Kart - Toad - Transparent_76
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 101
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e51aee90ea7b684e838999221fb0bc3
+      internalID: 588211056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SNES - Super Mario Kart - Toad - Transparent_77
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 101
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32d8c5e281ddf034d84477882a3bb5e5
+      internalID: 83238628
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SNES - Super Mario Kart - Toad - Transparent_78
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 101
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b82915abb7b4f4e4ea9f552a029c7f4c
+      internalID: -1453247646
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SNES - Super Mario Kart - Toad - Transparent_79
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 90
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee3a7c5a210897f4c8e9ee9828fd195e
+      internalID: 1219494618
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SNES - Super Mario Kart - Toad - Transparent_80
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 91
+        width: 6
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 94dd567409763c740bcd92f914c53eb0
+      internalID: -37814820
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SNES - Super Mario Kart - Toad - Transparent_81
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 7
+        width: 23
+        height: 92
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e5f0c8cd08d050045b9269d980833090
+      internalID: -1258001545
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SNES - Super Mario Kart - Toad - Transparent_82
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 88
+        width: 37
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 17bfe084d1a495848a77c551b167eac9
+      internalID: -1587208077
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SNES - Super Mario Kart - Toad - Transparent_83
+      rect:
+        serializedVersion: 2
+        x: 238
+        y: 88
+        width: 16
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8dc44ea768ca87543b11fecd892976f0
+      internalID: -578266935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SNES - Super Mario Kart - Toad - Transparent_84
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 82
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 331b4510acdf2274bbb1ce1d9252d55e
+      internalID: -1468690893
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SNES - Super Mario Kart - Toad - Transparent_85
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 83
+        width: 6
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 635024f87c9bd8a4b8b78744ebd4c76e
+      internalID: 982611944
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SNES - Super Mario Kart - Toad - Transparent_86
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 69
+        width: 34
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f83dfe3a087c0b4fbdd12c051e85a3b
+      internalID: 902149130
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SNES - Super Mario Kart - Toad - Transparent_87
+      rect:
+        serializedVersion: 2
+        x: 235
+        y: 70
+        width: 44
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2adc28e6ec8d27e4fa1b02bcb72e4f42
+      internalID: 1711433652
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SNES - Super Mario Kart - Toad - Transparent_88
+      rect:
+        serializedVersion: 2
+        x: 282
+        y: 69
+        width: 25
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f3c8cc6abafe184ca71ae2f53b6b09f
+      internalID: -792776514
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SNES - Super Mario Kart - Toad - Transparent_89
+      rect:
+        serializedVersion: 2
+        x: 93
+        y: 7
+        width: 23
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0fbce5592e6356f428bab265e284dfbb
+      internalID: 725778214
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SNES - Super Mario Kart - Toad - Transparent_90
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 48
+        width: 61
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a584c856c213eb40ae4aa2852f479c0
+      internalID: -418315885
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SNES - Super Mario Kart - Toad - Transparent_91
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 7
+        width: 22
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 38134f0b6d6d0f64abe01ffbeb12951e
+      internalID: 2010700389
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SNES - Super Mario Kart - Toad - Transparent_92
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 7
+        width: 19
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 145877c7ca8373e498adca932f50ff0e
+      internalID: 1137096550
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SNES - Super Mario Kart - Toad - Transparent_93
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 7
+        width: 23
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ffdfca418b190794c8e502893df190cf
+      internalID: -987871436
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SNES - Super Mario Kart - Toad - Transparent_94
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 28
+        width: 40
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07eb5d18a062114419f66ec4098859e8
+      internalID: 520212119
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SNES - Super Mario Kart - Toad - Transparent_95
+      rect:
+        serializedVersion: 2
+        x: 239
+        y: 29
+        width: 42
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b8ed73d107750c14ba96f17c9dda1e2a
+      internalID: 713396001
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SNES - Super Mario Kart - Toad - Transparent_96
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 10
+        width: 70
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee258f8d5aa647a4482bcf9174ed8725
+      internalID: -701357264
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SNES - Super Mario Kart - Toad - Transparent_97
+      rect:
+        serializedVersion: 2
+        x: 269
+        y: 10
+        width: 13
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0202813a5664c44b97c2075d6080479
+      internalID: -1914068561
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 4f82393e0c553f84e93ab85ee0b232ea
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      SNES - Super Mario Kart - Toad - Transparent_0: -1068570935
+      SNES - Super Mario Kart - Toad - Transparent_1: -484758205
+      SNES - Super Mario Kart - Toad - Transparent_10: 218855465
+      SNES - Super Mario Kart - Toad - Transparent_11: 1504073089
+      SNES - Super Mario Kart - Toad - Transparent_12: 208272503
+      SNES - Super Mario Kart - Toad - Transparent_13: -1384857594
+      SNES - Super Mario Kart - Toad - Transparent_14: 243036096
+      SNES - Super Mario Kart - Toad - Transparent_15: 1672892437
+      SNES - Super Mario Kart - Toad - Transparent_16: 1288027835
+      SNES - Super Mario Kart - Toad - Transparent_17: 1552418433
+      SNES - Super Mario Kart - Toad - Transparent_18: 144155742
+      SNES - Super Mario Kart - Toad - Transparent_19: -1007620001
+      SNES - Super Mario Kart - Toad - Transparent_2: -1491024504
+      SNES - Super Mario Kart - Toad - Transparent_20: -523971252
+      SNES - Super Mario Kart - Toad - Transparent_21: -1147046843
+      SNES - Super Mario Kart - Toad - Transparent_22: -492202536
+      SNES - Super Mario Kart - Toad - Transparent_23: 1730892417
+      SNES - Super Mario Kart - Toad - Transparent_24: -757218910
+      SNES - Super Mario Kart - Toad - Transparent_25: -2122078016
+      SNES - Super Mario Kart - Toad - Transparent_26: 1789950655
+      SNES - Super Mario Kart - Toad - Transparent_27: 254578651
+      SNES - Super Mario Kart - Toad - Transparent_28: -242515540
+      SNES - Super Mario Kart - Toad - Transparent_29: -1410283077
+      SNES - Super Mario Kart - Toad - Transparent_3: -1350537479
+      SNES - Super Mario Kart - Toad - Transparent_30: 1552462671
+      SNES - Super Mario Kart - Toad - Transparent_31: 1277249786
+      SNES - Super Mario Kart - Toad - Transparent_32: 1645415358
+      SNES - Super Mario Kart - Toad - Transparent_33: 361325414
+      SNES - Super Mario Kart - Toad - Transparent_34: -1467389242
+      SNES - Super Mario Kart - Toad - Transparent_35: -1897381638
+      SNES - Super Mario Kart - Toad - Transparent_36: -304333119
+      SNES - Super Mario Kart - Toad - Transparent_37: 2024481392
+      SNES - Super Mario Kart - Toad - Transparent_38: -1372654683
+      SNES - Super Mario Kart - Toad - Transparent_39: -492629960
+      SNES - Super Mario Kart - Toad - Transparent_4: 376113227
+      SNES - Super Mario Kart - Toad - Transparent_40: 1781780873
+      SNES - Super Mario Kart - Toad - Transparent_41: -987920327
+      SNES - Super Mario Kart - Toad - Transparent_42: -1984671344
+      SNES - Super Mario Kart - Toad - Transparent_43: 966298879
+      SNES - Super Mario Kart - Toad - Transparent_44: -1084308597
+      SNES - Super Mario Kart - Toad - Transparent_45: 1574580303
+      SNES - Super Mario Kart - Toad - Transparent_46: 570315664
+      SNES - Super Mario Kart - Toad - Transparent_47: 1644623920
+      SNES - Super Mario Kart - Toad - Transparent_48: 1632142231
+      SNES - Super Mario Kart - Toad - Transparent_49: 518047514
+      SNES - Super Mario Kart - Toad - Transparent_5: -297088736
+      SNES - Super Mario Kart - Toad - Transparent_50: 1131398803
+      SNES - Super Mario Kart - Toad - Transparent_51: 2100833166
+      SNES - Super Mario Kart - Toad - Transparent_52: 1945590476
+      SNES - Super Mario Kart - Toad - Transparent_53: -1584033714
+      SNES - Super Mario Kart - Toad - Transparent_54: 905555077
+      SNES - Super Mario Kart - Toad - Transparent_55: -5609450
+      SNES - Super Mario Kart - Toad - Transparent_56: -1388516395
+      SNES - Super Mario Kart - Toad - Transparent_57: -1632184828
+      SNES - Super Mario Kart - Toad - Transparent_58: 961639070
+      SNES - Super Mario Kart - Toad - Transparent_59: 1998161126
+      SNES - Super Mario Kart - Toad - Transparent_6: 208987102
+      SNES - Super Mario Kart - Toad - Transparent_60: -1889177372
+      SNES - Super Mario Kart - Toad - Transparent_61: 1522260787
+      SNES - Super Mario Kart - Toad - Transparent_62: 402575493
+      SNES - Super Mario Kart - Toad - Transparent_63: 47415183
+      SNES - Super Mario Kart - Toad - Transparent_64: -1243039294
+      SNES - Super Mario Kart - Toad - Transparent_65: 918649361
+      SNES - Super Mario Kart - Toad - Transparent_66: 244568017
+      SNES - Super Mario Kart - Toad - Transparent_67: -1595923650
+      SNES - Super Mario Kart - Toad - Transparent_68: -1275666167
+      SNES - Super Mario Kart - Toad - Transparent_69: -254320143
+      SNES - Super Mario Kart - Toad - Transparent_7: -851213736
+      SNES - Super Mario Kart - Toad - Transparent_70: 971043925
+      SNES - Super Mario Kart - Toad - Transparent_71: -870432559
+      SNES - Super Mario Kart - Toad - Transparent_72: 2031400580
+      SNES - Super Mario Kart - Toad - Transparent_73: -43535771
+      SNES - Super Mario Kart - Toad - Transparent_74: -1981809697
+      SNES - Super Mario Kart - Toad - Transparent_75: 237624366
+      SNES - Super Mario Kart - Toad - Transparent_76: 588211056
+      SNES - Super Mario Kart - Toad - Transparent_77: 83238628
+      SNES - Super Mario Kart - Toad - Transparent_78: -1453247646
+      SNES - Super Mario Kart - Toad - Transparent_79: 1219494618
+      SNES - Super Mario Kart - Toad - Transparent_8: 1729445280
+      SNES - Super Mario Kart - Toad - Transparent_80: -37814820
+      SNES - Super Mario Kart - Toad - Transparent_81: -1258001545
+      SNES - Super Mario Kart - Toad - Transparent_82: -1587208077
+      SNES - Super Mario Kart - Toad - Transparent_83: -578266935
+      SNES - Super Mario Kart - Toad - Transparent_84: -1468690893
+      SNES - Super Mario Kart - Toad - Transparent_85: 982611944
+      SNES - Super Mario Kart - Toad - Transparent_86: 902149130
+      SNES - Super Mario Kart - Toad - Transparent_87: 1711433652
+      SNES - Super Mario Kart - Toad - Transparent_88: -792776514
+      SNES - Super Mario Kart - Toad - Transparent_89: 725778214
+      SNES - Super Mario Kart - Toad - Transparent_9: -485942231
+      SNES - Super Mario Kart - Toad - Transparent_90: -418315885
+      SNES - Super Mario Kart - Toad - Transparent_91: 2010700389
+      SNES - Super Mario Kart - Toad - Transparent_92: 1137096550
+      SNES - Super Mario Kart - Toad - Transparent_93: -987871436
+      SNES - Super Mario Kart - Toad - Transparent_94: 520212119
+      SNES - Super Mario Kart - Toad - Transparent_95: 713396001
+      SNES - Super Mario Kart - Toad - Transparent_96: -701357264
+      SNES - Super Mario Kart - Toad - Transparent_97: -1914068561
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
