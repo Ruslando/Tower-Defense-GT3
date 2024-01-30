@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "Tower Defense GT3.sln"
+    "dotnet.defaultSolution": "Tower-Defense-GT3.sln"
 }
