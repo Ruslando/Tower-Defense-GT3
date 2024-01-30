@@ -1,5 +1,19 @@
+using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+
+public enum KartBuffType
+{
+    Invincibility,
+    Untargetable
+}
+
+public enum KartDebuffType
+{
+    LightStun,
+    HeavyStun
+}
 
 public class Kart : MonoBehaviour
 {
@@ -11,10 +25,16 @@ public class Kart : MonoBehaviour
     private bool isAccelerating;
 
     // state
-    private bool invincibilityActive;
-    private bool untargetableActive;
-    private bool lightStunActive;
-    private bool heavyStunActive;
+    public List<KartBuffType> buffs = new List<KartBuffType>();
+    public List<KartDebuffType> debuffs = new List<KartDebuffType>();
+
+    // actions
+    public static event Action<Kart> OnLapCompleted;
+    public static event Action<Kart, uint, uint> OnLapPositionChanged;
+    public static event Action<Kart, KartBuffType> OnBuffApplied;
+    public static event Action<Kart, KartBuffType> OnBuffRemoved;
+    public static event Action<Kart, KartDebuffType> OnDebuffApplied;
+    public static event Action<Kart, KartDebuffType> OnDebuffRemoved;
 
     // movement
     public Waypoint Waypoint { get; set; }
@@ -68,7 +88,7 @@ public class Kart : MonoBehaviour
 
     private void Drive()
     {
-        if(!IsLightStunActive() && !IsHeavyStunActive())
+        if(debuffs.Count > 0)
         {
             if(isAccelerating)
             {
@@ -132,6 +152,7 @@ public class Kart : MonoBehaviour
     {
         Lap++;
         CurrentWaypointIndex = 0;
+        OnLapCompleted?.Invoke(this);
         // OnEndReached?.Invoke(this);
         // _enemyHealth.ResetHealth();
         // ObjectPooler.ReturnToPool(gameObject);
@@ -139,12 +160,15 @@ public class Kart : MonoBehaviour
 
     public void SetLapPosition(uint lapPosition)
     {
+        // second argument: previous position
+        // third argument: current position
+        OnLapPositionChanged?.Invoke(this, LapPosition, lapPosition);
         LapPosition = lapPosition;
     }
 
     public void ApplyLightStunEffect(float durationInSeconds)
     {
-        if (lightStunActive == false && invincibilityActive == false)
+        if (debuffs.Count == 0 && !buffs.Contains(KartBuffType.Invincibility))
         {
             StartCoroutine(LightStunEffectCoroutine(durationInSeconds));
             StartCoroutine(InvincibilityCoroutine(durationInSeconds));
@@ -154,7 +178,7 @@ public class Kart : MonoBehaviour
 
     public void ApplyHeavyStunEffect(float stunTime, float recoveryTimeInSeconds)
     {
-        if (!lightStunActive && !invincibilityActive)
+        if (debuffs.Count == 0 && !buffs.Contains(KartBuffType.Invincibility))
         {
             StartCoroutine(HeavyStunEffectCoroutine(stunTime, recoveryTimeInSeconds));
             StartCoroutine(InvincibilityCoroutine(stunTime + recoveryTimeInSeconds));
@@ -162,24 +186,22 @@ public class Kart : MonoBehaviour
         }
     }
 
-    private IEnumerator HeavyStunEffectCoroutine(float stunTime, float recoveryTimeInSeconds)
+   private IEnumerator HeavyStunEffectCoroutine(float stunTime, float recoveryTimeInSeconds)
     {
-        heavyStunActive = true;
+        ApplyDebuff(KartDebuffType.HeavyStun);
         
         yield return StartCoroutine(SetSpeedOverTimeCoroutine(0f, 0f));
 
         // Wait for the specified recovery time with speed at zero
         yield return new WaitForSeconds(stunTime);
 
-        // yield return StartCoroutine(SetSpeedOverTimeCoroutine(topSpeed, recoveryTimeInSeconds));
-
         // Reset the active heavy stun effect flag
-        heavyStunActive = false;
+        RemoveDebuff(KartDebuffType.HeavyStun);
     }
 
     public void ApplyInvincibility(float durationInSeconds)
     {
-        if (invincibilityActive == false)
+        if (!buffs.Contains(KartBuffType.Invincibility))
         {
             StartCoroutine(InvincibilityCoroutine(durationInSeconds));
         }
@@ -187,14 +209,14 @@ public class Kart : MonoBehaviour
 
     private IEnumerator InvincibilityCoroutine(float durationInSeconds)
     {
-        invincibilityActive = true;
+        ApplyBuff(KartBuffType.Invincibility);
         yield return new WaitForSeconds(durationInSeconds);
-        invincibilityActive = false;
+        RemoveBuff(KartBuffType.Invincibility);
     }
 
     public void ApplyUntargetable(float durationInSeconds)
     {
-        if (!untargetableActive)
+        if (!buffs.Contains(KartBuffType.Untargetable))
         {
             StartCoroutine(UntargetableCoroutine(durationInSeconds));
         }
@@ -202,9 +224,9 @@ public class Kart : MonoBehaviour
 
     private IEnumerator UntargetableCoroutine(float durationInSeconds)
     {
-        untargetableActive = true;
+        ApplyBuff(KartBuffType.Untargetable);
         yield return new WaitForSeconds(durationInSeconds);
-        untargetableActive = false;
+        RemoveBuff(KartBuffType.Untargetable);
     }
 
     public void SetSpeedOverTime(float targetSpeed, float duration)
@@ -231,32 +253,34 @@ public class Kart : MonoBehaviour
 
     private IEnumerator LightStunEffectCoroutine(float durationInSeconds)
     {
-        lightStunActive = true;
+        ApplyDebuff(KartDebuffType.LightStun);
 
         yield return StartCoroutine(SetSpeedOverTimeCoroutine(0f, durationInSeconds));
 
-        // yield return StartCoroutine(SetSpeedOverTimeCoroutine(topSpeed, durationInSeconds));
-
-        lightStunActive = false;
+        RemoveDebuff(KartDebuffType.LightStun);
     }
 
-    public bool IsLightStunActive()
+    private void ApplyBuff(KartBuffType buff)
     {
-        return lightStunActive;
+        buffs.Add(buff);
+        OnBuffApplied?.Invoke(this, buff);
     }
 
-    private bool IsHeavyStunActive()
+    private void RemoveBuff(KartBuffType buff)
     {
-        return heavyStunActive;
+        buffs.Remove(buff);
+        OnBuffRemoved?.Invoke(this, buff);
     }
 
-    public bool IsInvincible()
+    private void ApplyDebuff(KartDebuffType debuff)
     {
-        return invincibilityActive;
+        debuffs.Add(debuff);
+        OnDebuffApplied?.Invoke(this, debuff);
     }
 
-    public bool IsUntargetable()
+    private void RemoveDebuff(KartDebuffType debuff)
     {
-        return untargetableActive;
+        debuffs.Remove(debuff);
+        OnDebuffRemoved?.Invoke(this, debuff);
     }
 }
