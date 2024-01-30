@@ -10,34 +10,58 @@ public enum SpawnModes
     Random
 }
 
-public class KartManager : MonoBehaviour
+public class KartManager : Singleton<KartManager>
 {
+    [Header("Lap Settings")]
+    [SerializeField] private int maxLaps;
+
+    [Header("Spawn Settings")]
+    [SerializeField] private Vector3 startingPosition;
+    [SerializeField] private int rows = 3; // Number of rows
+    [SerializeField] private int cols = 3; // Number of columns
+    public Vector3 gridSize = new Vector3(3f, 0f, 3f); // Size of the grid (spacing between karts)
+
     [Header("Poolers")] 
     [SerializeField] private ObjectPooler kartPooler;
-
-
-    List<Kart> karts;
+    List<Kart> karts = new List<Kart>();
     
     private Waypoint _waypoint;
 
     private void Start()
     {
         _waypoint = GetComponent<Waypoint>();
-        SpawnKart();
+        SpawnKart(startingPosition);
+        // PlaceAndSpawnKarts();
     }
 
     private void Update()
     {
-
+        // UpdateKartPositions();
     }
 
-    private void SpawnKart()
+    // Method to spawn karts diagonally
+    public void PlaceAndSpawnKarts()
+    {
+        for (int row = 0; row < rows; row++)
+        {
+            for (int col = 0; col < cols; col++)
+            {
+                // Calculate staggered position
+                Vector3 staggerOffset = new Vector3(col * gridSize.x, 0f, row * gridSize.z);
+                Vector3 finalPosition = startingPosition + staggerOffset;
+
+                SpawnKart(finalPosition);
+            }
+        }
+    }
+
+    private void SpawnKart(Vector3 position)
     {
         GameObject newInstance = kartPooler.GetInstanceFromPool();
         Kart enemy = newInstance.GetComponent<Kart>();
         enemy.Waypoint = _waypoint;
 
-        enemy.transform.localPosition = enemy.CurrentPointPosition;
+        enemy.transform.localPosition = position;
         newInstance.SetActive(true);
     }
 
@@ -91,6 +115,11 @@ public class KartManager : MonoBehaviour
 
         // Compare distances of projections to determine if kart2 is in front of kart1
         return projection2 > projection1;
+    }
+
+    public Kart GetKartInFirstPosition()
+    {
+        return karts[0];
     }
     
     private void OnEnable()
