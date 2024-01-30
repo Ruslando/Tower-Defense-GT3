@@ -193,6 +193,27 @@ public class Kart : MonoBehaviour
         }
     }
 
+    private IEnumerator LightStunEffectCoroutine(float durationInSeconds)
+    {
+        ApplyDebuff(KartDebuffType.LightStun);
+        PlayHurtAnimation();
+        yield return StartCoroutine(SetSpeedOverTimeCoroutine(0f, durationInSeconds));
+        StopHurtAnimation();
+        // yield return StartCoroutine(SetSpeedOverTimeCoroutine(topSpeed, durationInSeconds));
+
+        RemoveDebuff(KartDebuffType.LightStun);
+    }
+
+    private void PlayHurtAnimation()
+    {
+        _animator.SetBool("LightStun", true);
+    }
+
+    private void StopHurtAnimation()
+    {
+        _animator.SetBool("LightStun", false);
+    }
+
     private IEnumerator HeavyStunEffectCoroutine(float stunTime, float recoveryTimeInSeconds)
     {
         ApplyDebuff(KartDebuffType.HeavyStun);
@@ -215,11 +236,6 @@ public class Kart : MonoBehaviour
         {
             StartCoroutine(InvincibilityCoroutine(durationInSeconds));
         }
-    }
-    
-    private void PlayHurtAnimation()
-    {
-        _animator.SetTrigger("Hurt");
     }
     
     private float GetCurrentAnimationLenght()
@@ -272,19 +288,6 @@ public class Kart : MonoBehaviour
 
         // Ensure the speed is set to regular speed at the end of the reset
         currentSpeed = targetSpeed;
-    }
-
-    private IEnumerator LightStunEffectCoroutine(float durationInSeconds)
-    {
-        ApplyDebuff(KartDebuffType.LightStun);
-
-        PlayHurtAnimation();
-        yield return new WaitForSeconds(GetCurrentAnimationLenght() + 0.3f);
-        yield return StartCoroutine(SetSpeedOverTimeCoroutine(0f, durationInSeconds));
-
-        // yield return StartCoroutine(SetSpeedOverTimeCoroutine(topSpeed, durationInSeconds));
-
-        RemoveDebuff(KartDebuffType.LightStun);
     }
 
     private void ApplyBuff(KartBuffType buff)
