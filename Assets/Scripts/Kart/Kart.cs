@@ -214,6 +214,26 @@ public class Kart : MonoBehaviour
         _animator.SetBool("LightStun", false);
     }
 
+    private void PlayUpMovementAnimation()
+    {
+        _animator.SetBool("MoveUp", true);
+    }
+    
+    private void StopUpMovementAnimation()
+    {
+        _animator.SetBool("MoveUp", false);
+    }
+    
+    private void PlayDownMovementAnimation()
+    {
+        _animator.SetBool("MoveDown", true);
+    }
+    
+    private void StopDownMovementAnimation()
+    {
+        _animator.SetBool("MoveDown", false);
+    }
+
     private IEnumerator HeavyStunEffectCoroutine(float stunTime, float recoveryTimeInSeconds)
     {
         ApplyDebuff(KartDebuffType.HeavyStun);

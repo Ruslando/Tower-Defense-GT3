@@ -127,6 +127,7 @@ public class KartManager : Singleton<KartManager>
     
     private void OnEnable()
     {
+        
         // Enemy.OnEndReached += RecordEnemy;
         // EnemyHealth.OnEnemyKilled += RecordEnemy;
     }
