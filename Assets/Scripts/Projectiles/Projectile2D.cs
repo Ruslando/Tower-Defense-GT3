@@ -27,7 +27,7 @@ public class Projectile2D : MonoBehaviour
 
     protected virtual void Start()
     {
-        firingDirection = firingTurret.transform.up.normalized;
+        firingDirection = firingTurret.GetRotatePoint().up.normalized;
         // Set a lifetime for the projectile.
         if(lifetime > 0)
         {

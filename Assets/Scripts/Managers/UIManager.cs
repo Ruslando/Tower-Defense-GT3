@@ -12,6 +12,7 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] private GameObject nodeUIPanel;
     [SerializeField] private GameObject achievementPanel;
     [SerializeField] private GameObject gameOverPanel;
+    [SerializeField] private GameObject gameStartPanel;
 
     [Header("Text")] 
     [SerializeField] private TextMeshProUGUI upgradeText;
@@ -23,6 +24,13 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] private TextMeshProUGUI gameOverTotalCoinsText;
     
     private Node _currentNodeSelected;
+
+    public static event Action OnRestartGame;
+
+    private void Start()
+    {
+        ShowGameStartPanel();
+    }
 
     private void Update()
     {
@@ -52,9 +60,32 @@ public class UIManager : Singleton<UIManager>
         gameOverTotalCoinsText.text = CurrencySystem.Instance.TotalCoins.ToString();
     }
 
+    public void HideGameOverPanel()
+    {
+        gameOverPanel.SetActive(false);
+    }
+
+    public void ShowGameStartPanel()
+    {
+        gameStartPanel.SetActive(true);
+    }
+
+    public void HideGameStartPanel()
+    {
+        gameStartPanel.SetActive(false);
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
+
     public void RestartGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        LevelManager.Instance.RestartGame();
+        HideGameOverPanel();
+        HideGameStartPanel();
     }
     
     public void OpenAchievementPanel(bool status)
@@ -72,6 +103,12 @@ public class UIManager : Singleton<UIManager>
         // _currentNodeSelected.CloseAttackRangeSprite();
         nodeUIPanel.SetActive(false);
     }
+
+    public void EditTurret()
+    {
+        _currentNodeSelected.Turret.SetIsEditing(true);
+        CloseNodeUIPanel();
+    }
     
     public void UpgradeTurret()
     {
@@ -86,7 +123,7 @@ public class UIManager : Singleton<UIManager>
     {
         _currentNodeSelected.SellTurret();
         _currentNodeSelected = null;
-        nodeUIPanel.SetActive(false);
+        CloseNodeUIPanel();
     }
     
     private void ShowNodeUI()

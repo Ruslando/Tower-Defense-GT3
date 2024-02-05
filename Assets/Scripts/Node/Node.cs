@@ -28,6 +28,15 @@ public class Node : MonoBehaviour
     public void SetTurret(Turret2D turret)
     {
         Turret = turret;
+        turret.SetIsEditing(true);
+    }
+
+    public void ResetTurret()
+    {
+        if(Turret != null) {
+            Destroy(Turret.gameObject);
+            Turret = null;
+        }
     }
 
     public bool IsEmpty()

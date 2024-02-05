@@ -13,7 +13,9 @@ public class Turret2D : MonoBehaviour
     }
     
     [Header("Turret Settings")]
-    public Transform firePoint; // Point where projectiles are spawned.
+
+    [SerializeField] private Transform firePoint; // Point where projectiles are spawned.
+    [SerializeField] private Transform _rotatePoint;
 
     [Header("Projectile Prefabs")]
     public GameObject greenShellPrefab; // Prefab of the green shell.
@@ -28,31 +30,38 @@ public class Turret2D : MonoBehaviour
     public float userFireRate = 2f; // User-specified fire rate in shots per second.
 
     protected float fireCountdown = 0f; // Countdown to next shot.
+    private bool isEditing;
+    
 
     protected virtual void Update()
     {
+        CheckEditingCancel();
+        RotateTowardsMouse();
+
         if (fireCountdown > 0)
         {
             fireCountdown -= Time.deltaTime;
         }
 
-        // Fire when the countdown reaches zero.
-        if (fireCountdown <= 0)
-        {
-            switch (currentUpgradeLevel)
+        if(!isEditing) {
+            // Fire when the countdown reaches zero.
+            if (fireCountdown <= 0)
             {
-                case 0:
-                    FireGreenShell(); // Implement this method.
-                    break;
-                case 1:
-                    FireRedShell(); // Implement this method.
-                    break;
-                case 2:
-                    FireBlueShell(); // Implement this method.
-                    break;
-            }
+                switch (currentUpgradeLevel)
+                {
+                    case 0:
+                        FireGreenShell(); // Implement this method.
+                        break;
+                    case 1:
+                        FireRedShell(); // Implement this method.
+                        break;
+                    case 2:
+                        FireBlueShell(); // Implement this method.
+                        break;
+                }
 
-            fireCountdown = 1f / userFireRate;
+                fireCountdown = 1f / userFireRate;
+            }
         }
     }
 
@@ -148,5 +157,40 @@ public class Turret2D : MonoBehaviour
     {
         // Implement logic to get fire rate based on the upgrade level.
         return userFireRate;
+    }
+
+    private void CheckEditingCancel()
+    {
+        // Check for left mouse button click and isEditing is true
+        if (isEditing && Input.GetMouseButtonDown(0))
+        {
+            SetIsEditing(false);
+        }
+    }
+
+    private void RotateTowardsMouse()
+    {
+        if(isEditing)
+        {
+            Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector2 direction = mousePosition - (Vector2)transform.position;
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg -90f;
+            _rotatePoint.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        }
+    }
+
+    public void SetIsEditing(bool editing)
+    {
+        isEditing = editing;
+    }
+
+    public bool GetIsEditing()
+    {
+        return isEditing;
+    }
+
+    public Transform GetRotatePoint()
+    {
+        return _rotatePoint;
     }
 }

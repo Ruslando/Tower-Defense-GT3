@@ -132,6 +132,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firePoint: {fileID: 3854514697409828891}
+  _rotatePoint: {fileID: 3854514696109497306}
   greenShellPrefab: {fileID: 2642572464803698851, guid: c4be19fa01b57854cb5ff13160688c8b, type: 3}
   redShellPrefab: {fileID: 2642572464803698851, guid: 1aa46ff20b26db7428cad4d7a75e6947, type: 3}
   blueShellPrefab: {fileID: 2642572464803698851, guid: f65aadd60f97f234ea82062e42423b9c, type: 3}
