@@ -4,13 +4,11 @@ using UnityEngine;
 
 public class RedShell : Projectile2D
 {
-    [Header("Targeting Settings")]
-    public float targetingRadius = 2f; // Radius for homing in on a target.
-
     // Update is called once per frame
     void Update()
     {
         MoveProjectile();
+        CheckKartInRadius();
     }
 
     protected override void MoveProjectile()
@@ -20,27 +18,7 @@ public class RedShell : Projectile2D
         if(isHoming && target != null)
         {
             // Move towards the target position without changing the rotation.
-            rb.velocity = (target.position - transform.position).normalized * speed;
-        }
-    }
-
-    protected override void HandleTriggerEnterKart(Collider2D collider)
-    {
-        base.HandleTriggerEnterKart(collider);
-
-        // Get the Kart component from the collider
-        Kart kartComponent = collider.GetComponent<Kart>();
-
-        // Check if the Kart component is not null
-        if (kartComponent != null)
-        {
-            // Check if Kart is untargetable
-            if (!kartComponent.buffs.Contains(KartBuffType.Untargetable))
-            {
-                // Invincibility is not active, continue with normal logic
-                isHoming = true;
-                target = collider.transform;
-            }
+            rb.velocity = (target.position - transform.position).normalized * firingTurret.GetUpgradeValue(TurretUpgradeType.ProjectileSpeed);
         }
     }
 
@@ -63,7 +41,7 @@ public class RedShell : Projectile2D
         if (kart != null)
         {
             // Call the TakeDamage method on the entity.
-            kart.ApplyLightStunEffect(1);
+            kart.ApplyLightStunEffect(firingTurret.GetUpgradeValue(TurretUpgradeType.StunTime));
         }
 
         // Destroy the green shell upon hitting an enemy.
@@ -75,5 +53,35 @@ public class RedShell : Projectile2D
     {
         Destroy(gameObject);
         return;
+    }
+
+    private void CheckKartInRadius()
+    {
+        if(target == null)
+        {
+            // Get the colliders within the specified sphere.
+            Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, firingTurret.GetUpgradeValue(TurretUpgradeType.TargetingRadius));
+
+            // Check if there are karts among the colliders.
+            foreach (Collider2D collider in colliders)
+            {
+                if (collider.CompareTag("Kart"))
+                {
+                    Kart kart = collider.gameObject.GetComponent<Kart>();
+
+                    // Check if the entity component is not null.
+                    if (kart != null)
+                    {
+                        // Check if Kart is untargetable
+                        if (!kart.buffs.Contains(KartBuffType.Untargetable))
+                        {
+                            // Invincibility is not active, continue with normal logic
+                            isHoming = true;
+                            target = collider.transform;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
