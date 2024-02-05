@@ -44,11 +44,15 @@ public class RedShell : Projectile2D
         }
     }
 
-    protected override void HandleCollisionWall(Collision2D collision)
+    protected override void HandleTriggerEnterWall(Collider2D collider)
     {
-        // Destroy the shell if the maximum bounces are reached
-        Destroy(gameObject);
-        return;
+        // ignore first wall collision
+        if(bounceCount != 0)
+        {
+            Destroy(gameObject);
+        }
+
+        bounceCount++;
     }
 
     protected override void HandleCollisionKart(Collision2D collision)

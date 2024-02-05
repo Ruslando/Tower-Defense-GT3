@@ -52,20 +52,22 @@ public class Projectile2D : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Kart"))
+        switch (other.gameObject.tag)
         {
-            HandleTriggerEnterKart(other);
+            case "Kart":
+                HandleTriggerEnterKart(other);
+                break;
+            case "Wall":
+                HandleTriggerEnterWall(other);
+                break;
         }
+
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         switch (collision.gameObject.tag)
         {
-            case "Wall":
-                HandleCollisionWall(collision);
-                break;
-
             case "Kart":
                 HandleCollisionKart(collision);
                 break;
@@ -82,8 +84,8 @@ public class Projectile2D : MonoBehaviour
         }
     }
 
-    protected virtual void HandleCollisionWall(Collision2D collision){}
     protected virtual void HandleCollisionKart(Collision2D collision){}
     protected virtual void HandleCollisionProjectile(Collision2D collision){}
     protected virtual void HandleTriggerEnterKart(Collider2D collider) {}
+    protected virtual void HandleTriggerEnterWall(Collider2D collider){}
 }

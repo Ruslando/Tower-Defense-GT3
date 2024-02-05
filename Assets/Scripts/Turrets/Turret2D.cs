@@ -181,7 +181,10 @@ public class Turret2D : MonoBehaviour
 
     public void SetIsEditing(bool editing)
     {
-        isEditing = editing;
+        if(turretType != TurretType.BlueShell)
+        {
+            isEditing = editing;
+        }
     }
 
     public bool GetIsEditing()

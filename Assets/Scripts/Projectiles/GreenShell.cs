@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GreenShell : Projectile2D
@@ -10,22 +11,30 @@ public class GreenShell : Projectile2D
         MoveProjectile();
     }
 
-    protected override void HandleCollisionWall(Collision2D collision)
+    protected override void HandleTriggerEnterWall(Collider2D collider)
     {
-        if (bounceCount < maxBounces)
+        // ignore first wall collision
+        if(bounceCount != 0)
         {
-            // Get the contact point and calculate the reflection direction
-            ContactPoint2D contact = collision.GetContact(0);
-            firingDirection = Vector2.Reflect(firingDirection.normalized, contact.normal);
+            if (bounceCount < maxBounces)
+            {
+                // Get the contact point and calculate the reflection direction
+                Vector3 collisionPoint = collider.ClosestPoint(transform.position);
+                Vector3 collisionNormal = transform.position - collisionPoint;
 
-            // Apply the new velocity with a bounce force
-            rb.velocity = firingDirection * speed;
+                firingDirection = Vector2.Reflect(firingDirection.normalized, collisionNormal.normalized);
+
+                // Apply the new velocity with a bounce force
+                rb.velocity = firingDirection * speed;
+            }
+            else
+            {
+                // Destroy the shell if the maximum bounces are reached
+                Destroy(gameObject);
+            }
         }
-        else
-        {
-            // Destroy the shell if the maximum bounces are reached
-            Destroy(gameObject);
-        }
+
+        bounceCount++;
     }
 
     protected override void HandleCollisionKart(Collision2D collision)
