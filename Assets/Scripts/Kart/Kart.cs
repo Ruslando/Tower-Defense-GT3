@@ -32,6 +32,7 @@ public class Kart : MonoBehaviour
 
     // actions
     public static event Action<Kart> OnLapCompleted;
+    public static event Action<Kart> OnAllLapsCompleted;
     public static event Action<Kart, uint, uint> OnLapPositionChanged;
     public static event Action<Kart, KartBuffType> OnBuffApplied;
     public static event Action<Kart, KartBuffType> OnBuffRemoved;
@@ -57,9 +58,6 @@ public class Kart : MonoBehaviour
     {
         _animator = GetComponent<Animator>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
-        isAccelerating = true;
-        CurrentWaypointIndex = 0;
-        _lastPointPosition = transform.position;
     }
 
     private void Update()
@@ -72,6 +70,40 @@ public class Kart : MonoBehaviour
         {
             UpdateCurrentPointIndex();
         }
+    }
+
+    public void Reset()
+    {
+        topSpeed = 2f;
+        accelerationRate = 1f;
+        decelerationRate = 1f;
+        currentSpeed = 0f;
+        isAccelerating = false;
+
+        buffs.Clear();
+        debuffs.Clear();
+
+        // Reset movement-related properties
+        Waypoint = null;
+        CurrentWaypointIndex = 0;
+        _lastPointPosition = Vector3.zero;
+        Lap = 0;
+        LapPosition = 0;
+    }
+
+    public void SetStartValues(Vector3 position, Waypoint waypoint, string name)
+    {
+        transform.localPosition = position;
+        _lastPointPosition = position;
+        Waypoint = waypoint;
+        gameObject.name = name;
+        CurrentWaypointIndex = 1;
+        //LapPosition = position;
+    }
+
+    public void StartEngine()
+    {
+        isAccelerating = true;
     }
 
     private void Move()
@@ -143,25 +175,24 @@ public class Kart : MonoBehaviour
 
     private void UpdateCurrentPointIndex()
     {
-        int lastWaypointIndex = Waypoint.Points.Length - 1;
-        if (CurrentWaypointIndex < lastWaypointIndex)
-        {
-            CurrentWaypointIndex++;
-        }
-        else
+        if (CurrentWaypointIndex == 0)
         {
             EndPointReached();
         }
+
+        CurrentWaypointIndex = (CurrentWaypointIndex + 1) % Waypoint.Points.Length;
     }
 
     private void EndPointReached()
     {
         Lap++;
-        CurrentWaypointIndex = 0;
-        OnLapCompleted?.Invoke(this);
-        // OnEndReached?.Invoke(this);
-        // _enemyHealth.ResetHealth();
-        // ObjectPooler.ReturnToPool(gameObject);
+
+        if(Lap == KartManager.Instance.GetMaxLaps())
+        {
+            OnAllLapsCompleted?.Invoke(this);
+        } else {
+            OnLapCompleted?.Invoke(this);
+        }
     }
 
     public void SetLapPosition(uint lapPosition)
