@@ -43,13 +43,27 @@ public class CurrencySystem : Singleton<CurrencySystem>
     //     AddCoins(1);
     // }
     //
-    // private void OnEnable()
-    // {
-    //     EnemyHealth.OnEnemyKilled += AddCoins;
-    // }
-    //
-    // private void OnDisable()
-    // {
-    //     EnemyHealth.OnEnemyKilled -= AddCoins;
-    // }
+
+    private void HandleAddCoins(Kart kart, KartDebuffType kartDebuffType)
+    {
+        switch (kartDebuffType)
+        {
+            case KartDebuffType.LightStun:
+                AddCoins(1);
+                break;
+            case KartDebuffType.HeavyStun:
+                AddCoins(5);
+                break;
+        }
+    }
+
+    private void OnEnable()
+    {
+        Kart.OnDebuffApplied += HandleAddCoins;
+    }
+    
+    private void OnDisable()
+    {
+        Kart.OnDebuffApplied -= HandleAddCoins;
+    }
 }
