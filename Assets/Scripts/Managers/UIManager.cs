@@ -25,8 +25,6 @@ public class UIManager : Singleton<UIManager>
     
     private Node _currentNodeSelected;
 
-    public static event Action OnRestartGame;
-
     private void Start()
     {
         ShowGameStartPanel();
