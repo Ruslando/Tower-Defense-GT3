@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Turret2D : MonoBehaviour
@@ -23,15 +24,26 @@ public class Turret2D : MonoBehaviour
     public GameObject blueShellPrefab; // Prefab of the blue shell.
 
     [Header("Upgrade Levels")]
+    public List<TurretUpgradeData> turretUpgradeData = new List<TurretUpgradeData>();
     public TurretType turretType = TurretType.GreenShell; // Default turret type in the Inspector.
     private int currentUpgradeLevel = 0; // Current upgrade level.
 
-    [Header("User Control Settings")]
-    public float userFireRate = 2f; // User-specified fire rate in shots per second.
-
     protected float fireCountdown = 0f; // Countdown to next shot.
     private bool isEditing;
-    
+
+    private void Start()
+    {
+        ChangeTurretUpgradeLevel();
+    }
+
+    private void LoadUpgradeData(TurretType turretType)
+    {
+        turretUpgradeData = new List<TurretUpgradeData>();
+        // Load all TurretUpgradeData Scriptable Objects from the "UpgradeData" folder in Resources
+        TurretUpgradeData[] upgrades = Resources.LoadAll<TurretUpgradeData>($"ScriptableObjects/TurretUpgrades/{turretType}Turret");
+        // Add loaded upgrades to the list
+        turretUpgradeData.AddRange(upgrades);
+    }
 
     protected virtual void Update()
     {
@@ -60,8 +72,17 @@ public class Turret2D : MonoBehaviour
                         break;
                 }
 
-                fireCountdown = 1f / userFireRate;
+                fireCountdown = 1f / GetUpgradeValue(TurretUpgradeType.FireRate);
             }
+        }
+    }
+
+    public void ApplyUpgrade(TurretUpgradeType turretUpgradeType)
+    {
+        TurretUpgradeData upgradeData = turretUpgradeData.FirstOrDefault(upgrade => upgrade.upgradeType == turretUpgradeType);
+        if(upgradeData.currentLevel < upgradeData.upgradeLevels.Count - 1) 
+        {
+            upgradeData.currentLevel++;
         }
     }
 
@@ -95,6 +116,8 @@ public class Turret2D : MonoBehaviour
                 Debug.LogWarning("Invalid turret type selected.");
                 break;
         }
+
+        LoadUpgradeData(turretType);
     }
 
     // Method to upgrade the turret to the next type
@@ -124,7 +147,7 @@ public class Turret2D : MonoBehaviour
 
         if (shell != null)
         {
-            shell.SetFiringTurret(this); // Set the reference to the firing turret.
+            shell.Initialize(this);
         }
     }
 
@@ -136,7 +159,7 @@ public class Turret2D : MonoBehaviour
 
         if (shell != null)
         {
-            shell.SetFiringTurret(this); // Set the reference to the firing turret.
+            shell.Initialize(this); // Set the reference to the firing turret.
         }
     }
 
@@ -148,15 +171,19 @@ public class Turret2D : MonoBehaviour
 
         if (shell != null)
         {
-            shell.SetFiringTurret(this); // Set the reference to the firing turret.
+            shell.Initialize(this); // Set the reference to the firing turret.
         }
     }
 
-    // Method to get the current fire rate based on the upgrade level.
-    protected float GetCurrentFireRate()
+    public float GetUpgradeValue(TurretUpgradeType turretUpgradeType)
     {
-        // Implement logic to get fire rate based on the upgrade level.
-        return userFireRate;
+        TurretUpgradeData upgradeData = turretUpgradeData.FirstOrDefault(upgrade => upgrade.upgradeType == turretUpgradeType);
+        if(upgradeData != null)
+        {
+            return upgradeData.CurrentUpgradeLevel.value;
+        }
+        
+        return 0f;
     }
 
     private void CheckEditingCancel()

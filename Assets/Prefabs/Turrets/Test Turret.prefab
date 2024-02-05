@@ -94,7 +94,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3854514695558681556}
   - component: {fileID: -1652024300997407008}
-  - component: {fileID: -6286282485276487505}
   m_Layer: 0
   m_Name: Test Turret
   m_TagString: Untagged
@@ -136,25 +135,12 @@ MonoBehaviour:
   greenShellPrefab: {fileID: 2642572464803698851, guid: c4be19fa01b57854cb5ff13160688c8b, type: 3}
   redShellPrefab: {fileID: 2642572464803698851, guid: 1aa46ff20b26db7428cad4d7a75e6947, type: 3}
   blueShellPrefab: {fileID: 2642572464803698851, guid: f65aadd60f97f234ea82062e42423b9c, type: 3}
-  turretType: 0
-  userFireRate: 1
---- !u!114 &-6286282485276487505
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3854514695558681553}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 161f7167a3a0cbf4ebcc7d2e239d411f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  upgradeInitialCost: 0
-  upgradeCostIncremental: 0
-  damageIncremental: 0
-  delayReduce: 0
-  sellPert: 0
+  turretUpgradeData:
+  - {fileID: 11400000, guid: 29d20b3307d8be3488bf1ca64af5963d, type: 2}
+  - {fileID: 11400000, guid: 04b4795b0dd02f144abe67f41562016f, type: 2}
+  - {fileID: 11400000, guid: d2c7e9841bdefca45a4e1bfc6fbc9f53, type: 2}
+  - {fileID: 11400000, guid: 14f52993669d9844ebcb04ab90faae38, type: 2}
+  turretType: 1
 --- !u!1 &3854514696109497307
 GameObject:
   m_ObjectHideFlags: 0
