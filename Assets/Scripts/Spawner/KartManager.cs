@@ -27,10 +27,14 @@ public class KartManager : Singleton<KartManager>
     
     private Waypoint _waypoint;
 
+    private void OnEnable()
+    {
+        LevelManager.OnRestartGame += StartGame;
+    }
+
     private void Start()
     {
         _waypoint = GetComponent<Waypoint>();
-        PlaceAndSpawnKarts();
     }
 
     private void Update()
@@ -59,13 +63,28 @@ public class KartManager : Singleton<KartManager>
     {
         GameObject gameObject = kartPooler.GetInstanceFromPool();
         Kart kart = gameObject.GetComponent<Kart>();
-        
+        kart.SetStartValues(position, _waypoint, $"Kart: { index }");
+        kart.StartEngine();
 
-        kart.transform.localPosition = position;
-        kart.Waypoint = _waypoint;
         gameObject.SetActive(true);
-        gameObject.name = $"Kart: { index }";
         karts.Add(kart);
+    }
+
+    private void StartGame()
+    {
+        ResetAndRemoveAllKars();
+        PlaceAndSpawnKarts();
+    }
+
+    private void ResetAndRemoveAllKars()
+    {
+        for (int i = 0; i < karts.Count; i++)
+        {
+            karts[i].Reset();
+            ObjectPooler.ReturnToPool(karts[i].gameObject);
+        }
+
+        karts = new List<Kart>();
     }
 
     private void UpdateKartPositions()
@@ -124,12 +143,10 @@ public class KartManager : Singleton<KartManager>
     {
         return karts[0];
     }
-    
-    private void OnEnable()
+
+    public int GetMaxLaps()
     {
-        
-        // Enemy.OnEndReached += RecordEnemy;
-        // EnemyHealth.OnEnemyKilled += RecordEnemy;
+        return maxLaps;
     }
 
     private void OnDisable()

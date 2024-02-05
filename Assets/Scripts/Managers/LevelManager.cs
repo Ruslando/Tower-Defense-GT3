@@ -7,38 +7,45 @@ public class LevelManager : Singleton<LevelManager>
 {
     [SerializeField] private int lives = 10;
 
+    private bool _gameOver;
     public int TotalLives { get; set; }
     public int CurrentWave { get; set; }
+
+    public static event Action OnRestartGame;
     
+    private void OnEnable()
+    {
+        Kart.OnAllLapsCompleted += GameOver;
+    }
+
     private void Start()
     {
         TotalLives = lives;
         CurrentWave = 1;
     }
 
-    // private void ReduceLives(Enemy enemy)
-    // {
-    //     TotalLives--;
-    //     if (TotalLives <= 0)
-    //     {
-    //         TotalLives = 0;
-    //         GameOver();
-    //     }
-    // }
-
-    private void GameOver()
+    private void GameOver(Kart kart)
     {
-        UIManager.Instance.ShowGameOverPanel();
+        if(!_gameOver)
+        {
+            _gameOver = true;
+            UIManager.Instance.ShowGameOverPanel();
+        }
+    }
+
+    public void RestartGame()
+    {
+        OnRestartGame?.Invoke();
     }
     
-    private void WaveCompleted()
-    {
-        CurrentWave++;
-        AchievementManager.Instance.AddProgress("Waves10", 1);
-        AchievementManager.Instance.AddProgress("Waves20", 1);
-        AchievementManager.Instance.AddProgress("Waves50", 1);
-        AchievementManager.Instance.AddProgress("Waves100", 1);
-    }
+    // private void WaveCompleted()
+    // {
+    //     CurrentWave++;
+    //     AchievementManager.Instance.AddProgress("Waves10", 1);
+    //     AchievementManager.Instance.AddProgress("Waves20", 1);
+    //     AchievementManager.Instance.AddProgress("Waves50", 1);
+    //     AchievementManager.Instance.AddProgress("Waves100", 1);
+    // }
     
     // private void OnEnable()
     // {
