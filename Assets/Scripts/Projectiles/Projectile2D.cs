@@ -33,7 +33,7 @@ public class Projectile2D : MonoBehaviour
 
     protected virtual void MoveProjectile()
     {
-        rb.velocity = firingDirection * firingTurret.GetUpgradeValue(TurretUpgradeType.ProjectileSpeed);
+        rb.velocity = firingDirection * firingTurret.GetUpgradeValue(TurretImprovementType.ProjectileSpeed);
     }
 
     public void SetTarget(Transform transform)

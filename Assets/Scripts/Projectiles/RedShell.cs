@@ -18,7 +18,7 @@ public class RedShell : Projectile2D
         if(isHoming && target != null)
         {
             // Move towards the target position without changing the rotation.
-            rb.velocity = (target.position - transform.position).normalized * firingTurret.GetUpgradeValue(TurretUpgradeType.ProjectileSpeed);
+            rb.velocity = (target.position - transform.position).normalized * firingTurret.GetUpgradeValue(TurretImprovementType.ProjectileSpeed);
         }
     }
 
@@ -41,7 +41,7 @@ public class RedShell : Projectile2D
         if (kart != null)
         {
             // Call the TakeDamage method on the entity.
-            kart.ApplyLightStunEffect(firingTurret.GetUpgradeValue(TurretUpgradeType.StunTime));
+            kart.ApplyLightStunEffect(firingTurret.GetUpgradeValue(TurretImprovementType.StunTime));
         }
 
         // Destroy the green shell upon hitting an enemy.
@@ -60,7 +60,7 @@ public class RedShell : Projectile2D
         if(target == null)
         {
             // Get the colliders within the specified sphere.
-            Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, firingTurret.GetUpgradeValue(TurretUpgradeType.TargetingRadius));
+            Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, firingTurret.GetUpgradeValue(TurretImprovementType.TargetingRadius));
 
             // Check if there are karts among the colliders.
             foreach (Collider2D collider in colliders)

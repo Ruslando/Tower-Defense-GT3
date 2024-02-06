@@ -5,20 +5,25 @@ using UnityEngine;
 
 public class CurrencySystem : Singleton<CurrencySystem>
 {
-    [SerializeField] private int coinTest;
+    [SerializeField] private int startCoins;
     private string CURRENCY_SAVE_KEY = "MYGAME_CURRENCY";
     
     public int TotalCoins { get; set; }
 
     private void Start()
     {
-        PlayerPrefs.DeleteKey(CURRENCY_SAVE_KEY);
-        LoadCoins();
+        ResetCoins();
     }
 
     private void LoadCoins()
     {
-        TotalCoins = PlayerPrefs.GetInt(CURRENCY_SAVE_KEY, coinTest);
+        TotalCoins = PlayerPrefs.GetInt(CURRENCY_SAVE_KEY, startCoins);
+    }
+
+    private void ResetCoins()
+    {
+        PlayerPrefs.DeleteKey(CURRENCY_SAVE_KEY);
+        LoadCoins();
     }
     
     public void AddCoins(int amount)
@@ -49,21 +54,23 @@ public class CurrencySystem : Singleton<CurrencySystem>
         switch (kartDebuffType)
         {
             case KartDebuffType.LightStun:
-                AddCoins(1);
+                AddCoins(2);
                 break;
             case KartDebuffType.HeavyStun:
-                AddCoins(5);
+                AddCoins(25);
                 break;
         }
     }
 
     private void OnEnable()
     {
+        LevelManager.OnRestartGame += ResetCoins;
         Kart.OnDebuffApplied += HandleAddCoins;
     }
     
     private void OnDisable()
     {
+        LevelManager.OnRestartGame -= ResetCoins;
         Kart.OnDebuffApplied -= HandleAddCoins;
     }
 }

@@ -29,7 +29,7 @@ public class BlueShell : Projectile2D
         if(target != null)
         {
             // Move towards the target position without changing the rotation.
-            rb.velocity = (target.position - transform.position).normalized * firingTurret.GetUpgradeValue(TurretUpgradeType.ProjectileSpeed);
+            rb.velocity = (target.position - transform.position).normalized * firingTurret.GetUpgradeValue(TurretImprovementType.ProjectileSpeed);
 
             if(IsAtTargetPosition())
             {
@@ -59,7 +59,7 @@ public class BlueShell : Projectile2D
     private void Detonate()
     {
         // Get the colliders within the specified sphere.
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, firingTurret.GetUpgradeValue(TurretUpgradeType.BlastRadius));
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, firingTurret.GetUpgradeValue(TurretImprovementType.BlastRadius));
 
         // Check if there are karts among the colliders.
         foreach (Collider2D collider in colliders)
@@ -72,7 +72,7 @@ public class BlueShell : Projectile2D
                 if (kart != null)
                 {
                     // Call the TakeDamage method on the entity.
-                    kart.ApplyHeavyStunEffect(firingTurret.GetUpgradeValue(TurretUpgradeType.StunTime), 2);
+                    kart.ApplyHeavyStunEffect(firingTurret.GetUpgradeValue(TurretImprovementType.StunTime), 2);
                 }
             }
         }

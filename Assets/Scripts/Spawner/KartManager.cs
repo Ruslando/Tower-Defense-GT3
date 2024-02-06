@@ -21,10 +21,10 @@ public class KartManager : Singleton<KartManager>
     [SerializeField] private int cols = 3; // Number of columns
     public Vector3 gridSize = new Vector3(3f, 0f, 3f); // Size of the grid (spacing between karts)
 
-    [Header("Poolers")] 
+    [Header("Poolers")]
     [SerializeField] private ObjectPooler kartPooler;
     public List<Kart> karts = new List<Kart>();
-    
+    private KartStats[] kartStats;
     private Waypoint _waypoint;
 
     private void OnEnable()
@@ -35,6 +35,12 @@ public class KartManager : Singleton<KartManager>
     private void Start()
     {
         _waypoint = GetComponent<Waypoint>();
+        LoadKartStats();
+    }
+
+    private void LoadKartStats()
+    {
+        kartStats = Resources.LoadAll<KartStats>($"ScriptableObjects/KartStats");
     }
 
     private void Update()
@@ -63,7 +69,11 @@ public class KartManager : Singleton<KartManager>
     {
         GameObject gameObject = kartPooler.GetInstanceFromPool();
         Kart kart = gameObject.GetComponent<Kart>();
-        kart.SetStartValues(position, _waypoint, $"Kart: { index }");
+
+        // Retrieve the element at the random index
+        KartStats kartStat = kartStats[Random.Range(0, kartStats.Length)];
+
+        kart.SetStartValues(position, _waypoint, kartStat);
         kart.StartEngine();
 
         gameObject.SetActive(true);
@@ -124,19 +134,21 @@ public class KartManager : Singleton<KartManager>
         Vector3 waypoint1 = _waypoint.GetWaypointPosition(kart1.CurrentWaypointIndex);
         Vector3 waypoint2 = _waypoint.GetWaypointPosition((kart1.CurrentWaypointIndex + 1) % _waypoint.Points.Length);
 
-        // Calculate direction vector between waypoints
-        Vector3 direction = waypoint2 - waypoint1;
+        // // Calculate direction vector between waypoints
+        // Vector3 direction = waypoint2 - waypoint1;
 
-        // Project vectors onto direction vector
-        Vector3 projection1 = Vector3.Project(kart1.transform.position, direction);
-        Vector3 projection2 = Vector3.Project(kart2.transform.position, direction);
+        // // Project vectors onto direction vector
+        // Vector3 projection1 = Vector3.Project(kart1.transform.position, direction);
+        // Vector3 projection2 = Vector3.Project(kart2.transform.position, direction);
 
-        // Calculate vector from the first position to the third position
-        Vector3 projectionVector1 = projection1 - waypoint1;
-        Vector3 projectionVector2 = projection2 - waypoint1;
+        // // Calculate vector from the first position to the third position
+        // Vector3 projectionVector1 = projection1 - waypoint1;
+        // Vector3 projectionVector2 = projection2 - waypoint1;
+
+
 
         // Compare distances of projections to determine if kart2 is in front of kart1
-        return projectionVector2.magnitude > projectionVector1.magnitude;
+        return (kart2.transform.position - waypoint1).magnitude > (kart1.transform.position - waypoint1).magnitude;
     }
 
     public Kart GetKartInFirstPosition()

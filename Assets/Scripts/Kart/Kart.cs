@@ -19,9 +19,7 @@ public enum KartDebuffType
 
 public class Kart : MonoBehaviour
 {
-    private float topSpeed;
-    private float accelerationRate;
-    private float decelerationRate;
+    private KartStats kartStats;
     protected float currentSpeed;
     private bool isAccelerating;
 
@@ -73,8 +71,6 @@ public class Kart : MonoBehaviour
 
     public void Reset()
     {
-        topSpeed = 2f;
-        accelerationRate = 1f;
         currentSpeed = 0f;
         isAccelerating = false;
 
@@ -89,16 +85,14 @@ public class Kart : MonoBehaviour
         LapPosition = 0;
     }
 
-    public void SetStartValues(Vector3 position, Waypoint waypoint, string name, float topSpeed, float accelerationRate, float decelerationRate)
+    public void SetStartValues(Vector3 position, Waypoint waypoint, KartStats kartStats)
     {
         transform.localPosition = position;
         _lastPointPosition = position;
         Waypoint = waypoint;
-        gameObject.name = name;
         CurrentWaypointIndex = 1;
-        this.topSpeed = topSpeed;
-        this.accelerationRate = accelerationRate;
-        this.decelerationRate = decelerationRate;
+        this.kartStats = kartStats;
+        gameObject.name = kartStats.kartName;
         //LapPosition = position;
     }
 
@@ -140,14 +134,14 @@ public class Kart : MonoBehaviour
 
     private void Accelerate()
     {
-        if (currentSpeed < topSpeed)
+        if (currentSpeed < kartStats.topSpeed)
         {
-            currentSpeed += accelerationRate * Time.deltaTime;
+            currentSpeed += kartStats.accelerationRate * Time.deltaTime;
         }
-        else if (currentSpeed > topSpeed)
+        else if (currentSpeed > kartStats.topSpeed)
         {
             // If current speed is higher than top speed, gradually decrease to top speed
-            currentSpeed -= decelerationRate * Time.deltaTime;
+            currentSpeed -= kartStats.decelerationRate * Time.deltaTime;
         }
 
         // Ensure speed is not negative
@@ -157,7 +151,7 @@ public class Kart : MonoBehaviour
     private void Decelerate()
     {
         // Gradually decrease speed until it reaches 0
-        currentSpeed -= decelerationRate * Time.deltaTime;
+        currentSpeed -= kartStats.decelerationRate * Time.deltaTime;
         // Ensure speed does not go below 0
         currentSpeed = Mathf.Max(currentSpeed, 0);
     }

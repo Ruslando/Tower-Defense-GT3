@@ -5,6 +5,6 @@ public class KartStats : ScriptableObject
 {
     public string kartName;
     public float topSpeed;
-    public float acceleration;
+    public float accelerationRate;
     public float decelerationRate;
 }

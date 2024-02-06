@@ -1,54 +1,70 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TurretUpgrade : MonoBehaviour
+public enum TurretType
 {
-    [SerializeField] private int upgradeInitialCost;
-    [SerializeField] private int upgradeCostIncremental;
-    [SerializeField] private float damageIncremental;
-    [SerializeField] private float delayReduce;
+    GreenShellTurret,
+    RedShellTurret,
+    BlueShellTurret
+}
 
-    [Header("Sell")] 
-    [Range(0,1)]
-    [SerializeField] private float sellPert;
-    
-    public float SellPerc { get; set; }
-    public int UpgradeCost { get; set; }
-    public int Level { get; set; }
-    
-    //private TurretProjectile _turretProjectile;
-    
-    private void Start()
+[CreateAssetMenu(fileName = "New Turret Upgrade", menuName = "Turret Upgrade")]
+public class TurretUpgrade : ScriptableObject
+{
+    [Serializable]
+    public struct UpgradeLevel
     {
-        //_turretProjectile = GetComponent<TurretProjectile>();
-        UpgradeCost = upgradeInitialCost;
-
-        SellPerc = sellPert;
-        Level = 1;
+        public int cost;
+        public TurretType turretType;
+        public bool isEditable;
     }
     
-    public void UpgradeTurret()
+    public List<UpgradeLevel> upgradeLevels = new List<UpgradeLevel>();
+    public int currentLevel = 0; // Current upgrade level
+    public UpgradeLevel CurrentUpgrade => upgradeLevels[currentLevel];
+
+    public void ApplyUpgrade()
     {
-        if (CurrencySystem.Instance.TotalCoins >= UpgradeCost)
+        if(currentLevel < upgradeLevels.Count - 1)
         {
-            // _turretProjectile.Damage += damageIncremental;
-            // _turretProjectile.DelayPerShot -= delayReduce;
-            UpdateUpgrade();
-        }
+            currentLevel++;
+        }   
     }
 
-    public int GetSellValue()
+    public int GetCurrentLevelCost()
     {
-        int sellValue = Mathf.RoundToInt(UpgradeCost * SellPerc);
-        return sellValue;
+        return CurrentUpgrade.cost;
+    }
+
+    public TurretType GetCurrentTurretType()
+    {
+        return CurrentUpgrade.turretType;
+    }
+
+    public bool IsEditable()
+    {
+        return CurrentUpgrade.isEditable;
+    }
+
+    public int GetNextLevelCost()
+    {
+        if(currentLevel + 1 < upgradeLevels.Count)
+        {
+            return upgradeLevels[currentLevel + 1].cost;
+        }
+        return -1;
+    }
+
+    public bool IsMaxLevel()
+    {
+        return currentLevel == upgradeLevels.Count - 1;
+    }
+
+    public bool CanBuyNextLevel()
+    {
+        return CurrencySystem.Instance.TotalCoins >= GetNextLevelCost();
     }
     
-    private void UpdateUpgrade()
-    {
-        CurrencySystem.Instance.RemoveCoins(UpgradeCost);
-        UpgradeCost += upgradeCostIncremental;
-        Level++;
-    }
 }

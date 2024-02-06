@@ -2,19 +2,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEditor;
 using UnityEngine;
 
 public class Turret2D : MonoBehaviour
 {
-    public enum TurretType
-    {
-        GreenShell,
-        RedShell,
-        BlueShell
-    }
-    
     [Header("Turret Settings")]
-
     [SerializeField] private Transform firePoint; // Point where projectiles are spawned.
     [SerializeField] private Transform _rotatePoint;
 
@@ -24,25 +17,41 @@ public class Turret2D : MonoBehaviour
     public GameObject blueShellPrefab; // Prefab of the blue shell.
 
     [Header("Upgrade Levels")]
-    public List<TurretUpgradeData> turretUpgradeData = new List<TurretUpgradeData>();
-    public TurretType turretType = TurretType.GreenShell; // Default turret type in the Inspector.
-    private int currentUpgradeLevel = 0; // Current upgrade level.
+    public TurretImprovement[] turretImprovements;
+    public TurretUpgrade turretUpgrade;
 
     protected float fireCountdown = 0f; // Countdown to next shot.
     private bool isEditing;
 
-    private void Start()
+    private void Awake()
     {
-        ChangeTurretUpgradeLevel();
+        LoadTurretUpgradeData();
+        LoadImprovementsData(turretUpgrade.GetCurrentTurretType());
     }
 
-    private void LoadUpgradeData(TurretType turretType)
+    private void Start()
     {
-        turretUpgradeData = new List<TurretUpgradeData>();
-        // Load all TurretUpgradeData Scriptable Objects from the "UpgradeData" folder in Resources
-        TurretUpgradeData[] upgrades = Resources.LoadAll<TurretUpgradeData>($"ScriptableObjects/TurretUpgrades/{turretType}Turret");
-        // Add loaded upgrades to the list
-        turretUpgradeData.AddRange(upgrades);
+        
+    }
+
+    private void LoadTurretUpgradeData()
+    {
+        turretUpgrade = Instantiate(Resources.LoadAll<TurretUpgrade>($"ScriptableObjects/TurretUpgrades")[0]);
+        
+    }
+
+    private void LoadImprovementsData(TurretType turretType)
+    {
+        List<TurretImprovement> copiedScriptableObjects = new List<TurretImprovement>();
+        TurretImprovement[] improvements = Resources.LoadAll<TurretImprovement>($"ScriptableObjects/TurretImprovements/{turretType}");
+
+        foreach (TurretImprovement original in improvements)
+        {
+            TurretImprovement copiedScriptableObject = Instantiate(original);
+            copiedScriptableObjects.Add(copiedScriptableObject);
+        }
+
+        turretImprovements = copiedScriptableObjects.ToArray();
     }
 
     protected virtual void Update()
@@ -59,7 +68,7 @@ public class Turret2D : MonoBehaviour
             // Fire when the countdown reaches zero.
             if (fireCountdown <= 0)
             {
-                switch (currentUpgradeLevel)
+                switch (turretUpgrade.currentLevel)
                 {
                     case 0:
                         FireGreenShell(); // Implement this method.
@@ -72,71 +81,28 @@ public class Turret2D : MonoBehaviour
                         break;
                 }
 
-                fireCountdown = 1f / GetUpgradeValue(TurretUpgradeType.FireRate);
+                fireCountdown = 1f / GetUpgradeValue(TurretImprovementType.FireRate);
             }
         }
     }
 
-    public void ApplyUpgrade(TurretUpgradeType turretUpgradeType)
+    public void ImproveTurret()
     {
-        TurretUpgradeData upgradeData = turretUpgradeData.FirstOrDefault(upgrade => upgrade.upgradeType == turretUpgradeType);
-        if(upgradeData.currentLevel < upgradeData.upgradeLevels.Count - 1) 
+        if(!turretImprovements[0].IsMaxLevel() && turretImprovements[0].CanBuyNextLevel())
         {
-            upgradeData.currentLevel++;
+            CurrencySystem.Instance.RemoveCoins(turretImprovements[0].GetNextLevelCost());
+            foreach (var improvementData in turretImprovements)
+            {
+                improvementData.ApplyImprovement();
+            }
         }
-    }
-
-    // Automatically called in the editor when a serialized field is modified.
-    private void OnValidate()
-    {
-        ChangeTurretUpgradeLevel();
-    }
-
-    // Method to upgrade the turret based on the selected turret type.
-    public void ChangeTurretUpgradeLevel()
-    {
-        switch (turretType)
-        {
-            case TurretType.GreenShell:
-                currentUpgradeLevel = 0;
-                // Additional logic for green shell upgrade.
-                break;
-
-            case TurretType.RedShell:
-                currentUpgradeLevel = 1;
-                // Additional logic for red shell upgrade.
-                break;
-
-            case TurretType.BlueShell:
-                currentUpgradeLevel = 2;
-                // Additional logic for blue shell upgrade.
-                break;
-
-            default:
-                Debug.LogWarning("Invalid turret type selected.");
-                break;
-        }
-
-        LoadUpgradeData(turretType);
     }
 
     // Method to upgrade the turret to the next type
     public void UpgradeTurret()
     {
-        int maxTurretTypeIndex = System.Enum.GetValues(typeof(TurretType)).Length - 1;
-        int currentIndex = (int)turretType;
-
-        // Increment the current turret type index
-        currentIndex++;
-
-        // Check if the current index exceeds the maximum index value
-        if (currentIndex <= maxTurretTypeIndex)
-        {
-            // Update the turret type
-            turretType = (TurretType)currentIndex;
-
-            ChangeTurretUpgradeLevel();
-        }
+        turretUpgrade.ApplyUpgrade();
+        LoadImprovementsData(turretUpgrade.GetCurrentTurretType());
     }
 
     // Method stub for firing a green shell.
@@ -175,12 +141,12 @@ public class Turret2D : MonoBehaviour
         }
     }
 
-    public float GetUpgradeValue(TurretUpgradeType turretUpgradeType)
+    public float GetUpgradeValue(TurretImprovementType turretUpgradeType)
     {
-        TurretUpgradeData upgradeData = turretUpgradeData.FirstOrDefault(upgrade => upgrade.upgradeType == turretUpgradeType);
+        TurretImprovement upgradeData = turretImprovements.FirstOrDefault(upgrade => upgrade.upgradeType == turretUpgradeType);
         if(upgradeData != null)
         {
-            return upgradeData.CurrentUpgradeLevel.value;
+            return upgradeData.GetCurrentLevelValue();
         }
         
         return 0f;
@@ -208,19 +174,20 @@ public class Turret2D : MonoBehaviour
 
     public void SetIsEditing(bool editing)
     {
-        if(turretType != TurretType.BlueShell)
+        if(turretUpgrade.IsEditable())
         {
             isEditing = editing;
         }
     }
 
-    public bool GetIsEditing()
-    {
-        return isEditing;
-    }
-
     public Transform GetRotatePoint()
     {
         return _rotatePoint;
+    }
+
+    public int GetResellValue()
+    {
+        // resell value = half of upgrade cost + half of improvement cost
+        return turretUpgrade.GetCurrentLevelCost() / 2 + turretImprovements[0].GetCurrentLevelCost() / 2;
     }
 }

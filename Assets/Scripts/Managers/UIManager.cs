@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class UIManager : Singleton<UIManager>
 {
@@ -17,12 +18,18 @@ public class UIManager : Singleton<UIManager>
 
     [Header("Text")] 
     [SerializeField] private TextMeshProUGUI upgradeText;
+    [SerializeField] private TextMeshProUGUI improveText;
     [SerializeField] private TextMeshProUGUI sellText;
     [SerializeField] private TextMeshProUGUI turretLevelText;
     [SerializeField] private TextMeshProUGUI totalCoinsText;
     [SerializeField] private TextMeshProUGUI lifesText;
     [SerializeField] private TextMeshProUGUI currentWaveText;
     [SerializeField] private TextMeshProUGUI gameOverTotalCoinsText;
+
+    [Header("Text")]
+    [SerializeField] private Button improveButton;
+    [SerializeField] private Button upgradeButton;
+    [SerializeField] private Button sellButton;
     
     private Node _currentNodeSelected;
 
@@ -36,6 +43,23 @@ public class UIManager : Singleton<UIManager>
         totalCoinsText.text = CurrencySystem.Instance.TotalCoins.ToString();
         lifesText.text = LevelManager.Instance.TotalLives.ToString();
         currentWaveText.text = $"Wave {LevelManager.Instance.CurrentWave}";
+
+        UpdateButtons();
+    }
+
+    private void UpdateButtons()
+    {
+        if(_currentNodeSelected != null)
+        {
+            if(_currentNodeSelected.Turret != null)
+            {
+                TurretImprovement improvementData = _currentNodeSelected.Turret.turretImprovements[0];
+                improveButton.interactable = improvementData.CanBuyNextLevel() && !improvementData.IsMaxLevel();
+
+                TurretUpgrade upgrade = _currentNodeSelected.Turret.turretUpgrade;
+                upgradeButton.interactable = upgrade.CanBuyNextLevel() && !upgrade.IsMaxLevel();
+            }
+        }
     }
 
     public void SlowTime()
@@ -108,6 +132,12 @@ public class UIManager : Singleton<UIManager>
         _currentNodeSelected.Turret.SetIsEditing(true);
         CloseNodeUIPanel();
     }
+
+    public void ImproveTurret()
+    {
+        _currentNodeSelected.Turret.ImproveTurret();
+        UpdateImproveText();
+    }
     
     public void UpgradeTurret()
     {
@@ -129,24 +159,41 @@ public class UIManager : Singleton<UIManager>
     {
         nodeUIPanel.SetActive(true);
         UpdateUpgradeText();
+        UpdateImproveText();
         UpdateTurretLevel();
         UpdateSellValue();
     }
 
+    private void UpdateImproveText()
+    {
+        if(!_currentNodeSelected.Turret.turretImprovements[0].IsMaxLevel()){
+            improveText.text = $"{_currentNodeSelected.Turret.turretImprovements[0].GetNextLevelCost()}";
+        } else {
+            improveText.text = "-";
+        }
+    }
+
     private void UpdateUpgradeText()
     {
-        // upgradeText.text = _currentNodeSelected.Turret.TurretUpgrade.UpgradeCost.ToString();
+        if(!_currentNodeSelected.Turret.turretUpgrade.IsMaxLevel())
+        {
+            upgradeText.text = _currentNodeSelected.Turret.turretUpgrade.GetNextLevelCost().ToString();
+        } else {
+            improveText.text = "-";
+        }
     }
 
     private void UpdateTurretLevel()
     {
-        // turretLevelText.text = $"Level {_currentNodeSelected.Turret.TurretUpgrade.Level}";
+        int improvLevel = _currentNodeSelected.Turret.turretImprovements[0].currentLevel + 1;
+        string turretType = _currentNodeSelected.Turret.turretUpgrade.GetCurrentTurretType().ToString();
+        turretLevelText.text = $"{turretType} : Level {improvLevel}";
     }
 
     private void UpdateSellValue()
     {
-        // int sellAmount = _currentNodeSelected.Turret.TurretUpgrade.GetSellValue();
-        // sellText.text = sellAmount.ToString();
+        int sellAmount = _currentNodeSelected.Turret.GetResellValue();
+        sellText.text = sellAmount.ToString();
     }
     
     private void NodeSelected(Node nodeSelected)

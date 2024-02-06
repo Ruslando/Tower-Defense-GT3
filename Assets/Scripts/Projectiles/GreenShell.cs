@@ -25,7 +25,7 @@ public class GreenShell : Projectile2D
                 firingDirection = Vector2.Reflect(firingDirection.normalized, collisionNormal.normalized);
 
                 // Apply the new velocity with a bounce force
-                rb.velocity = firingDirection * firingTurret.GetUpgradeValue(TurretUpgradeType.ProjectileSpeed);
+                rb.velocity = firingDirection * firingTurret.GetUpgradeValue(TurretImprovementType.ProjectileSpeed);
             }
             else
             {
@@ -45,7 +45,7 @@ public class GreenShell : Projectile2D
         if (kart != null)
         {
             // Call the TakeDamage method on the entity.
-            kart.ApplyLightStunEffect(firingTurret.GetUpgradeValue(TurretUpgradeType.StunTime));
+            kart.ApplyLightStunEffect(firingTurret.GetUpgradeValue(TurretImprovementType.StunTime));
 
             // Destroy the green shell upon hitting an enemy.
             Destroy(gameObject);
