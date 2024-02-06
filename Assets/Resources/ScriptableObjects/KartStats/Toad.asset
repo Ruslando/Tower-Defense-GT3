@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Toad
   m_EditorClassIdentifier: 
   kartName: Toad
-  topSpeed: 3
-  acceleration: 3
+  topSpeed: 2
+  accelerationRate: 0.75
+  decelerationRate: 0.75

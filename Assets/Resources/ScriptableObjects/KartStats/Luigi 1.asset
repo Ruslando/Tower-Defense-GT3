@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Luigi 1
   m_EditorClassIdentifier: 
   kartName: Luigi
-  topSpeed: 2.5
-  acceleration: 3.5
+  topSpeed: 1.5
+  accelerationRate: 1.25
+  decelerationRate: 1.25

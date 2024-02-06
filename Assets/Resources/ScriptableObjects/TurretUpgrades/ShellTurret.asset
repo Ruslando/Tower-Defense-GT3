@@ -9,11 +9,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a97f36e9fb5f7db469f7de961403d828, type: 3}
-  m_Name: Projectile Speed
+  m_Script: {fileID: 11500000, guid: 161f7167a3a0cbf4ebcc7d2e239d411f, type: 3}
+  m_Name: ShellTurret
   m_EditorClassIdentifier: 
-  upgradeType: 0
-  currentLevel: 0
   upgradeLevels:
-  - cost: 0
-    value: 10
+  - cost: 10
+    turretType: 0
+    isEditable: 1
+  - cost: 100
+    turretType: 1
+    isEditable: 1
+  - cost: 250
+    turretType: 2
+    isEditable: 0
+  currentLevel: 0

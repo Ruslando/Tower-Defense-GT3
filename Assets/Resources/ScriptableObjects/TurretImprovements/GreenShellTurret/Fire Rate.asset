@@ -14,6 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upgradeType: 1
   currentLevel: 0
-  upgradeLevels:
+  improvementLevels:
   - cost: 0
-    value: 0.06666667
+    value: 0.5
+  - cost: 10
+    value: 0.75
+  - cost: 20
+    value: 1
+  - cost: 35
+    value: 1.25

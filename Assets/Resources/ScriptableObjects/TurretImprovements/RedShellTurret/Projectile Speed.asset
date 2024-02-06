@@ -9,10 +9,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b9116a2d67a136488e25e92f2023aaf, type: 3}
-  m_Name: Mario
+  m_Script: {fileID: 11500000, guid: a97f36e9fb5f7db469f7de961403d828, type: 3}
+  m_Name: Projectile Speed
   m_EditorClassIdentifier: 
-  kartName: Mario
-  topSpeed: 1.75
-  accelerationRate: 1
-  decelerationRate: 1
+  upgradeType: 0
+  currentLevel: 0
+  improvementLevels:
+  - cost: 0
+    value: 7.5
+  - cost: 50
+    value: 10
+  - cost: 75
+    value: 12.5
+  - cost: 100
+    value: 15

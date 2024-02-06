@@ -10,10 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a97f36e9fb5f7db469f7de961403d828, type: 3}
-  m_Name: Fire Rate
+  m_Name: Projectile Speed
   m_EditorClassIdentifier: 
-  upgradeType: 1
+  upgradeType: 0
   currentLevel: 0
-  upgradeLevels:
+  improvementLevels:
   - cost: 0
-    value: 0.5
+    value: 3.5
+  - cost: 10
+    value: 5
+  - cost: 20
+    value: 7.5
+  - cost: 35
+    value: 10
