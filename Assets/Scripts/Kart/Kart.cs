@@ -19,10 +19,9 @@ public enum KartDebuffType
 
 public class Kart : MonoBehaviour
 {
-    [Header("Kart Settings")]
-    public float topSpeed = 2f;
-    public float accelerationRate = 1f;
-    public float decelerationRate = 1f;
+    private float topSpeed;
+    private float accelerationRate;
+    private float decelerationRate;
     protected float currentSpeed;
     private bool isAccelerating;
 
@@ -76,7 +75,6 @@ public class Kart : MonoBehaviour
     {
         topSpeed = 2f;
         accelerationRate = 1f;
-        decelerationRate = 1f;
         currentSpeed = 0f;
         isAccelerating = false;
 
@@ -91,13 +89,16 @@ public class Kart : MonoBehaviour
         LapPosition = 0;
     }
 
-    public void SetStartValues(Vector3 position, Waypoint waypoint, string name)
+    public void SetStartValues(Vector3 position, Waypoint waypoint, string name, float topSpeed, float accelerationRate, float decelerationRate)
     {
         transform.localPosition = position;
         _lastPointPosition = position;
         Waypoint = waypoint;
         gameObject.name = name;
         CurrentWaypointIndex = 1;
+        this.topSpeed = topSpeed;
+        this.accelerationRate = accelerationRate;
+        this.decelerationRate = decelerationRate;
         //LapPosition = position;
     }
 

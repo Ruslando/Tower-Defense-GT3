@@ -136,11 +136,10 @@ MonoBehaviour:
   redShellPrefab: {fileID: 2642572464803698851, guid: 1aa46ff20b26db7428cad4d7a75e6947, type: 3}
   blueShellPrefab: {fileID: 2642572464803698851, guid: f65aadd60f97f234ea82062e42423b9c, type: 3}
   turretUpgradeData:
-  - {fileID: 11400000, guid: 29d20b3307d8be3488bf1ca64af5963d, type: 2}
-  - {fileID: 11400000, guid: 04b4795b0dd02f144abe67f41562016f, type: 2}
-  - {fileID: 11400000, guid: d2c7e9841bdefca45a4e1bfc6fbc9f53, type: 2}
-  - {fileID: 11400000, guid: 14f52993669d9844ebcb04ab90faae38, type: 2}
-  turretType: 1
+  - {fileID: 11400000, guid: 8f320f5f83a22f244bfb45a20a82b5c7, type: 2}
+  - {fileID: 11400000, guid: 66edbbed622fcd54a8dc7f11da136543, type: 2}
+  - {fileID: 11400000, guid: 49c6ef649f1b03946aa53a00d624800b, type: 2}
+  turretType: 0
 --- !u!1 &3854514696109497307
 GameObject:
   m_ObjectHideFlags: 0

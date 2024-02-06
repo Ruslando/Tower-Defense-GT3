@@ -9,6 +9,7 @@ public class UIManager : Singleton<UIManager>
 {
     [Header("Panels")]
     [SerializeField] private GameObject turretShopPanel;
+    [SerializeField] private GameObject turretUpgradePanel;
     [SerializeField] private GameObject nodeUIPanel;
     [SerializeField] private GameObject achievementPanel;
     [SerializeField] private GameObject gameOverPanel;
