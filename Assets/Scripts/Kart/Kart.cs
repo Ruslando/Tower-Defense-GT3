@@ -36,7 +36,8 @@ public class Kart : MonoBehaviour
 
     // Movement
     public Waypoint Waypoint { get; set; }
-    public Vector3 CurrentPointPosition => Waypoint.GetWaypointPosition(TargetWaypointIndex);
+    public Vector3 TargetPointPosition => Waypoint.GetWaypointPosition(TargetWaypointIndex);
+    public Vector3 CurrentPointPosition => Waypoint.GetWaypointPosition(CurrentWaypointIndex);
     
     private int _targetWaypointIndex;
     public int TargetWaypointIndex { get {
@@ -55,7 +56,6 @@ public class Kart : MonoBehaviour
         }
     }
     public int CurrentWaypointIndex { get; private set; }
-    private Vector3 lastPointPosition;
     public int Lap { get; private set; }
     public int LapPosition { get; private set; }
 
@@ -75,7 +75,8 @@ public class Kart : MonoBehaviour
     {
         Drive();
         Move();
-        RotateSpriteHorizontally();
+        RotateSprite();
+        // RotateSpriteHorizontally();
         
         if (CurrentPointPositionReached())
         {
@@ -91,7 +92,6 @@ public class Kart : MonoBehaviour
         debuffs.Clear();
         Waypoint = null;
         TargetWaypointIndex = 0;
-        lastPointPosition = Vector3.zero;
         Lap = 0;
         LapPosition = 0;
     }
@@ -99,7 +99,6 @@ public class Kart : MonoBehaviour
     public void SetStartValues(Vector3 position, Waypoint waypoint, KartStats kartStats)
     {
         transform.localPosition = position;
-        lastPointPosition = position;
         Waypoint = waypoint;
         TargetWaypointIndex = 1;
         this.kartStats = kartStats;
@@ -114,18 +113,25 @@ public class Kart : MonoBehaviour
     private void Move()
     {
         transform.position = Vector3.MoveTowards(transform.position, 
-            CurrentPointPosition, currentSpeed * Time.deltaTime);
+            TargetPointPosition, currentSpeed * Time.deltaTime);
     }
 
-    private void RotateSpriteHorizontally()
+    private void RotateSprite()
     {
-        if (CurrentPointPosition.x > lastPointPosition.x)
+        Vector2 direction = TargetPointPosition - CurrentPointPosition;
+        float xDifference = Mathf.Abs(direction.x);
+        float yDifference = Mathf.Abs(direction.y);
+
+        if (xDifference > yDifference)
         {
-            _spriteRenderer.flipX = false;
+            _animator.SetBool("MoveUp", false);
+            _animator.SetBool("MoveDown", false);
+            _spriteRenderer.flipX = TargetPointPosition.x < CurrentPointPosition.x;
         }
         else
         {
-            _spriteRenderer.flipX = true;
+            _animator.SetBool("MoveUp", TargetPointPosition.y > CurrentPointPosition.y);
+            _animator.SetBool("MoveDown", TargetPointPosition.y < CurrentPointPosition.y);
         }
     }
 
@@ -155,13 +161,7 @@ public class Kart : MonoBehaviour
     private bool CurrentPointPositionReached()
     {
         float distanceThreshold = 0.1f;
-        bool distanceReached = Vector3.Distance(transform.position, CurrentPointPosition) < distanceThreshold;
-        if(distanceReached) {
-            lastPointPosition = transform.position;
-            return true;
-        }
-        
-        return false;
+        return Vector3.Distance(transform.position, TargetPointPosition) < distanceThreshold;
     }
 
     private void UpdateCurrentPointIndex()
@@ -230,26 +230,6 @@ public class Kart : MonoBehaviour
     private void StopHurtAnimation()
     {
         _animator.SetBool("LightStun", false);
-    }
-
-    private void PlayUpMovementAnimation()
-    {
-        _animator.SetBool("MoveUp", true);
-    }
-    
-    private void StopUpMovementAnimation()
-    {
-        _animator.SetBool("MoveUp", false);
-    }
-    
-    private void PlayDownMovementAnimation()
-    {
-        _animator.SetBool("MoveDown", true);
-    }
-    
-    private void StopDownMovementAnimation()
-    {
-        _animator.SetBool("MoveDown", false);
     }
 
     private IEnumerator HeavyStunEffectCoroutine(float stunTime, float recoveryTimeInSeconds)
