@@ -23,7 +23,7 @@ public class TurretImprovement : ScriptableObject
     }
 
     public TurretImprovementType upgradeType;
-    public int currentLevel = 0; // Current upgrade level
+    public int currentLevel = 0;
     public ImprovementLevel CurrentImprovementLevel => improvementLevels[currentLevel];
     public List<ImprovementLevel> improvementLevels = new List<ImprovementLevel>();
 

@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 
 public enum KartBuffType
@@ -20,29 +19,24 @@ public enum KartDebuffType
 public class Kart : MonoBehaviour
 {
     private KartStats kartStats;
-    protected float currentSpeed;
+    private float currentSpeed;
     private bool isAccelerating;
 
-    // state
     public List<KartBuffType> buffs = new List<KartBuffType>();
     public List<KartDebuffType> debuffs = new List<KartDebuffType>();
 
-    // actions
     public static event Action<Kart> OnLapCompleted;
     public static event Action<Kart> OnLapCompletedFirst;
     public static event Action<Kart> OnAllLapsCompleted;
-    public static event Action<Kart, uint, uint> OnLapPositionChanged;
+    public static event Action<Kart, int, int> OnLapPositionChanged;
     public static event Action<Kart, KartBuffType> OnBuffApplied;
     public static event Action<Kart, KartBuffType> OnBuffRemoved;
     public static event Action<Kart, KartDebuffType> OnDebuffApplied;
     public static event Action<Kart, KartDebuffType> OnDebuffRemoved;
 
-    // movement
+    // Movement
     public Waypoint Waypoint { get; set; }
     public Vector3 CurrentPointPosition => Waypoint.GetWaypointPosition(TargetWaypointIndex);
-    
-    //animation
-    private Animator _animator;
     
     private int _targetWaypointIndex;
     public int TargetWaypointIndex { get {
@@ -61,9 +55,12 @@ public class Kart : MonoBehaviour
         }
     }
     public int CurrentWaypointIndex { get; private set; }
-    private Vector3 _lastPointPosition;
-    public uint Lap { get; private set; }
-    public uint LapPosition { get; private set; }
+    private Vector3 lastPointPosition;
+    public int Lap { get; private set; }
+    public int LapPosition { get; private set; }
+
+    //Animation
+    private Animator _animator;
 
     // visuals
     private SpriteRenderer _spriteRenderer;
@@ -78,7 +75,7 @@ public class Kart : MonoBehaviour
     {
         Drive();
         Move();
-        Rotate();
+        RotateSpriteHorizontally();
         
         if (CurrentPointPositionReached())
         {
@@ -90,14 +87,11 @@ public class Kart : MonoBehaviour
     {
         currentSpeed = 0f;
         isAccelerating = false;
-
         buffs.Clear();
         debuffs.Clear();
-
-        // Reset movement-related properties
         Waypoint = null;
         TargetWaypointIndex = 0;
-        _lastPointPosition = Vector3.zero;
+        lastPointPosition = Vector3.zero;
         Lap = 0;
         LapPosition = 0;
     }
@@ -105,12 +99,11 @@ public class Kart : MonoBehaviour
     public void SetStartValues(Vector3 position, Waypoint waypoint, KartStats kartStats)
     {
         transform.localPosition = position;
-        _lastPointPosition = position;
+        lastPointPosition = position;
         Waypoint = waypoint;
         TargetWaypointIndex = 1;
         this.kartStats = kartStats;
         gameObject.name = kartStats.kartName;
-        //LapPosition = position;
     }
 
     public void StartEngine()
@@ -124,9 +117,9 @@ public class Kart : MonoBehaviour
             CurrentPointPosition, currentSpeed * Time.deltaTime);
     }
 
-    private void Rotate()
+    private void RotateSpriteHorizontally()
     {
-        if (CurrentPointPosition.x > _lastPointPosition.x)
+        if (CurrentPointPosition.x > lastPointPosition.x)
         {
             _spriteRenderer.flipX = false;
         }
@@ -151,37 +144,23 @@ public class Kart : MonoBehaviour
 
     private void Accelerate()
     {
-        if (currentSpeed < kartStats.topSpeed)
-        {
-            currentSpeed += kartStats.accelerationRate * Time.deltaTime;
-        }
-        else if (currentSpeed > kartStats.topSpeed)
-        {
-            // If current speed is higher than top speed, gradually decrease to top speed
-            currentSpeed -= kartStats.decelerationRate * Time.deltaTime;
-        }
-
-        // Ensure speed is not negative
-        currentSpeed = Mathf.Max(currentSpeed, 0f);
+        currentSpeed = Mathf.Clamp(currentSpeed + kartStats.accelerationRate * Time.deltaTime, 0f, kartStats.topSpeed);
     }
 
     private void Decelerate()
     {
-        // Gradually decrease speed until it reaches 0
-        currentSpeed -= kartStats.decelerationRate * Time.deltaTime;
-        // Ensure speed does not go below 0
-        currentSpeed = Mathf.Max(currentSpeed, 0);
+        currentSpeed = Mathf.Max(currentSpeed - kartStats.decelerationRate * Time.deltaTime, 0f);
     }
 
     private bool CurrentPointPositionReached()
     {
-        float distanceToNextPointPosition = (transform.position - CurrentPointPosition).magnitude;
-        if (distanceToNextPointPosition < 0.1f)
-        {
-            _lastPointPosition = transform.position;
+        float distanceThreshold = 0.1f;
+        bool distanceReached = Vector3.Distance(transform.position, CurrentPointPosition) < distanceThreshold;
+        if(distanceReached) {
+            lastPointPosition = transform.position;
             return true;
         }
-
+        
         return false;
     }
 
@@ -191,14 +170,12 @@ public class Kart : MonoBehaviour
         {
             EndPointReached();
         }
-
         TargetWaypointIndex++;
     }
 
     private void EndPointReached()
     {
         Lap++;
-
         if(Lap == KartManager.Instance.GetMaxLaps())
         {
             OnAllLapsCompleted?.Invoke(this);
@@ -210,12 +187,9 @@ public class Kart : MonoBehaviour
         }
     }
 
-    public void SetLapPosition(uint lapPosition)
+    public void SetLapPosition(int lapPosition)
     {
-        // second argument: previous position
-        // third argument: current position
         OnLapPositionChanged?.Invoke(this, LapPosition, lapPosition);
-
         LapPosition = lapPosition;
     }
 
@@ -245,8 +219,6 @@ public class Kart : MonoBehaviour
         PlayHurtAnimation();
         yield return StartCoroutine(SetSpeedOverTimeCoroutine(0f, durationInSeconds));
         StopHurtAnimation();
-        // yield return StartCoroutine(SetSpeedOverTimeCoroutine(topSpeed, durationInSeconds));
-
         RemoveDebuff(KartDebuffType.LightStun);
     }
 
@@ -283,15 +255,8 @@ public class Kart : MonoBehaviour
     private IEnumerator HeavyStunEffectCoroutine(float stunTime, float recoveryTimeInSeconds)
     {
         ApplyDebuff(KartDebuffType.HeavyStun);
-        
         yield return StartCoroutine(SetSpeedOverTimeCoroutine(0f, 0f));
-
-        // Wait for the specified recovery time with speed at zero
         yield return new WaitForSeconds(stunTime);
-
-        // yield return StartCoroutine(SetSpeedOverTimeCoroutine(topSpeed, recoveryTimeInSeconds));
-
-        // Reset the active heavy stun effect flag
         RemoveDebuff(KartDebuffType.HeavyStun);
 
     }
@@ -302,12 +267,6 @@ public class Kart : MonoBehaviour
         {
             StartCoroutine(InvincibilityCoroutine(durationInSeconds));
         }
-    }
-    
-    private float GetCurrentAnimationLenght()
-    {
-        float animationLenght = _animator.GetCurrentAnimatorStateInfo(0).length;
-        return animationLenght;
     }
 
     private IEnumerator InvincibilityCoroutine(float durationInSeconds)
@@ -352,7 +311,6 @@ public class Kart : MonoBehaviour
             yield return null;
         }
 
-        // Ensure the speed is set to regular speed at the end of the reset
         currentSpeed = targetSpeed;
     }
 

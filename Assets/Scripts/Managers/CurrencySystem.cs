@@ -43,12 +43,6 @@ public class CurrencySystem : Singleton<CurrencySystem>
         }
     }
 
-    // private void AddCoins(Enemy enemy)
-    // {
-    //     AddCoins(1);
-    // }
-    //
-
     private void HandleAddCoins(Kart kart, KartDebuffType kartDebuffType)
     {
         switch (kartDebuffType)

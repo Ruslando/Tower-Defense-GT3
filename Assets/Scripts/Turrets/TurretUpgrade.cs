@@ -22,7 +22,7 @@ public class TurretUpgrade : ScriptableObject
     }
     
     public List<UpgradeLevel> upgradeLevels = new List<UpgradeLevel>();
-    public int currentLevel = 0; // Current upgrade level
+    public int currentLevel = 0;
     public UpgradeLevel CurrentUpgrade => upgradeLevels[currentLevel];
 
     public void ApplyUpgrade()

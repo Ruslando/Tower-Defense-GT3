@@ -49,12 +49,8 @@ public class LevelManager : Singleton<LevelManager>
 
     IEnumerator WaitAndInvokeStartGame()
     {
-        // Wait for 5 seconds
         yield return new WaitForSeconds(5f);
-
         _gameOver = false;
-
-        // Invoke OnStartGame event
         OnStartGame?.Invoke();
     }
 
@@ -74,25 +70,4 @@ public class LevelManager : Singleton<LevelManager>
     {
         return currentTime;
     }
-    
-    // private void WaveCompleted()
-    // {
-    //     CurrentWave++;
-    //     AchievementManager.Instance.AddProgress("Waves10", 1);
-    //     AchievementManager.Instance.AddProgress("Waves20", 1);
-    //     AchievementManager.Instance.AddProgress("Waves50", 1);
-    //     AchievementManager.Instance.AddProgress("Waves100", 1);
-    // }
-    
-    // private void OnEnable()
-    // {
-    //     Enemy.OnEndReached += ReduceLives;
-    //     // KartManager.OnWaveCompleted += WaveCompleted;
-    // }
-    //
-    // private void OnDisable()
-    // {
-    //     Enemy.OnEndReached -= ReduceLives;
-    //     // KartManager.OnWaveCompleted -= WaveCompleted;
-    // }
 }

@@ -42,9 +42,9 @@ public class UIManager : Singleton<UIManager>
     {
         totalCoinsText.text = CurrencySystem.Instance.TotalCoins.ToString();
 
-        if(KartManager.Instance.GetCurrentLap() < KartManager.Instance.GetMaxLaps())
+        if(KartManager.Instance.CurrentLap < KartManager.Instance.GetMaxLaps())
         {
-            currentWaveText.text = $"Lap: {KartManager.Instance.GetCurrentLap() + 1}";
+            currentWaveText.text = $"Lap: {KartManager.Instance.CurrentLap + 1}";
         } else {
             currentWaveText.text = $"Finished!";
         }
@@ -55,12 +55,8 @@ public class UIManager : Singleton<UIManager>
 
     private void UpdateTime()
     {
-        // Convert currentTime to TimeSpan
         TimeSpan timeSpan = TimeSpan.FromSeconds(LevelManager.Instance.GetCurrentTime());
-
-        // Format the TimeSpan to mm:ss
         string formattedTime = string.Format("{0:D2}:{1:D2}", timeSpan.Minutes, timeSpan.Seconds);
-
         timeText.text = formattedTime;
     }
 
@@ -126,7 +122,6 @@ public class UIManager : Singleton<UIManager>
 
     public void RestartGame()
     {
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         LevelManager.Instance.RestartGame();
         HideGameOverPanel();
         HideGameStartPanel();
@@ -144,7 +139,6 @@ public class UIManager : Singleton<UIManager>
 
     public void CloseNodeUIPanel()
     {
-        // _currentNodeSelected.CloseAttackRangeSprite();
         nodeUIPanel.SetActive(false);
     }
 
@@ -162,7 +156,6 @@ public class UIManager : Singleton<UIManager>
     
     public void UpgradeTurret()
     {
-        // _currentNodeSelected.Turret.TurretUpgrade.UpgradeTurret();
         _currentNodeSelected.Turret.UpgradeTurret();
         UpdateUpgradeText();
         UpdateTurretLevel();

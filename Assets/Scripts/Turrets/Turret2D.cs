@@ -8,30 +8,25 @@ using UnityEngine;
 public class Turret2D : MonoBehaviour
 {
     [Header("Turret Settings")]
-    [SerializeField] private Transform firePoint; // Point where projectiles are spawned.
+    [SerializeField] private Transform firePoint;
     [SerializeField] private Transform _rotatePoint;
 
     [Header("Projectile Prefabs")]
-    public GameObject greenShellPrefab; // Prefab of the green shell.
-    public GameObject redShellPrefab; // Prefab of the red shell.
-    public GameObject blueShellPrefab; // Prefab of the blue shell.
+    public GameObject greenShellPrefab;
+    public GameObject redShellPrefab;
+    public GameObject blueShellPrefab;
 
     [Header("Upgrade Levels")]
     public TurretImprovement[] turretImprovements;
     public TurretUpgrade turretUpgrade;
 
-    protected float fireCountdown = 0f; // Countdown to next shot.
+    protected float fireCountdown = 0f;
     private bool isEditing;
 
     private void Awake()
     {
         LoadTurretUpgradeData();
         LoadImprovementsData(turretUpgrade.GetCurrentTurretType());
-    }
-
-    private void Start()
-    {
-        
     }
 
     private void LoadTurretUpgradeData()
@@ -65,19 +60,18 @@ public class Turret2D : MonoBehaviour
         }
 
         if(!isEditing) {
-            // Fire when the countdown reaches zero.
             if (fireCountdown <= 0)
             {
                 switch (turretUpgrade.currentLevel)
                 {
                     case 0:
-                        FireGreenShell(); // Implement this method.
+                        FireGreenShell();
                         break;
                     case 1:
-                        FireRedShell(); // Implement this method.
+                        FireRedShell();
                         break;
                     case 2:
-                        FireBlueShell(); // Implement this method.
+                        FireBlueShell();
                         break;
                 }
 
@@ -98,14 +92,12 @@ public class Turret2D : MonoBehaviour
         }
     }
 
-    // Method to upgrade the turret to the next type
     public void UpgradeTurret()
     {
         turretUpgrade.ApplyUpgrade();
         LoadImprovementsData(turretUpgrade.GetCurrentTurretType());
     }
 
-    // Method stub for firing a green shell.
     protected void FireGreenShell()
     {
         GameObject shellInstance = Instantiate(greenShellPrefab, firePoint.position, Quaternion.identity);
@@ -117,7 +109,6 @@ public class Turret2D : MonoBehaviour
         }
     }
 
-    // Method stub for firing a red shell.
     protected void FireRedShell()
     {
         GameObject shellInstance = Instantiate(redShellPrefab, firePoint.position, Quaternion.identity);
@@ -125,11 +116,10 @@ public class Turret2D : MonoBehaviour
 
         if (shell != null)
         {
-            shell.Initialize(this); // Set the reference to the firing turret.
+            shell.Initialize(this);
         }
     }
 
-    // Method stub for firing a blue shell.
     protected void FireBlueShell()
     {
         GameObject shellInstance = Instantiate(blueShellPrefab, firePoint.position, Quaternion.identity);
@@ -137,7 +127,7 @@ public class Turret2D : MonoBehaviour
 
         if (shell != null)
         {
-            shell.Initialize(this); // Set the reference to the firing turret.
+            shell.Initialize(this);
         }
     }
 
@@ -154,7 +144,6 @@ public class Turret2D : MonoBehaviour
 
     private void CheckEditingCancel()
     {
-        // Check for left mouse button click and isEditing is true
         if (isEditing && Input.GetMouseButtonDown(0))
         {
             SetIsEditing(false);

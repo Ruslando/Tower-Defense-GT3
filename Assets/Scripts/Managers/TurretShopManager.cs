@@ -43,9 +43,6 @@ public class TurretShopManager : MonoBehaviour
             turretInstance.transform.localPosition = _currentNodeSelected.transform.position;
             turretInstance.transform.parent = _currentNodeSelected.transform;
 
-            // Turret turretPlaced = turretInstance.GetComponent<Turret>();
-            // _currentNodeSelected.SetTurret(turretPlaced);
-
             Turret2D turretPlaced = turretInstance.GetComponent<Turret2D>();
             _currentNodeSelected.SetTurret(turretPlaced);
         }

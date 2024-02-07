@@ -18,18 +18,14 @@ public class GreenShell : Projectile2D
         {
             if (bounceCount < maxBounces)
             {
-                // Get the contact point and calculate the reflection direction
                 Vector3 collisionPoint = collider.ClosestPoint(transform.position);
                 Vector3 collisionNormal = transform.position - collisionPoint;
 
                 firingDirection = Vector2.Reflect(firingDirection.normalized, collisionNormal.normalized);
-
-                // Apply the new velocity with a bounce force
                 rb.velocity = firingDirection * firingTurret.GetUpgradeValue(TurretImprovementType.ProjectileSpeed);
             }
             else
             {
-                // Destroy the shell if the maximum bounces are reached
                 Destroy(gameObject);
             }
         }
@@ -40,16 +36,11 @@ public class GreenShell : Projectile2D
     protected override void HandleCollisionKart(Collision2D collision)
     {
         Kart kart = collision.gameObject.GetComponent<Kart>();
-
-        // Check if the entity component is not null.
         if (kart != null)
         {
-            // Call the TakeDamage method on the entity.
             kart.ApplyLightStunEffect(firingTurret.GetUpgradeValue(TurretImprovementType.StunTime));
-
-            // Destroy the green shell upon hitting an enemy.
             Destroy(gameObject);
-            return; // Exit the method to prevent additional logic after destroying the shell.
+            return;
         }
     }
 

@@ -12,18 +12,17 @@ public class KartManager : Singleton<KartManager>
 {
     [Header("Lap Settings")]
     [SerializeField] private int maxLaps;
-    private int currentLap;
+    public int CurrentLap { get; set; }
 
     [Header("Spawn Settings")]
     [SerializeField] private Vector3 startingPosition;
-    [SerializeField] private int rows = 3; // Number of rows
-    [SerializeField] private int cols = 3; // Number of columns
-    public Vector3 gridSize = new Vector3(3f, 0f, 3f); // Size of the grid (spacing between karts)
+    [SerializeField] private int rows = 3;
+    [SerializeField] private int cols = 3;
+    [SerializeField] private Vector3 gridSize = new Vector3(3f, 0f, 3f);
 
     [Header("Poolers")]
     [SerializeField] private ObjectPooler kartPooler;
     public List<Kart> karts = new List<Kart>();
-    private KartStats[] kartStats;
     private Waypoint _waypoint;
 
     private void OnEnable()
@@ -43,58 +42,11 @@ public class KartManager : Singleton<KartManager>
     private void Start()
     {
         _waypoint = GetComponent<Waypoint>();
-        LoadKartStats();
-    }
-
-    private void LoadKartStats()
-    {
-        kartStats = Resources.LoadAll<KartStats>($"ScriptableObjects/KartStats");
     }
 
     private void Update()
     {
         UpdateKartPositions();
-    }
-
-    private void IncrementLap(Kart kart)
-    {
-        currentLap++;
-    }
-
-    public int GetCurrentLap()
-    {
-        return currentLap;
-    }
-
-    // Method to spawn karts diagonally
-    public void PlaceAndSpawnKarts()
-    {
-        int index = 0;
-        for (int row = 0; row < rows; row++)
-        {
-            for (int col = 0; col < cols; col++)
-            {
-                // Calculate staggered position
-                Vector3 staggerOffset = new Vector3(col * gridSize.x, row * gridSize.y, 0f);
-                Vector3 finalPosition = startingPosition + staggerOffset;
-
-                SpawnKart(index++, finalPosition);
-            }
-        }
-    }
-
-    private void SpawnKart(int index, Vector3 position)
-    {
-        GameObject gameObject = kartPooler.GetInstanceFromPool();
-        Kart kart = gameObject.GetComponent<Kart>();
-
-        // Retrieve the element at the random index
-        KartStats kartStat = kartStats[Random.Range(0, kartStats.Length)];
-
-        kart.SetStartValues(position, _waypoint, kartStat);
-
-        gameObject.SetActive(true);
-        karts.Add(kart);
     }
 
     private void SetupKarts()
@@ -111,69 +63,79 @@ public class KartManager : Singleton<KartManager>
         }
     }
 
+    private void IncrementLap(Kart kart)
+    {
+        CurrentLap++;
+    }
+
+    public void PlaceAndSpawnKarts()
+    {
+        for (int row = 0; row < rows; row++)
+        {
+            for (int col = 0; col < cols; col++)
+            {
+                Vector3 staggerOffset = new Vector3(col * gridSize.x, row * gridSize.y, 0f);
+                Vector3 finalPosition = startingPosition + staggerOffset;
+
+                SpawnKart(finalPosition);
+            }
+        }
+    }
+
+    private void SpawnKart(Vector3 position)
+    {
+        GameObject kartObject = kartPooler.GetInstanceFromPool();
+        Kart kart = kartObject.GetComponent<Kart>();
+
+        KartStats kartStat = GetRandomKartStat();
+        kart.SetStartValues(position, _waypoint, kartStat);
+
+        kartObject.SetActive(true);
+        karts.Add(kart);
+    }
+
+    private KartStats GetRandomKartStat()
+    {
+        KartStats[] kartStats = Resources.LoadAll<KartStats>("ScriptableObjects/KartStats");
+        return kartStats[Random.Range(0, kartStats.Length)];
+    }
+
     private void ResetAndRemoveAllKarts()
     {
-        for (int i = 0; i < karts.Count; i++)
+        foreach (var kart in karts)
         {
-            karts[i].Reset();
-            ObjectPooler.ReturnToPool(karts[i].gameObject);
+            kart.Reset();
+            ObjectPooler.ReturnToPool(kart.gameObject);
         }
 
-        karts = new List<Kart>();
+        karts.Clear();
     }
 
     private void UpdateKartPositions()
     {
-        // Sort karts by position
-        karts.Sort((kart1, kart2) => {
-            if (IsKartInFrontOf(kart1, kart2))
-                return -1;
-            else if (IsKartInFrontOf(kart2, kart1))
-                return 1;
-            else
-                return 0;
-        });
+        karts.Sort((kartA, kartB) => CompareKartPositions(kartA, kartB));
 
-        // Set lap positions for each kart
         for (int i = 0; i < karts.Count; i++)
         {
-            karts[i].SetLapPosition((uint)i);
+            karts[i].SetLapPosition(i);
         }
     }
 
-    private bool IsKartInFrontOf(Kart kart1, Kart kart2)
+    private int CompareKartPositions(Kart kartA, Kart kartB)
     {
-        if (kart1.Lap != kart2.Lap)
+        if (kartA.Lap != kartB.Lap)
         {
-            return kart1.Lap > kart2.Lap; // Compare lap counts directly
-        }
-        
-        if (kart1.CurrentWaypointIndex != kart2.CurrentWaypointIndex)
-        {
-            return kart1.CurrentWaypointIndex > kart2.CurrentWaypointIndex; // Compare waypoint indices
+            return kartB.Lap.CompareTo(kartA.Lap);
         }
 
-        // if lap and waypoint index are equal
+        if (kartA.CurrentWaypointIndex != kartB.CurrentWaypointIndex)
+        {
+            return kartB.CurrentWaypointIndex.CompareTo(kartA.CurrentWaypointIndex);
+        }
 
-        // Get positions of waypoints
-        Vector3 waypoint1 = _waypoint.GetWaypointPosition(kart1.CurrentWaypointIndex);
-        // Vector3 waypoint2 = _waypoint.GetWaypointPosition((kart1.TargetWaypointIndex + 1) % _waypoint.Points.Length);
+        Vector3 waypointPosition = _waypoint.GetWaypointPosition(kartA.CurrentWaypointIndex);
 
-        // // Calculate direction vector between waypoints
-        // Vector3 direction = waypoint2 - waypoint1;
-
-        // // Project vectors onto direction vector
-        // Vector3 projection1 = Vector3.Project(kart1.transform.position, direction);
-        // Vector3 projection2 = Vector3.Project(kart2.transform.position, direction);
-
-        // // Calculate vector from the first position to the third position
-        // Vector3 projectionVector1 = projection1 - waypoint1;
-        // Vector3 projectionVector2 = projection2 - waypoint1;
-
-
-
-        // Compare distances of projections to determine if kart2 is in front of kart1
-        return (kart1.transform.position - waypoint1).magnitude > (kart2.transform.position - waypoint1).magnitude;
+        return (kartB.transform.position - waypointPosition).magnitude.CompareTo((kartA.transform.position - waypointPosition).magnitude);
     }
 
     public Kart GetKartInFirstPosition()

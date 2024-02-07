@@ -5,25 +5,7 @@ public class Node : MonoBehaviour
 {
     public static Action<Node> OnNodeSelected;
     public static Action OnTurretSold;
-
-    // [SerializeField] private GameObject attackRangeSprite;
-    
-    // public Turret Turret { get; set; }
     public Turret2D Turret { get; set; }
-
-    // private float _rangeSize;
-    // private Vector3 _rangeOriginalSize;
-
-    private void Start()
-    {
-        // _rangeSize = attackRangeSprite.GetComponent<SpriteRenderer>().bounds.size.y;
-        // _rangeOriginalSize = attackRangeSprite.transform.localScale;
-    }
-
-    // public void SetTurret(Turret turret)
-    // {
-    //     Turret = turret;
-    // }
 
     public void SetTurret(Turret2D turret)
     {
@@ -43,11 +25,6 @@ public class Node : MonoBehaviour
     {
         return Turret == null;
     }
-
-    // public void CloseAttackRangeSprite()
-    // {
-    //     attackRangeSprite.SetActive(false);
-    // }
     
     public void SelectTurret()
     {
@@ -65,14 +42,7 @@ public class Node : MonoBehaviour
             CurrencySystem.Instance.AddCoins(Turret.GetResellValue());
             Destroy(Turret.gameObject);
             Turret = null;
-            // attackRangeSprite.SetActive(false);
             OnTurretSold?.Invoke();
         }
     }
-
-    // private void ShowTurretInfo()
-    // {
-    //     attackRangeSprite.SetActive(true);
-    //     attackRangeSprite.transform.localScale = _rangeOriginalSize * Turret.AttackRange / (_rangeSize / 2);
-    // }
 }

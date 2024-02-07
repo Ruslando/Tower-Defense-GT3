@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class Projectile2D : MonoBehaviour
 {
-    private float lifetime = 5f; // Lifetime of the shell before it disappears.
-    protected bool isHoming = false; // Flag indicating whether the shell is homing.
-    protected Transform target; // The target the shell is homing towards.
+    private float lifetime = 5f;
+    protected bool isHoming = false;
+    protected Transform target;
 
-    protected int maxBounces = 3; // Set the maximum number of bounces
-    protected int bounceCount = 0; // Counter for the number of bounces
+    protected int maxBounces = 3;
+    protected int bounceCount = 0;
 
-    protected Turret2D firingTurret; // Reference to the turret that fired the shell.
+    protected Turret2D firingTurret;
     protected Vector2 firingDirection;
     protected Rigidbody2D rb;
 
@@ -24,7 +24,6 @@ public class Projectile2D : MonoBehaviour
     protected virtual void Start()
     {
         firingDirection = firingTurret.GetRotatePoint().up.normalized;
-        // Set a lifetime for the projectile.
         if(lifetime > 0)
         {
             Destroy(gameObject, lifetime);
@@ -63,15 +62,10 @@ public class Projectile2D : MonoBehaviour
             case "Kart":
                 HandleCollisionKart(collision);
                 break;
-
             case "Projectile":
                 HandleCollisionProjectile(collision);
                 break;
-
-            // Add more cases as needed
-
             default:
-                // Handle other cases if necessary
                 break;
         }
     }

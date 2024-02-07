@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-// public class DamageTextManager : Singleton<DamageTextManager>
 public class Singleton<T> : MonoBehaviour where T : Component
 {
     private static T instance;
@@ -19,7 +18,6 @@ public class Singleton<T> : MonoBehaviour where T : Component
                     instance = newInstance.AddComponent<T>();
                 }
             }
-
             return instance;
         }
     }
