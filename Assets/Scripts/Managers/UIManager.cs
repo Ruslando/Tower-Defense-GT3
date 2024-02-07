@@ -22,9 +22,9 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] private TextMeshProUGUI sellText;
     [SerializeField] private TextMeshProUGUI turretLevelText;
     [SerializeField] private TextMeshProUGUI totalCoinsText;
-    [SerializeField] private TextMeshProUGUI lifesText;
+    [SerializeField] private TextMeshProUGUI timeText;
     [SerializeField] private TextMeshProUGUI currentWaveText;
-    [SerializeField] private TextMeshProUGUI gameOverTotalCoinsText;
+    [SerializeField] private TextMeshProUGUI gameOverTimeText;
 
     [Header("Text")]
     [SerializeField] private Button improveButton;
@@ -41,10 +41,27 @@ public class UIManager : Singleton<UIManager>
     private void Update()
     {
         totalCoinsText.text = CurrencySystem.Instance.TotalCoins.ToString();
-        lifesText.text = LevelManager.Instance.TotalLives.ToString();
-        currentWaveText.text = $"Wave {LevelManager.Instance.CurrentWave}";
 
+        if(KartManager.Instance.GetCurrentLap() < KartManager.Instance.GetMaxLaps())
+        {
+            currentWaveText.text = $"Lap: {KartManager.Instance.GetCurrentLap() + 1}";
+        } else {
+            currentWaveText.text = $"Finished!";
+        }
+
+        UpdateTime();
         UpdateButtons();
+    }
+
+    private void UpdateTime()
+    {
+        // Convert currentTime to TimeSpan
+        TimeSpan timeSpan = TimeSpan.FromSeconds(LevelManager.Instance.GetCurrentTime());
+
+        // Format the TimeSpan to mm:ss
+        string formattedTime = string.Format("{0:D2}:{1:D2}", timeSpan.Minutes, timeSpan.Seconds);
+
+        timeText.text = formattedTime;
     }
 
     private void UpdateButtons()
@@ -80,7 +97,11 @@ public class UIManager : Singleton<UIManager>
     public void ShowGameOverPanel()
     {
         gameOverPanel.SetActive(true);
-        gameOverTotalCoinsText.text = CurrencySystem.Instance.TotalCoins.ToString();
+
+        // Convert currentTime to TimeSpan
+        TimeSpan timeSpan = TimeSpan.FromSeconds(LevelManager.Instance.GetCurrentTime());
+
+        gameOverTimeText.text = string.Format("{0:D2}:{1:D2}", timeSpan.Minutes, timeSpan.Seconds);;
     }
 
     public void HideGameOverPanel()

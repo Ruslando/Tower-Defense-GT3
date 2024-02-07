@@ -29,6 +29,7 @@ public class Kart : MonoBehaviour
 
     // actions
     public static event Action<Kart> OnLapCompleted;
+    public static event Action<Kart> OnLapCompletedFirst;
     public static event Action<Kart> OnAllLapsCompleted;
     public static event Action<Kart, uint, uint> OnLapPositionChanged;
     public static event Action<Kart, KartBuffType> OnBuffApplied;
@@ -38,11 +39,27 @@ public class Kart : MonoBehaviour
 
     // movement
     public Waypoint Waypoint { get; set; }
-    public Vector3 CurrentPointPosition => Waypoint.GetWaypointPosition(CurrentWaypointIndex);
+    public Vector3 CurrentPointPosition => Waypoint.GetWaypointPosition(TargetWaypointIndex);
     
     //animation
     private Animator _animator;
     
+    private int _targetWaypointIndex;
+    public int TargetWaypointIndex { get {
+            return _targetWaypointIndex;
+        }
+        private set {
+            if(Waypoint != null)
+            {
+                _targetWaypointIndex = value % Waypoint.Points.Length;
+                CurrentWaypointIndex = (value - 1) % Waypoint.Points.Length;
+            } else {
+                _targetWaypointIndex = value;
+                CurrentWaypointIndex = value - 1;
+            }
+            
+        }
+    }
     public int CurrentWaypointIndex { get; private set; }
     private Vector3 _lastPointPosition;
     public uint Lap { get; private set; }
@@ -79,7 +96,7 @@ public class Kart : MonoBehaviour
 
         // Reset movement-related properties
         Waypoint = null;
-        CurrentWaypointIndex = 0;
+        TargetWaypointIndex = 0;
         _lastPointPosition = Vector3.zero;
         Lap = 0;
         LapPosition = 0;
@@ -90,7 +107,7 @@ public class Kart : MonoBehaviour
         transform.localPosition = position;
         _lastPointPosition = position;
         Waypoint = waypoint;
-        CurrentWaypointIndex = 1;
+        TargetWaypointIndex = 1;
         this.kartStats = kartStats;
         gameObject.name = kartStats.kartName;
         //LapPosition = position;
@@ -170,12 +187,12 @@ public class Kart : MonoBehaviour
 
     private void UpdateCurrentPointIndex()
     {
-        if (CurrentWaypointIndex == 0)
+        if (TargetWaypointIndex == 0)
         {
             EndPointReached();
         }
 
-        CurrentWaypointIndex = (CurrentWaypointIndex + 1) % Waypoint.Points.Length;
+        TargetWaypointIndex++;
     }
 
     private void EndPointReached()
@@ -186,6 +203,9 @@ public class Kart : MonoBehaviour
         {
             OnAllLapsCompleted?.Invoke(this);
         } else {
+            if(LapPosition == 0) {
+                OnLapCompletedFirst?.Invoke(this);
+            }
             OnLapCompleted?.Invoke(this);
         }
     }

@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -14,6 +12,7 @@ public class KartManager : Singleton<KartManager>
 {
     [Header("Lap Settings")]
     [SerializeField] private int maxLaps;
+    private int currentLap;
 
     [Header("Spawn Settings")]
     [SerializeField] private Vector3 startingPosition;
@@ -29,7 +28,16 @@ public class KartManager : Singleton<KartManager>
 
     private void OnEnable()
     {
-        LevelManager.OnRestartGame += StartGame;
+        LevelManager.OnRestartGame += SetupKarts;
+        LevelManager.OnStartGame += StartGame;
+        Kart.OnLapCompletedFirst += IncrementLap;
+    }
+
+    private void OnDisable()
+    {
+        LevelManager.OnRestartGame -= SetupKarts;
+        LevelManager.OnStartGame -= StartGame;
+        Kart.OnLapCompletedFirst -= IncrementLap;
     }
 
     private void Start()
@@ -46,6 +54,16 @@ public class KartManager : Singleton<KartManager>
     private void Update()
     {
         UpdateKartPositions();
+    }
+
+    private void IncrementLap(Kart kart)
+    {
+        currentLap++;
+    }
+
+    public int GetCurrentLap()
+    {
+        return currentLap;
     }
 
     // Method to spawn karts diagonally
@@ -74,19 +92,26 @@ public class KartManager : Singleton<KartManager>
         KartStats kartStat = kartStats[Random.Range(0, kartStats.Length)];
 
         kart.SetStartValues(position, _waypoint, kartStat);
-        kart.StartEngine();
 
         gameObject.SetActive(true);
         karts.Add(kart);
     }
 
-    private void StartGame()
+    private void SetupKarts()
     {
-        ResetAndRemoveAllKars();
+        ResetAndRemoveAllKarts();
         PlaceAndSpawnKarts();
     }
 
-    private void ResetAndRemoveAllKars()
+    private void StartGame()
+    {
+        for (int i = 0; i < karts.Count; i++)
+        {
+            karts[i].StartEngine();
+        }
+    }
+
+    private void ResetAndRemoveAllKarts()
     {
         for (int i = 0; i < karts.Count; i++)
         {
@@ -112,7 +137,7 @@ public class KartManager : Singleton<KartManager>
         // Set lap positions for each kart
         for (int i = 0; i < karts.Count; i++)
         {
-            karts[i].SetLapPosition((uint)(i + 1));
+            karts[i].SetLapPosition((uint)i);
         }
     }
 
@@ -132,7 +157,7 @@ public class KartManager : Singleton<KartManager>
 
         // Get positions of waypoints
         Vector3 waypoint1 = _waypoint.GetWaypointPosition(kart1.CurrentWaypointIndex);
-        Vector3 waypoint2 = _waypoint.GetWaypointPosition((kart1.CurrentWaypointIndex + 1) % _waypoint.Points.Length);
+        // Vector3 waypoint2 = _waypoint.GetWaypointPosition((kart1.TargetWaypointIndex + 1) % _waypoint.Points.Length);
 
         // // Calculate direction vector between waypoints
         // Vector3 direction = waypoint2 - waypoint1;
@@ -148,7 +173,7 @@ public class KartManager : Singleton<KartManager>
 
 
         // Compare distances of projections to determine if kart2 is in front of kart1
-        return (kart2.transform.position - waypoint1).magnitude > (kart1.transform.position - waypoint1).magnitude;
+        return (kart1.transform.position - waypoint1).magnitude > (kart2.transform.position - waypoint1).magnitude;
     }
 
     public Kart GetKartInFirstPosition()
@@ -159,11 +184,5 @@ public class KartManager : Singleton<KartManager>
     public int GetMaxLaps()
     {
         return maxLaps;
-    }
-
-    private void OnDisable()
-    {
-        // Enemy.OnEndReached -= RecordEnemy;
-        // EnemyHealth.OnEnemyKilled -= RecordEnemy;
     }
 }
