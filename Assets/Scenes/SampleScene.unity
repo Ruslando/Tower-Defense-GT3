@@ -2051,8 +2051,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxLaps: 3
   startingPosition: {x: 7.5, y: -5.5, z: 0}
-  rows: 2
-  cols: 1
+  rows: 4
+  cols: 2
   gridSize: {x: 1, y: 1, z: 0}
   kartPooler: {fileID: 1809287173}
   karts: []

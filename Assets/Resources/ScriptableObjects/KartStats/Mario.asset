@@ -14,5 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   kartName: Mario
   topSpeed: 1.75
-  accelerationRate: 1
-  decelerationRate: 1
+  stunTimeMultiplier: 1

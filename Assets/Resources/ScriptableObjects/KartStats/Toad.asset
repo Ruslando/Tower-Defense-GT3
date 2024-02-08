@@ -14,5 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   kartName: Toad
   topSpeed: 2
-  accelerationRate: 0.75
-  decelerationRate: 0.75
+  stunTimeMultiplier: 1.2

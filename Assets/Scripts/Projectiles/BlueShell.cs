@@ -62,7 +62,7 @@ public class BlueShell : Projectile2D
                 Kart kart = collider.gameObject.GetComponent<Kart>();
                 if (kart != null)
                 {
-                    kart.ApplyHeavyStunEffect(firingTurret.GetUpgradeValue(TurretImprovementType.StunTime), 2);
+                    kart.ApplyHeavyStunEffect(firingTurret.GetUpgradeValue(TurretImprovementType.StunTime));
                 }
             }
         }

@@ -21,6 +21,8 @@ public class Kart : MonoBehaviour
     private KartStats kartStats;
     private float currentSpeed;
     private bool isAccelerating;
+    private float lightStunRecoveryDuration = 0.5f;
+    private float heavyStunRecoveryDuration = 2f;
 
     public List<KartBuffType> buffs = new List<KartBuffType>();
     public List<KartDebuffType> debuffs = new List<KartDebuffType>();
@@ -62,7 +64,7 @@ public class Kart : MonoBehaviour
     //Animation
     private Animator _animator;
 
-    // visuals
+    // Visuals
     private SpriteRenderer _spriteRenderer;
 
     private void Start()
@@ -76,7 +78,6 @@ public class Kart : MonoBehaviour
         Drive();
         Move();
         RotateSprite();
-        // RotateSpriteHorizontally();
         
         if (CurrentPointPositionReached())
         {
@@ -150,12 +151,12 @@ public class Kart : MonoBehaviour
 
     private void Accelerate()
     {
-        currentSpeed = Mathf.Clamp(currentSpeed + kartStats.accelerationRate * Time.deltaTime, 0f, kartStats.topSpeed);
+        currentSpeed = Mathf.Clamp(currentSpeed + Time.deltaTime, 0f, kartStats.topSpeed);
     }
 
     private void Decelerate()
     {
-        currentSpeed = Mathf.Max(currentSpeed - kartStats.decelerationRate * Time.deltaTime, 0f);
+        currentSpeed = Mathf.Max(currentSpeed - Time.deltaTime, 0f);
     }
 
     private bool CurrentPointPositionReached()
@@ -195,21 +196,23 @@ public class Kart : MonoBehaviour
 
     public void ApplyLightStunEffect(float durationInSeconds)
     {
+        durationInSeconds *= kartStats.stunTimeMultiplier;
         if (debuffs.Count == 0 && !buffs.Contains(KartBuffType.Invincibility))
         {
             StartCoroutine(LightStunEffectCoroutine(durationInSeconds));
-            StartCoroutine(InvincibilityCoroutine(durationInSeconds));
-            StartCoroutine(UntargetableCoroutine(durationInSeconds));
+            StartCoroutine(InvincibilityCoroutine(durationInSeconds + lightStunRecoveryDuration));
+            StartCoroutine(UntargetableCoroutine(durationInSeconds + lightStunRecoveryDuration));
         }
     }
 
-    public void ApplyHeavyStunEffect(float stunTime, float recoveryTimeInSeconds)
+    public void ApplyHeavyStunEffect(float durationInSeconds)
     {
+        durationInSeconds *= kartStats.stunTimeMultiplier;
         if (debuffs.Count == 0 && !buffs.Contains(KartBuffType.Invincibility))
         {
-            StartCoroutine(HeavyStunEffectCoroutine(stunTime, recoveryTimeInSeconds));
-            StartCoroutine(InvincibilityCoroutine(stunTime + recoveryTimeInSeconds));
-            StartCoroutine(UntargetableCoroutine(stunTime + recoveryTimeInSeconds));
+            StartCoroutine(HeavyStunEffectCoroutine(durationInSeconds));
+            StartCoroutine(InvincibilityCoroutine(durationInSeconds + heavyStunRecoveryDuration));
+            StartCoroutine(UntargetableCoroutine(durationInSeconds + heavyStunRecoveryDuration));
         }
     }
 
@@ -232,13 +235,12 @@ public class Kart : MonoBehaviour
         _animator.SetBool("LightStun", false);
     }
 
-    private IEnumerator HeavyStunEffectCoroutine(float stunTime, float recoveryTimeInSeconds)
+    private IEnumerator HeavyStunEffectCoroutine(float stunTime)
     {
         ApplyDebuff(KartDebuffType.HeavyStun);
-        yield return StartCoroutine(SetSpeedOverTimeCoroutine(0f, 0f));
+        yield return StartCoroutine(SetSpeedOverTimeCoroutine(0f, 0f)); // applies effect immediatly
         yield return new WaitForSeconds(stunTime);
         RemoveDebuff(KartDebuffType.HeavyStun);
-
     }
 
     public void ApplyInvincibility(float durationInSeconds)
