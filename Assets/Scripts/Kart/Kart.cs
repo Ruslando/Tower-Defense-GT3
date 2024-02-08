@@ -28,6 +28,7 @@ public class Kart : MonoBehaviour
     public List<KartDebuffType> debuffs = new List<KartDebuffType>();
 
     public static event Action<Kart> OnLapCompleted;
+    public static event Action<Kart> OnLastLapCompleted;
     public static event Action<Kart> OnLapCompletedFirst;
     public static event Action<Kart> OnAllLapsCompleted;
     public static event Action<Kart, int, int> OnLapPositionChanged;
@@ -180,7 +181,10 @@ public class Kart : MonoBehaviour
         if(Lap == KartManager.Instance.GetMaxLaps())
         {
             OnAllLapsCompleted?.Invoke(this);
-        } else {
+        } else if (Lap == KartManager.Instance.GetMaxLaps() - 1 && LapPosition == 0) {
+            OnLastLapCompleted?.Invoke(this);
+        }
+        else {
             if(LapPosition == 0) {
                 OnLapCompletedFirst?.Invoke(this);
             }

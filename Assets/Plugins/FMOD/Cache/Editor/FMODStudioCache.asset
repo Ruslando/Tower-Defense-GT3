@@ -1,5 +1,86 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-7597292559155594758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Effects/Red Shell
+  m_EditorClassIdentifier: 
+  Path: event:/Effects/Red Shell
+  Guid:
+    Data1: 1667537313
+    Data2: 1160648505
+    Data3: 370313357
+    Data4: 1961547456
+  Banks:
+  - {fileID: -4513548435592775719}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 6060
+--- !u!114 &-7483412646184531816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Effects/Green Shell
+  m_EditorClassIdentifier: 
+  Path: event:/Effects/Green Shell
+  Guid:
+    Data1: -1320134607
+    Data2: 1109659887
+    Data3: 1009094528
+    Data4: -1566558302
+  Banks:
+  - {fileID: -4513548435592775719}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 4100
+--- !u!114 &-7173785199411762108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Effects/Start Play Effect
+  m_EditorClassIdentifier: 
+  Path: event:/Effects/Start Play Effect
+  Guid:
+    Data1: 224673977
+    Data2: 1159010533
+    Data3: 2088976518
+    Data4: -2004927203
+  Banks:
+  - {fileID: -4513548435592775719}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1400
 --- !u!114 &-5775483462584640492
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15,10 +96,10 @@ MonoBehaviour:
   Path: ../../Documents/FMOD Studio/mksound/mksounds/Build/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 638430014830234274
+  lastModified: 638430284505086306
   FileSizes:
   - Name: Desktop
-    Value: 2257184
+    Value: 27322144
   Exists: 1
 --- !u!114 &-4513548435592775719
 MonoBehaviour:
@@ -35,11 +116,38 @@ MonoBehaviour:
   Path: ../../Documents/FMOD Studio/mksound/mksounds/Build/Desktop/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 638430009635812957
+  lastModified: 638430279759336121
   FileSizes:
   - Name: Desktop
-    Value: 494
+    Value: 485760
   Exists: 1
+--- !u!114 &-2010564876773459690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Music/Main Menu Music
+  m_EditorClassIdentifier: 
+  Path: event:/Music/Main Menu Music
+  Guid:
+    Data1: -1468189011
+    Data2: 1178351240
+    Data3: -291983459
+    Data4: 55681501
+  Banks:
+  - {fileID: -5775483462584640492}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 87650
 --- !u!114 &-108592937152110053
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -55,10 +163,10 @@ MonoBehaviour:
   Path: ../../Documents/FMOD Studio/mksound/mksounds/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638430014829638258
+  lastModified: 638430279758820301
   FileSizes:
   - Name: Desktop
-    Value: 1036
+    Value: 1340
   Exists: 1
 --- !u!114 &11400000
 MonoBehaviour:
@@ -80,14 +188,76 @@ MonoBehaviour:
   - {fileID: -4513548435592775719}
   - {fileID: 4541508153821853212}
   EditorEvents:
-  - {fileID: 8442500661565133912}
+  - {fileID: 220037467559077318}
+  - {fileID: -7173785199411762108}
+  - {fileID: 6391957321397876426}
+  - {fileID: -2010564876773459690}
+  - {fileID: 1177431566920969427}
+  - {fileID: -7483412646184531816}
+  - {fileID: 6388400020652072447}
+  - {fileID: -7597292559155594758}
   EditorParameters: []
   MasterBanks:
   - {fileID: -108592937152110053}
   StringsBanks:
   - {fileID: 5503926974258218202}
-  cacheTime: 638430014830234274
+  cacheTime: 638430284505086306
   cacheVersion: 131616
+--- !u!114 &220037467559077318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Effects/Countdown Effect
+  m_EditorClassIdentifier: 
+  Path: event:/Effects/Countdown Effect
+  Guid:
+    Data1: 992657779
+    Data2: 1125362338
+    Data3: 77146511
+    Data4: -1939040614
+  Banks:
+  - {fileID: -4513548435592775719}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 6302
+--- !u!114 &1177431566920969427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Music/Stadium Music
+  m_EditorClassIdentifier: 
+  Path: event:/Music/Stadium Music
+  Guid:
+    Data1: 652030671
+    Data2: 1123145559
+    Data3: 2145596034
+    Data4: -1454870541
+  Banks:
+  - {fileID: -5775483462584640492}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters:
+  - {fileID: 4543066794069961390}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 277053
 --- !u!114 &1670866349488266629
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -128,6 +298,30 @@ MonoBehaviour:
   - Name: Desktop
     Value: 494
   Exists: 1
+--- !u!114 &4543066794069961390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Stadium Music/LastLap
+  m_EditorClassIdentifier: 
+  Name: LastLap
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 1634316319
+    data2: 3707074606
+  Type: 1
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &5503926974258218202
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -143,12 +337,12 @@ MonoBehaviour:
   Path: ../../Documents/FMOD Studio/mksound/mksounds/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638430014829683521
+  lastModified: 638430279758865831
   FileSizes:
   - Name: Desktop
-    Value: 940
+    Value: 1426
   Exists: 1
---- !u!114 &8442500661565133912
+--- !u!114 &6388400020652072447
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -158,14 +352,41 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Music/Main Menu Music
+  m_Name: event:/Effects/Blue Shell
   m_EditorClassIdentifier: 
-  Path: event:/Music/Main Menu Music
+  Path: event:/Effects/Blue Shell
   Guid:
-    Data1: -1468189011
-    Data2: 1178351240
-    Data3: -291983459
-    Data4: 55681501
+    Data1: 2125590157
+    Data2: 1125161756
+    Data3: -1441963902
+    Data4: -327975501
+  Banks:
+  - {fileID: -4513548435592775719}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 6264
+--- !u!114 &6391957321397876426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Music/Round Finish Music
+  m_EditorClassIdentifier: 
+  Path: event:/Music/Round Finish Music
+  Guid:
+    Data1: -1578880161
+    Data2: 1119144739
+    Data3: 1667377570
+    Data4: 923429327
   Banks:
   - {fileID: -5775483462584640492}
   IsStream: 1
@@ -174,4 +395,4 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 87650
+  Length: 84702

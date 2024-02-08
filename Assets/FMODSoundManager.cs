@@ -21,11 +21,6 @@ public class FMODSoundManager : MonoBehaviour
         eventEmitters = new List<StudioEventEmitter>();
     }
 
-    public void PlayOneShot(EventReference sound, Vector3 worldPos)
-    {
-        RuntimeManager.PlayOneShot(sound, worldPos);
-    }
-
     public void ReleaseEventInstance(EventInstance eventInstance)
     {
         eventInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
