@@ -77,10 +77,14 @@ public class MusicManager : MonoBehaviour
     }
     private void HandleOvertake(Kart kart)
     {
-        overtakeEffectInstance.Play();
+        if(!LevelManager.Instance.IsGameOver()) {
+            overtakeEffectInstance.Play();
+        }
     }
     private void HandleDamage(Kart kart, KartDebuffType type)
     {
-        damageEffectInstance.Play();
+        if(!LevelManager.Instance.IsGameOver()) {
+            damageEffectInstance.Play();
+        }
     }
 }

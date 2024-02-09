@@ -70,4 +70,8 @@ public class LevelManager : Singleton<LevelManager>
     {
         return currentTime;
     }
+    public bool IsGameOver()
+    {
+        return _gameOver;
+    }
 }

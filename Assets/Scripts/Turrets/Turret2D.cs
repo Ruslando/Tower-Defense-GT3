@@ -54,30 +54,34 @@ public class Turret2D : MonoBehaviour
         CheckEditingCancel();
         RotateTowardsMouse();
 
-        if (fireCountdown > 0)
+        if(!LevelManager.Instance.IsGameOver())
         {
-            fireCountdown -= Time.deltaTime;
-        }
-
-        if(!isEditing) {
-            if (fireCountdown <= 0)
+            if (fireCountdown > 0)
             {
-                switch (turretUpgrade.currentLevel)
-                {
-                    case 0:
-                        FireGreenShell();
-                        break;
-                    case 1:
-                        FireRedShell();
-                        break;
-                    case 2:
-                        FireBlueShell();
-                        break;
-                }
+                fireCountdown -= Time.deltaTime;
+            }
 
-                fireCountdown = 1f / GetUpgradeValue(TurretImprovementType.FireRate);
+            if(!isEditing) {
+                if (fireCountdown <= 0)
+                {
+                    switch (turretUpgrade.currentLevel)
+                    {
+                        case 0:
+                            FireGreenShell();
+                            break;
+                        case 1:
+                            FireRedShell();
+                            break;
+                        case 2:
+                            FireBlueShell();
+                            break;
+                    }
+
+                    fireCountdown = 1f / GetUpgradeValue(TurretImprovementType.FireRate);
+                }
             }
         }
+        
     }
 
     public void ImproveTurret()

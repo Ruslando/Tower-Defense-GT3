@@ -19,7 +19,7 @@ MonoBehaviour:
     Data3: 1663526323
     Data4: -1893676466
   Banks:
-  - {fileID: 4541508153821853212}
+  - {fileID: -4162565880656538061}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -46,7 +46,7 @@ MonoBehaviour:
     Data3: 370313357
     Data4: 1961547456
   Banks:
-  - {fileID: -4513548435592775719}
+  - {fileID: -4145491417683811447}
   IsStream: 0
   Is3D: 0
   IsOneShot: 0
@@ -73,7 +73,7 @@ MonoBehaviour:
     Data3: 1009094528
     Data4: -1566558302
   Banks:
-  - {fileID: -4513548435592775719}
+  - {fileID: -4145491417683811447}
   IsStream: 0
   Is3D: 0
   IsOneShot: 0
@@ -100,7 +100,7 @@ MonoBehaviour:
     Data3: 2088976518
     Data4: -2004927203
   Banks:
-  - {fileID: -4513548435592775719}
+  - {fileID: -4145491417683811447}
   IsStream: 1
   Is3D: 0
   IsOneShot: 1
@@ -108,7 +108,7 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 1400
---- !u!114 &-5775483462584640492
+--- !u!114 &-4221932090118666637
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -118,17 +118,37 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Music.bank
+  m_Name: bank:/Kart.bank
   m_EditorClassIdentifier: 
-  Path: ../../Documents/FMOD Studio/mksound/mksounds/Build/Desktop/Music.bank
-  Name: Music
-  StudioPath: bank:/Music
-  lastModified: 638430712166719188
+  Path: FMOD/mksounds/Build/Desktop/Kart.bank
+  Name: Kart
+  StudioPath: bank:/Kart
+  lastModified: 638430009635883599
   FileSizes:
   - Name: Desktop
-    Value: 27322144
+    Value: 494
   Exists: 1
---- !u!114 &-4513548435592775719
+--- !u!114 &-4162565880656538061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/VoiceLines.bank
+  m_EditorClassIdentifier: 
+  Path: FMOD/mksounds/Build/Desktop/VoiceLines.bank
+  Name: VoiceLines
+  StudioPath: bank:/VoiceLines
+  lastModified: 638431015484939896
+  FileSizes:
+  - Name: Desktop
+    Value: 61280
+  Exists: 1
+--- !u!114 &-4145491417683811447
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -140,13 +160,53 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
   m_Name: bank:/SFX.bank
   m_EditorClassIdentifier: 
-  Path: ../../Documents/FMOD Studio/mksound/mksounds/Build/Desktop/SFX.bank
+  Path: FMOD/mksounds/Build/Desktop/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 638430790386407577
+  lastModified: 638431012461035064
   FileSizes:
   - Name: Desktop
     Value: 486240
+  Exists: 1
+--- !u!114 &-4047658471020910354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.strings.bank
+  m_EditorClassIdentifier: 
+  Path: FMOD/mksounds/Build/Desktop/Master.strings.bank
+  Name: Master.strings
+  StudioPath: bank:/Master.strings
+  lastModified: 638430790385883077
+  FileSizes:
+  - Name: Desktop
+    Value: 1572
+  Exists: 1
+--- !u!114 &-3626451936181484289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Music.bank
+  m_EditorClassIdentifier: 
+  Path: FMOD/mksounds/Build/Desktop/Music.bank
+  Name: Music
+  StudioPath: bank:/Music
+  lastModified: 638430712166719188
+  FileSizes:
+  - Name: Desktop
+    Value: 27322144
   Exists: 1
 --- !u!114 &-2010564876773459690
 MonoBehaviour:
@@ -167,7 +227,7 @@ MonoBehaviour:
     Data3: -291983459
     Data4: 55681501
   Banks:
-  - {fileID: -5775483462584640492}
+  - {fileID: -3626451936181484289}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -218,7 +278,7 @@ MonoBehaviour:
     Data3: -1841415806
     Data4: -1932996175
   Banks:
-  - {fileID: 4541508153821853212}
+  - {fileID: -4162565880656538061}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -226,26 +286,6 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 1000
---- !u!114 &-108592937152110053
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.bank
-  m_EditorClassIdentifier: 
-  Path: ../../Documents/FMOD Studio/mksound/mksounds/Build/Desktop/Master.bank
-  Name: Master
-  StudioPath: bank:/Master
-  lastModified: 638430790385723077
-  FileSizes:
-  - Name: Desktop
-    Value: 1340
-  Exists: 1
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -259,12 +299,12 @@ MonoBehaviour:
   m_Name: FMODStudioCache
   m_EditorClassIdentifier: 
   EditorBanks:
-  - {fileID: 5503926974258218202}
-  - {fileID: 1670866349488266629}
-  - {fileID: -108592937152110053}
-  - {fileID: -5775483462584640492}
-  - {fileID: -4513548435592775719}
-  - {fileID: 4541508153821853212}
+  - {fileID: -4047658471020910354}
+  - {fileID: -4221932090118666637}
+  - {fileID: 7303565274121389155}
+  - {fileID: -3626451936181484289}
+  - {fileID: -4145491417683811447}
+  - {fileID: -4162565880656538061}
   EditorEvents:
   - {fileID: 220037467559077318}
   - {fileID: -7173785199411762108}
@@ -278,10 +318,10 @@ MonoBehaviour:
   - {fileID: -437421425903494135}
   EditorParameters: []
   MasterBanks:
-  - {fileID: -108592937152110053}
+  - {fileID: 7303565274121389155}
   StringsBanks:
-  - {fileID: 5503926974258218202}
-  cacheTime: 638430797379918480
+  - {fileID: -4047658471020910354}
+  cacheTime: 638431015484939896
   cacheVersion: 131616
 --- !u!114 &220037467559077318
 MonoBehaviour:
@@ -302,7 +342,7 @@ MonoBehaviour:
     Data3: 77146511
     Data4: -1939040614
   Banks:
-  - {fileID: -4513548435592775719}
+  - {fileID: -4145491417683811447}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -329,7 +369,7 @@ MonoBehaviour:
     Data3: 2145596034
     Data4: -1454870541
   Banks:
-  - {fileID: -5775483462584640492}
+  - {fileID: -3626451936181484289}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -338,46 +378,6 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 277053
---- !u!114 &1670866349488266629
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Kart.bank
-  m_EditorClassIdentifier: 
-  Path: ../../Documents/FMOD Studio/mksound/mksounds/Build/Desktop/Kart.bank
-  Name: Kart
-  StudioPath: bank:/Kart
-  lastModified: 638430009635883599
-  FileSizes:
-  - Name: Desktop
-    Value: 494
-  Exists: 1
---- !u!114 &4541508153821853212
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/VoiceLines.bank
-  m_EditorClassIdentifier: 
-  Path: ../../Documents/FMOD Studio/mksound/mksounds/Build/Desktop/VoiceLines.bank
-  Name: VoiceLines
-  StudioPath: bank:/VoiceLines
-  lastModified: 638430797379918480
-  FileSizes:
-  - Name: Desktop
-    Value: 61280
-  Exists: 1
 --- !u!114 &4543066794069961390
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -402,26 +402,6 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
---- !u!114 &5503926974258218202
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.strings.bank
-  m_EditorClassIdentifier: 
-  Path: ../../Documents/FMOD Studio/mksound/mksounds/Build/Desktop/Master.strings.bank
-  Name: Master.strings
-  StudioPath: bank:/Master.strings
-  lastModified: 638430790385883077
-  FileSizes:
-  - Name: Desktop
-    Value: 1572
-  Exists: 1
 --- !u!114 &6388400020652072447
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -441,7 +421,7 @@ MonoBehaviour:
     Data3: -1441963902
     Data4: -327975501
   Banks:
-  - {fileID: -4513548435592775719}
+  - {fileID: -4145491417683811447}
   IsStream: 0
   Is3D: 0
   IsOneShot: 0
@@ -469,7 +449,7 @@ MonoBehaviour:
     Data3: 1667377570
     Data4: 923429327
   Banks:
-  - {fileID: -5775483462584640492}
+  - {fileID: -3626451936181484289}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -477,3 +457,23 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 84702
+--- !u!114 &7303565274121389155
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: FMOD/mksounds/Build/Desktop/Master.bank
+  Name: Master
+  StudioPath: bank:/Master
+  lastModified: 638430790385723077
+  FileSizes:
+  - Name: Desktop
+    Value: 1340
+  Exists: 1

@@ -12,7 +12,10 @@ public class ProjectileSound : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        InstantiateReference();
+        if(!LevelManager.Instance.IsGameOver())
+        {
+            InstantiateReference();
+        }
     }
 
     private void InstantiateReference()
