@@ -123,7 +123,7 @@ MonoBehaviour:
   Path: FMOD/mksounds/Build/Desktop/Kart.bank
   Name: Kart
   StudioPath: bank:/Kart
-  lastModified: 638430009635883599
+  lastModified: 638431098881078320
   FileSizes:
   - Name: Desktop
     Value: 494
@@ -143,7 +143,7 @@ MonoBehaviour:
   Path: FMOD/mksounds/Build/Desktop/VoiceLines.bank
   Name: VoiceLines
   StudioPath: bank:/VoiceLines
-  lastModified: 638431015484939896
+  lastModified: 638431098881989131
   FileSizes:
   - Name: Desktop
     Value: 61280
@@ -163,7 +163,7 @@ MonoBehaviour:
   Path: FMOD/mksounds/Build/Desktop/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 638431012461035064
+  lastModified: 638431098881934089
   FileSizes:
   - Name: Desktop
     Value: 486240
@@ -183,7 +183,7 @@ MonoBehaviour:
   Path: FMOD/mksounds/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638430790385883077
+  lastModified: 638431098881118356
   FileSizes:
   - Name: Desktop
     Value: 1572
@@ -203,7 +203,7 @@ MonoBehaviour:
   Path: FMOD/mksounds/Build/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 638430712166719188
+  lastModified: 638431098881914072
   FileSizes:
   - Name: Desktop
     Value: 27322144
@@ -321,7 +321,7 @@ MonoBehaviour:
   - {fileID: 7303565274121389155}
   StringsBanks:
   - {fileID: -4047658471020910354}
-  cacheTime: 638431015484939896
+  cacheTime: 638431098881989131
   cacheVersion: 131616
 --- !u!114 &220037467559077318
 MonoBehaviour:
@@ -472,7 +472,7 @@ MonoBehaviour:
   Path: FMOD/mksounds/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638430790385723077
+  lastModified: 638431098881113352
   FileSizes:
   - Name: Desktop
     Value: 1340

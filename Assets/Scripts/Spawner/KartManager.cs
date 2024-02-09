@@ -51,6 +51,7 @@ public class KartManager : Singleton<KartManager>
 
     private void SetupKarts()
     {
+        CurrentLap = 0;
         ResetAndRemoveAllKarts();
         PlaceAndSpawnKarts();
     }
