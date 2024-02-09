@@ -20,6 +20,6 @@ MonoBehaviour:
   - cost: 100
     value: 0.2
   - cost: 200
-    value: 0.5
+    value: 0.25
   - cost: 500
-    value: 1
+    value: 0.5

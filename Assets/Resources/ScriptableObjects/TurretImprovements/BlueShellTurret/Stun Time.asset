@@ -16,10 +16,10 @@ MonoBehaviour:
   currentLevel: 0
   improvementLevels:
   - cost: 0
+    value: 1.5
+  - cost: 100
+    value: 2
+  - cost: 200
+    value: 2.5
+  - cost: 500
     value: 3
-  - cost: 0
-    value: 4
-  - cost: 0
-    value: 5
-  - cost: 0
-    value: 7.5

@@ -15,6 +15,10 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] private GameObject achievementPanel;
     [SerializeField] private GameObject gameOverPanel;
     [SerializeField] private GameObject gameStartPanel;
+    [SerializeField] private GameObject gameSpeedPanel;
+    [SerializeField] private GameObject timerPanel;
+    [SerializeField] private GameObject coinPanel;
+    [SerializeField] private GameObject wavePanel;
 
     [Header("Text")] 
     [SerializeField] private TextMeshProUGUI upgradeText;
@@ -33,6 +37,22 @@ public class UIManager : Singleton<UIManager>
     
     private Node _currentNodeSelected;
 
+    private void HandleStartGame()
+    {
+        gameSpeedPanel.SetActive(true);
+        timerPanel.SetActive(true);
+        coinPanel.SetActive(true);
+        wavePanel.SetActive(true);
+    }
+
+    private void HandleEndGame(Kart kart)
+    {
+        gameSpeedPanel.SetActive(false);
+        timerPanel.SetActive(false);
+        coinPanel.SetActive(false);
+        wavePanel.SetActive(false);
+    }
+
     private void Start()
     {
         ShowGameStartPanel();
@@ -50,7 +70,15 @@ public class UIManager : Singleton<UIManager>
         }
 
         UpdateTime();
-        UpdateButtons();
+
+        if(_currentNodeSelected != null)
+        {
+            UpdateButtons();
+            UpdateUpgradeText();
+            UpdateImproveText();
+            UpdateTurretLevel();
+            UpdateSellValue();
+        }
     }
 
     private void UpdateTime()
@@ -151,15 +179,11 @@ public class UIManager : Singleton<UIManager>
     public void ImproveTurret()
     {
         _currentNodeSelected.Turret.ImproveTurret();
-        UpdateImproveText();
     }
     
     public void UpgradeTurret()
     {
         _currentNodeSelected.Turret.UpgradeTurret();
-        UpdateUpgradeText();
-        UpdateTurretLevel();
-        UpdateSellValue();
     }
 
     public void SellTurret()
@@ -172,10 +196,6 @@ public class UIManager : Singleton<UIManager>
     private void ShowNodeUI()
     {
         nodeUIPanel.SetActive(true);
-        UpdateUpgradeText();
-        UpdateImproveText();
-        UpdateTurretLevel();
-        UpdateSellValue();
     }
 
     private void UpdateImproveText()
@@ -226,10 +246,14 @@ public class UIManager : Singleton<UIManager>
     private void OnEnable()
     {
         Node.OnNodeSelected += NodeSelected;
+        LevelManager.OnStartGame += HandleStartGame;
+        Kart.OnAllLapsCompleted += HandleEndGame;
     }
 
     private void OnDisable()
     {
         Node.OnNodeSelected -= NodeSelected;
+        LevelManager.OnStartGame -= HandleStartGame;
+        Kart.OnAllLapsCompleted -= HandleEndGame;
     }
 }
