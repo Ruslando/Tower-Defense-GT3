@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Projectile2D : MonoBehaviour
 {
-    private float lifetime = 5f;
     protected bool isHoming = false;
     protected Transform target;
 
@@ -14,20 +13,19 @@ public class Projectile2D : MonoBehaviour
     protected Turret2D firingTurret;
     protected Vector2 firingDirection;
     protected Rigidbody2D rb;
+    protected ProjectileSound projectileSound;
 
     // Awake is called when the script instance is being loaded.
-    protected virtual void Awake()
+    public virtual void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        projectileSound = GetComponent<ProjectileSound>();
     }
 
     protected virtual void Start()
     {
+        projectileSound.Play();
         firingDirection = firingTurret.GetRotatePoint().up.normalized;
-        if(lifetime > 0)
-        {
-            Destroy(gameObject, lifetime);
-        }
     }
 
     protected virtual void MoveProjectile()

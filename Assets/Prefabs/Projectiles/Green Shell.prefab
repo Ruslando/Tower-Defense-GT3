@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2335910236783804059}
   - component: {fileID: 3798175090493459818}
+  - component: {fileID: 4476982587457690769}
   - component: {fileID: 8145429988513779575}
   - component: {fileID: 62194190829018439}
   - component: {fileID: 6712331650868878769}
@@ -87,6 +88,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &4476982587457690769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2642572464803698851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4399a3dfaa90ef488504d1e8f79c570, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectileSound:
+    Guid:
+      Data1: -1320134607
+      Data2: 1109659887
+      Data3: 1009094528
+      Data4: -1566558302
+    Path: event:/Effects/Green Shell
 --- !u!114 &8145429988513779575
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -99,9 +119,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42dd9c2f33cd3aa458cce3b345f8ad81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
-  lifetime: 3
-  maxBounces: 5
 --- !u!50 &62194190829018439
 Rigidbody2D:
   serializedVersion: 4

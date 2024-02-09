@@ -143,10 +143,10 @@ MonoBehaviour:
   Path: ../../Documents/FMOD Studio/mksound/mksounds/Build/Desktop/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 638430712168852409
+  lastModified: 638430790386407577
   FileSizes:
   - Name: Desktop
-    Value: 485760
+    Value: 486240
   Exists: 1
 --- !u!114 &-2010564876773459690
 MonoBehaviour:
@@ -175,6 +175,30 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 87650
+--- !u!114 &-1603687267646201232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Blue Shell/Detonate
+  m_EditorClassIdentifier: 
+  Name: Detonate
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 877748444
+    data2: 441329095
+  Type: 1
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &-437421425903494135
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -217,7 +241,7 @@ MonoBehaviour:
   Path: ../../Documents/FMOD Studio/mksound/mksounds/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638430712163470473
+  lastModified: 638430790385723077
   FileSizes:
   - Name: Desktop
     Value: 1340
@@ -257,7 +281,7 @@ MonoBehaviour:
   - {fileID: -108592937152110053}
   StringsBanks:
   - {fileID: 5503926974258218202}
-  cacheTime: 638430712169609282
+  cacheTime: 638430797379918480
   cacheVersion: 131616
 --- !u!114 &220037467559077318
 MonoBehaviour:
@@ -349,7 +373,7 @@ MonoBehaviour:
   Path: ../../Documents/FMOD Studio/mksound/mksounds/Build/Desktop/VoiceLines.bank
   Name: VoiceLines
   StudioPath: bank:/VoiceLines
-  lastModified: 638430712169609282
+  lastModified: 638430797379918480
   FileSizes:
   - Name: Desktop
     Value: 61280
@@ -393,10 +417,10 @@ MonoBehaviour:
   Path: ../../Documents/FMOD Studio/mksound/mksounds/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638430712163495653
+  lastModified: 638430790385883077
   FileSizes:
   - Name: Desktop
-    Value: 1520
+    Value: 1572
   Exists: 1
 --- !u!114 &6388400020652072447
 MonoBehaviour:
@@ -420,8 +444,9 @@ MonoBehaviour:
   - {fileID: -4513548435592775719}
   IsStream: 0
   Is3D: 0
-  IsOneShot: 1
-  Parameters: []
+  IsOneShot: 0
+  Parameters:
+  - {fileID: -1603687267646201232}
   MinDistance: 1
   MaxDistance: 20
   Length: 6264

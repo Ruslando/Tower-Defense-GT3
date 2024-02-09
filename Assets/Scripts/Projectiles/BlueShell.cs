@@ -36,6 +36,7 @@ public class BlueShell : Projectile2D
         }
         else 
         {
+            projectileSound.SetParameter("Detonate", 1f);
             Destroy(gameObject);
         }
     }
@@ -67,6 +68,7 @@ public class BlueShell : Projectile2D
             }
         }
 
+        projectileSound.SetParameter("Detonate", 1f);
         Destroy(gameObject);
         return;
     }

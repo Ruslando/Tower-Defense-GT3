@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2335910236783804059}
+  - component: {fileID: 7885178027623270605}
   - component: {fileID: 3798175090493459818}
   - component: {fileID: 6774202352571980381}
   - component: {fileID: 8417086943370183520}
@@ -34,6 +35,25 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7885178027623270605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2642572464803698851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4399a3dfaa90ef488504d1e8f79c570, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectileSound:
+    Guid:
+      Data1: 2125590157
+      Data2: 1125161756
+      Data3: -1441963902
+      Data4: -327975501
+    Path: event:/Effects/Blue Shell
 --- !u!212 &3798175090493459818
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -98,9 +118,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bc89b2ad429cb44383d0fae25e023fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
-  lifetime: 0
-  maxBounces: 0
   blastRadius: 2
 --- !u!50 &8417086943370183520
 Rigidbody2D:

@@ -1,22 +1,20 @@
 using FMOD.Studio;
 using FMODUnity;
-using UnityEngine;
 
-public class FMODAudioEvent : MonoBehaviour
+public class FMODAudioEvent
 {
     private EventInstance eventInstance;
-    private string playbackState;
-    
-    // FMOD Event reference
-    [SerializeField] private EventReference fmodEventReference;
-    [SerializeField] private bool isOneShot;
-    
-    private void Start()
+    private EventReference fmodEventReference;
+    private bool isOneShot;
+
+    public FMODAudioEvent(EventReference fmodEventReference, bool isOneShot = false)
     {
-        InitializeAsEventInstance(fmodEventReference);
+        this.fmodEventReference = fmodEventReference;
+        this.isOneShot = isOneShot;
+        InitializeAsEventInstance();
     }
     
-    public void InitializeAsEventInstance(EventReference fmodEventReference)
+    public void InitializeAsEventInstance()
     {
         // if already instantiated, release the old one
         if(eventInstance.isValid())
@@ -24,7 +22,7 @@ public class FMODAudioEvent : MonoBehaviour
             FMODSoundManager.instance.ReleaseEventInstance(this.eventInstance);
         }
 
-        if(FMODSoundManager.instance != null)
+        if(FMODSoundManager.instance != null && fmodEventReference.IsNull == false)
         {
             eventInstance = FMODSoundManager.instance.CreateEventInstance(fmodEventReference);
         } 
@@ -59,10 +57,6 @@ public class FMODAudioEvent : MonoBehaviour
             if (currentPlaybackState != PLAYBACK_STATE.PLAYING)
             {
                 eventInstance.start();
-
-                PLAYBACK_STATE pbState;
-                eventInstance.getPlaybackState(out pbState);
-                playbackState = pbState.ToString();
             }
         }
     }
@@ -75,10 +69,6 @@ public class FMODAudioEvent : MonoBehaviour
         if (currentPlaybackState != PLAYBACK_STATE.STOPPED)
         {
             eventInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
-
-            PLAYBACK_STATE pbState;
-            eventInstance.getPlaybackState(out pbState);
-            playbackState = pbState.ToString();
         }
     }
 

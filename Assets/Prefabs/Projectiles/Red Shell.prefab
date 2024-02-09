@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2335910236783804059}
   - component: {fileID: 3798175090493459818}
+  - component: {fileID: 1757111491670808427}
   - component: {fileID: 7319558104234061415}
   - component: {fileID: 62194190829018439}
   - component: {fileID: 6712331650868878769}
@@ -87,6 +88,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1757111491670808427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2642572464803698851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4399a3dfaa90ef488504d1e8f79c570, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectileSound:
+    Guid:
+      Data1: 1667537313
+      Data2: 1160648505
+      Data3: 370313357
+      Data4: 1961547456
+    Path: event:/Effects/Red Shell
 --- !u!114 &7319558104234061415
 MonoBehaviour:
   m_ObjectHideFlags: 0

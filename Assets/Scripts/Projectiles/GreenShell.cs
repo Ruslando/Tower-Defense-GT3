@@ -26,6 +26,7 @@ public class GreenShell : Projectile2D
             }
             else
             {
+                projectileSound.Stop();
                 Destroy(gameObject);
             }
         }
@@ -39,6 +40,7 @@ public class GreenShell : Projectile2D
         if (kart != null)
         {
             kart.ApplyLightStunEffect(firingTurret.GetUpgradeValue(TurretImprovementType.StunTime));
+            projectileSound.Stop();
             Destroy(gameObject);
             return;
         }
@@ -46,6 +48,7 @@ public class GreenShell : Projectile2D
 
     protected override void HandleCollisionProjectile(Collision2D collision)
     {
+        projectileSound.Stop();
         Destroy(gameObject);
         return;
     }

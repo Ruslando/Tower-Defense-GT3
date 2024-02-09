@@ -237,7 +237,7 @@ MonoBehaviour:
   sourceProjectPath: ../../Documents/FMOD Studio/mksound/mksounds/mksounds.fspro
   sourceBankPath: ../../Documents/FMOD Studio/mksound/mksounds/Build
   sourceBankPathUnformatted: 
-  BankRefreshCooldown: 5
+  BankRefreshCooldown: 1
   ShowBankRefreshWindow: 1
   AutomaticEventLoading: 1
   BankLoadType: 0
