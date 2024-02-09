@@ -31,7 +31,7 @@ public class Kart : MonoBehaviour
     public static event Action<Kart> OnLastLapCompleted;
     public static event Action<Kart> OnLapCompletedFirst;
     public static event Action<Kart> OnAllLapsCompleted;
-    public static event Action<Kart, int, int> OnLapPositionChanged;
+    public static event Action<Kart> OnOvertake;
     public static event Action<Kart, KartBuffType> OnBuffApplied;
     public static event Action<Kart, KartBuffType> OnBuffRemoved;
     public static event Action<Kart, KartDebuffType> OnDebuffApplied;
@@ -192,10 +192,13 @@ public class Kart : MonoBehaviour
         }
     }
 
-    public void SetLapPosition(int lapPosition)
+    public void SetLapPosition(int newLapPosition)
     {
-        OnLapPositionChanged?.Invoke(this, LapPosition, lapPosition);
-        LapPosition = lapPosition;
+        if(newLapPosition > LapPosition)
+        {
+            OnOvertake?.Invoke(this);
+        }
+        LapPosition = newLapPosition;
     }
 
     public void ApplyLightStunEffect(float durationInSeconds)

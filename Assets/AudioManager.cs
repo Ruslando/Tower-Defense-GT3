@@ -10,6 +10,8 @@ public class AudioManager : MonoBehaviour
     [Header("Effects")]
     [SerializeField] private FMODAudioEvent startGameEffect;
     [SerializeField] private FMODAudioEvent countDownEffect;
+    [SerializeField] private FMODAudioEvent overtakeEffect;
+    [SerializeField] private FMODAudioEvent damageEffect;
 
     private void Start()
     {
@@ -22,6 +24,8 @@ public class AudioManager : MonoBehaviour
         LevelManager.OnStartGame += HandleStartGame;
         Kart.OnLastLapCompleted += HandleLastLap;
         Kart.OnAllLapsCompleted += HandleEndGame;
+        Kart.OnOvertake += HandleOvertake;
+        Kart.OnDebuffApplied += HandleDamage;
     }
 
     private void HandleRestartGame()
@@ -50,5 +54,15 @@ public class AudioManager : MonoBehaviour
     {
         stageMusic.Stop();
         endGameMusic.Play();
+    }
+
+    private void HandleOvertake(Kart kart)
+    {
+        overtakeEffect.Play();
+    }
+
+    private void HandleDamage(Kart kart, KartDebuffType type)
+    {
+        damageEffect.Play();
     }
 }

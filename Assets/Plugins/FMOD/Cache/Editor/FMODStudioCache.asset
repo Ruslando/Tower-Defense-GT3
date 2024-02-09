@@ -1,5 +1,32 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-7884172557242633037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Voice/Overtake
+  m_EditorClassIdentifier: 
+  Path: event:/Voice/Overtake
+  Guid:
+    Data1: -2026112900
+    Data2: 1241786924
+    Data3: 1663526323
+    Data4: -1893676466
+  Banks:
+  - {fileID: 4541508153821853212}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1000
 --- !u!114 &-7597292559155594758
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -96,7 +123,7 @@ MonoBehaviour:
   Path: ../../Documents/FMOD Studio/mksound/mksounds/Build/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 638430284505086306
+  lastModified: 638430712166719188
   FileSizes:
   - Name: Desktop
     Value: 27322144
@@ -116,7 +143,7 @@ MonoBehaviour:
   Path: ../../Documents/FMOD Studio/mksound/mksounds/Build/Desktop/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 638430279759336121
+  lastModified: 638430712168852409
   FileSizes:
   - Name: Desktop
     Value: 485760
@@ -148,6 +175,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 87650
+--- !u!114 &-437421425903494135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Voice/Damage
+  m_EditorClassIdentifier: 
+  Path: event:/Voice/Damage
+  Guid:
+    Data1: -2143004778
+    Data2: 1265231813
+    Data3: -1841415806
+    Data4: -1932996175
+  Banks:
+  - {fileID: 4541508153821853212}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1000
 --- !u!114 &-108592937152110053
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -163,7 +217,7 @@ MonoBehaviour:
   Path: ../../Documents/FMOD Studio/mksound/mksounds/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638430279758820301
+  lastModified: 638430712163470473
   FileSizes:
   - Name: Desktop
     Value: 1340
@@ -196,12 +250,14 @@ MonoBehaviour:
   - {fileID: -7483412646184531816}
   - {fileID: 6388400020652072447}
   - {fileID: -7597292559155594758}
+  - {fileID: -7884172557242633037}
+  - {fileID: -437421425903494135}
   EditorParameters: []
   MasterBanks:
   - {fileID: -108592937152110053}
   StringsBanks:
   - {fileID: 5503926974258218202}
-  cacheTime: 638430284505086306
+  cacheTime: 638430712169609282
   cacheVersion: 131616
 --- !u!114 &220037467559077318
 MonoBehaviour:
@@ -293,10 +349,10 @@ MonoBehaviour:
   Path: ../../Documents/FMOD Studio/mksound/mksounds/Build/Desktop/VoiceLines.bank
   Name: VoiceLines
   StudioPath: bank:/VoiceLines
-  lastModified: 638430009635958813
+  lastModified: 638430712169609282
   FileSizes:
   - Name: Desktop
-    Value: 494
+    Value: 61280
   Exists: 1
 --- !u!114 &4543066794069961390
 MonoBehaviour:
@@ -337,10 +393,10 @@ MonoBehaviour:
   Path: ../../Documents/FMOD Studio/mksound/mksounds/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638430279758865831
+  lastModified: 638430712163495653
   FileSizes:
   - Name: Desktop
-    Value: 1426
+    Value: 1520
   Exists: 1
 --- !u!114 &6388400020652072447
 MonoBehaviour:
