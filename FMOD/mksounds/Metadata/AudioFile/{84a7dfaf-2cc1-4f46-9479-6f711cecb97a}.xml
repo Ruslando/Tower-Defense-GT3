@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{84a7dfaf-2cc1-4f46-9479-6f711cecb97a}">
+		<property name="assetPath">
+			<value>Sound Effects/Finish 1st Place Mario Kart 8 Deluxe Music.mp3</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>7.1280000000000001</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{a9623d1e-a735-4ba1-8e9f-078811bde515}</destination>
+		</relationship>
+	</object>
+</objects>

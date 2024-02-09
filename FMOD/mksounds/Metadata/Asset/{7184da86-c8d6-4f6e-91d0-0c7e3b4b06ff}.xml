@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="EncodableAsset" id="{7184da86-c8d6-4f6e-91d0-0c7e3b4b06ff}">
+		<property name="assetPath">
+			<value>Voice Lines/</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{a9623d1e-a735-4ba1-8e9f-078811bde515}</destination>
+		</relationship>
+	</object>
+</objects>

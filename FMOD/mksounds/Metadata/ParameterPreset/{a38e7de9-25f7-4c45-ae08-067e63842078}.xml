@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="ParameterPreset" id="{a38e7de9-25f7-4c45-ae08-067e63842078}">
+		<property name="name">
+			<value>Detonate</value>
+		</property>
+		<relationship name="folder">
+			<destination>{4bf38b01-277f-4395-bd21-7a0b8c9cdd7a}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{88bf41cc-0763-4765-9ac5-4a22e84bf64d}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{88bf41cc-0763-4765-9ac5-4a22e84bf64d}">
+		<property name="parameterType">
+			<value>1</value>
+		</property>
+		<property name="maximum">
+			<value>2</value>
+		</property>
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>

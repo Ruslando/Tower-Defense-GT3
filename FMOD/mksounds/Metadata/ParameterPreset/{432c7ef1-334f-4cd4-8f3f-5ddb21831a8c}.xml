@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="ParameterPreset" id="{432c7ef1-334f-4cd4-8f3f-5ddb21831a8c}">
+		<property name="name">
+			<value>LastLap</value>
+		</property>
+		<relationship name="folder">
+			<destination>{4bf38b01-277f-4395-bd21-7a0b8c9cdd7a}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{65a92b9c-751d-4b0e-a0a6-6a641f99191a}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{65a92b9c-751d-4b0e-a0a6-6a641f99191a}">
+		<property name="parameterType">
+			<value>1</value>
+		</property>
+		<property name="maximum">
+			<value>2</value>
+		</property>
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>
