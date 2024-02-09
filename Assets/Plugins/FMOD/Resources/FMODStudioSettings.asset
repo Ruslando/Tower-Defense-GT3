@@ -234,8 +234,8 @@ MonoBehaviour:
   switchSettingsMigration: 1
   HasSourceProject: 1
   HasPlatforms: 1
-  sourceProjectPath: ../../Documents/FMOD Studio/mksound/mksounds/mksounds.fspro
-  sourceBankPath: ../../Documents/FMOD Studio/mksound/mksounds/Build
+  sourceProjectPath: FMOD/mksounds/mksounds.fspro
+  sourceBankPath: FMOD/mksounds/Build
   sourceBankPathUnformatted: 
   BankRefreshCooldown: 1
   ShowBankRefreshWindow: 1
