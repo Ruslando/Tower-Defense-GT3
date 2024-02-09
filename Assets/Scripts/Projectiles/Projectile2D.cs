@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Projectile2D : MonoBehaviour
 {
+    private int lifetime = 5;
     protected bool isHoming = false;
     protected Transform target;
 
@@ -26,6 +27,7 @@ public class Projectile2D : MonoBehaviour
     {
         projectileSound.Play();
         firingDirection = firingTurret.GetRotatePoint().up.normalized;
+        Destroy(gameObject, lifetime);
     }
 
     protected virtual void MoveProjectile()

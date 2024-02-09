@@ -26,7 +26,7 @@ public class RedShell : Projectile2D
         // ignore first wall collision
         if(bounceCount != 0)
         {
-            projectileSound.Stop();
+            // projectileSound.Stop();
             Destroy(gameObject);
         }
 
@@ -40,14 +40,14 @@ public class RedShell : Projectile2D
         {
             kart.ApplyLightStunEffect(firingTurret.GetUpgradeValue(TurretImprovementType.StunTime));
         }
-        projectileSound.Stop();
+        // projectileSound.Stop();
         Destroy(gameObject);
         return;
     }
 
     protected override void HandleCollisionProjectile(Collision2D collision)
     {
-        projectileSound.Stop();
+        // projectileSound.Stop();
         Destroy(gameObject);
         return;
     }

@@ -38,4 +38,10 @@ public class ProjectileSound : MonoBehaviour
     {
         projectileSoundInstance.SetParameter(parameterName, value);
     }
+
+    private void OnDestroy()
+    {
+        projectileSoundInstance.Stop();
+        projectileSoundInstance.Release();
+    }
 }
